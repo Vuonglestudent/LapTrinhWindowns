@@ -15,6 +15,7 @@ namespace ProjectMonHoc
         int Them;
         bool Add;
         string test = "test";
+        bool test2;
         public Form1()
         {
             InitializeComponent();

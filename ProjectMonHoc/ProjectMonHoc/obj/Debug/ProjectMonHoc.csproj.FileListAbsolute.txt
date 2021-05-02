@@ -16,3 +16,12 @@ C:\Users\doanh\OneDrive\Documents\GiuaKiLapTrinhWindow\LapTrinhWindowns\ProjectM
 C:\Users\doanh\OneDrive\Documents\GiuaKiLapTrinhWindow\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.CoreCompileInputs.cache
 C:\Users\doanh\OneDrive\Documents\GiuaKiLapTrinhWindow\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.exe
 C:\Users\doanh\OneDrive\Documents\GiuaKiLapTrinhWindow\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.pdb
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csprojAssemblyReference.cache
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Properties.Resources.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.GenerateResource.cache
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.CoreCompileInputs.cache
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.exe
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.pdb
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.exe.config
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.exe
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.pdb
