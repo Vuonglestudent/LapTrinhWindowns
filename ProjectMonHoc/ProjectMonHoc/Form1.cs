@@ -12,6 +12,8 @@ namespace ProjectMonHoc
 {
     public partial class Form1 : Form
     {
+        int Them;
+        bool Add;
         public Form1()
         {
             InitializeComponent();
