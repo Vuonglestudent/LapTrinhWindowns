@@ -1,0 +1,9 @@
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.exe.config
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.exe
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.pdb
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csprojAssemblyReference.cache
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Properties.Resources.resources
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.GenerateResource.cache
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.CoreCompileInputs.cache
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.exe
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.pdb
