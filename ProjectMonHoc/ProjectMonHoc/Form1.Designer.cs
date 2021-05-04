@@ -29,7 +29,7 @@ namespace ProjectMonHoc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStripHeThong = new System.Windows.Forms.MenuStrip();
             this.danhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,19 +42,34 @@ namespace ProjectMonHoc
             this.tabCacMonKhac = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabBan = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lbTrangThaiBan10 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan9 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan8 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan7 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan6 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan5 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan4 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan3 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan2 = new System.Windows.Forms.Label();
+            this.lbTrangThaiBan1 = new System.Windows.Forms.Label();
+            this.btnBan10 = new System.Windows.Forms.Button();
+            this.btnBan9 = new System.Windows.Forms.Button();
+            this.btnBan8 = new System.Windows.Forms.Button();
+            this.btnBan7 = new System.Windows.Forms.Button();
+            this.btnBan6 = new System.Windows.Forms.Button();
+            this.btnBan5 = new System.Windows.Forms.Button();
+            this.btnBan4 = new System.Windows.Forms.Button();
+            this.btnBan3 = new System.Windows.Forms.Button();
+            this.btnBan2 = new System.Windows.Forms.Button();
             this.btnBan1 = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvBill = new System.Windows.Forms.DataGridView();
+            this.columnSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbxTongTien = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,18 +80,16 @@ namespace ProjectMonHoc
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxTienThua = new System.Windows.Forms.TextBox();
-            this.columnSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvBan = new System.Windows.Forms.DataGridView();
             this.menuStripHeThong.SuspendLayout();
             this.tabDoUong.SuspendLayout();
+            this.tabCaPhe.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabBan.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripHeThong
@@ -89,7 +102,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStripHeThong.Size = new System.Drawing.Size(1584, 29);
+            this.menuStripHeThong.Size = new System.Drawing.Size(1370, 29);
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
@@ -129,6 +142,7 @@ namespace ProjectMonHoc
             // 
             // tabCaPhe
             // 
+            this.tabCaPhe.Controls.Add(this.dgvBan);
             this.tabCaPhe.Location = new System.Drawing.Point(4, 44);
             this.tabCaPhe.Name = "tabCaPhe";
             this.tabCaPhe.Padding = new System.Windows.Forms.Padding(3);
@@ -193,15 +207,25 @@ namespace ProjectMonHoc
             // 
             // tabBan
             // 
-            this.tabBan.Controls.Add(this.button8);
-            this.tabBan.Controls.Add(this.button9);
-            this.tabBan.Controls.Add(this.button4);
-            this.tabBan.Controls.Add(this.button5);
-            this.tabBan.Controls.Add(this.button6);
-            this.tabBan.Controls.Add(this.button7);
-            this.tabBan.Controls.Add(this.button1);
-            this.tabBan.Controls.Add(this.button3);
-            this.tabBan.Controls.Add(this.button2);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan10);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan9);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan8);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan7);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan6);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan5);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan4);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan3);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan2);
+            this.tabBan.Controls.Add(this.lbTrangThaiBan1);
+            this.tabBan.Controls.Add(this.btnBan10);
+            this.tabBan.Controls.Add(this.btnBan9);
+            this.tabBan.Controls.Add(this.btnBan8);
+            this.tabBan.Controls.Add(this.btnBan7);
+            this.tabBan.Controls.Add(this.btnBan6);
+            this.tabBan.Controls.Add(this.btnBan5);
+            this.tabBan.Controls.Add(this.btnBan4);
+            this.tabBan.Controls.Add(this.btnBan3);
+            this.tabBan.Controls.Add(this.btnBan2);
             this.tabBan.Controls.Add(this.btnBan1);
             this.tabBan.Location = new System.Drawing.Point(4, 44);
             this.tabBan.Name = "tabBan";
@@ -211,95 +235,204 @@ namespace ProjectMonHoc
             this.tabBan.Text = "Bàn";
             this.tabBan.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // lbTrangThaiBan10
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button8.Location = new System.Drawing.Point(165, 602);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 125);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Bàn 10\r\nCó khách";
-            this.button8.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan10.AutoSize = true;
+            this.lbTrangThaiBan10.Location = new System.Drawing.Point(185, 641);
+            this.lbTrangThaiBan10.Name = "lbTrangThaiBan10";
+            this.lbTrangThaiBan10.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan10.TabIndex = 19;
+            this.lbTrangThaiBan10.Text = "label5";
             // 
-            // button9
+            // lbTrangThaiBan9
             // 
-            this.button9.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button9.Location = new System.Drawing.Point(18, 602);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(132, 125);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "Bàn 9 \r\nTrống";
-            this.button9.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan9.AutoSize = true;
+            this.lbTrangThaiBan9.Location = new System.Drawing.Point(32, 641);
+            this.lbTrangThaiBan9.Name = "lbTrangThaiBan9";
+            this.lbTrangThaiBan9.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan9.TabIndex = 18;
+            this.lbTrangThaiBan9.Text = "label5";
             // 
-            // button4
+            // lbTrangThaiBan8
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button4.Location = new System.Drawing.Point(165, 459);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 125);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Bàn 8\r\nCó khách";
-            this.button4.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan8.AutoSize = true;
+            this.lbTrangThaiBan8.Location = new System.Drawing.Point(185, 502);
+            this.lbTrangThaiBan8.Name = "lbTrangThaiBan8";
+            this.lbTrangThaiBan8.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan8.TabIndex = 17;
+            this.lbTrangThaiBan8.Text = "label5";
             // 
-            // button5
+            // lbTrangThaiBan7
             // 
-            this.button5.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button5.Location = new System.Drawing.Point(18, 459);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 125);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Bàn 7 \r\nTrống";
-            this.button5.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan7.AutoSize = true;
+            this.lbTrangThaiBan7.Location = new System.Drawing.Point(32, 502);
+            this.lbTrangThaiBan7.Name = "lbTrangThaiBan7";
+            this.lbTrangThaiBan7.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan7.TabIndex = 16;
+            this.lbTrangThaiBan7.Text = "label5";
             // 
-            // button6
+            // lbTrangThaiBan6
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button6.Location = new System.Drawing.Point(165, 318);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(132, 125);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Bàn 6\r\nCó khách";
-            this.button6.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan6.AutoSize = true;
+            this.lbTrangThaiBan6.Location = new System.Drawing.Point(185, 365);
+            this.lbTrangThaiBan6.Name = "lbTrangThaiBan6";
+            this.lbTrangThaiBan6.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan6.TabIndex = 15;
+            this.lbTrangThaiBan6.Text = "label5";
             // 
-            // button7
+            // lbTrangThaiBan5
             // 
-            this.button7.BackColor = System.Drawing.Color.SpringGreen;
-            this.button7.Location = new System.Drawing.Point(18, 318);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(132, 125);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "Bàn 5 \r\nĐang chọn";
-            this.button7.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan5.AutoSize = true;
+            this.lbTrangThaiBan5.Location = new System.Drawing.Point(32, 365);
+            this.lbTrangThaiBan5.Name = "lbTrangThaiBan5";
+            this.lbTrangThaiBan5.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan5.TabIndex = 14;
+            this.lbTrangThaiBan5.Text = "label5";
             // 
-            // button1
+            // lbTrangThaiBan4
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Location = new System.Drawing.Point(165, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 125);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Bàn 4\r\nCó khách";
-            this.button1.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan4.AutoSize = true;
+            this.lbTrangThaiBan4.Location = new System.Drawing.Point(185, 219);
+            this.lbTrangThaiBan4.Name = "lbTrangThaiBan4";
+            this.lbTrangThaiBan4.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan4.TabIndex = 13;
+            this.lbTrangThaiBan4.Text = "label5";
             // 
-            // button3
+            // lbTrangThaiBan3
             // 
-            this.button3.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button3.Location = new System.Drawing.Point(18, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(132, 125);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Bàn 3 \r\nTrống";
-            this.button3.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan3.AutoSize = true;
+            this.lbTrangThaiBan3.Location = new System.Drawing.Point(32, 219);
+            this.lbTrangThaiBan3.Name = "lbTrangThaiBan3";
+            this.lbTrangThaiBan3.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan3.TabIndex = 12;
+            this.lbTrangThaiBan3.Text = "label5";
             // 
-            // button2
+            // lbTrangThaiBan2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button2.Location = new System.Drawing.Point(165, 35);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 125);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Bàn 2\r\nCó khách";
-            this.button2.UseVisualStyleBackColor = false;
+            this.lbTrangThaiBan2.AutoSize = true;
+            this.lbTrangThaiBan2.Location = new System.Drawing.Point(185, 78);
+            this.lbTrangThaiBan2.Name = "lbTrangThaiBan2";
+            this.lbTrangThaiBan2.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan2.TabIndex = 11;
+            this.lbTrangThaiBan2.Text = "label5";
+            // 
+            // lbTrangThaiBan1
+            // 
+            this.lbTrangThaiBan1.AutoSize = true;
+            this.lbTrangThaiBan1.Enabled = false;
+            this.lbTrangThaiBan1.Location = new System.Drawing.Point(32, 78);
+            this.lbTrangThaiBan1.Name = "lbTrangThaiBan1";
+            this.lbTrangThaiBan1.Size = new System.Drawing.Size(56, 23);
+            this.lbTrangThaiBan1.TabIndex = 10;
+            this.lbTrangThaiBan1.Text = "label5";
+            // 
+            // btnBan10
+            // 
+            this.btnBan10.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan10.Location = new System.Drawing.Point(165, 602);
+            this.btnBan10.Name = "btnBan10";
+            this.btnBan10.Size = new System.Drawing.Size(132, 125);
+            this.btnBan10.TabIndex = 9;
+            this.btnBan10.Text = "Bàn 10\r";
+            this.btnBan10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan10.UseVisualStyleBackColor = false;
+            this.btnBan10.Click += new System.EventHandler(this.btnBan10_Click);
+            // 
+            // btnBan9
+            // 
+            this.btnBan9.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan9.Location = new System.Drawing.Point(18, 602);
+            this.btnBan9.Name = "btnBan9";
+            this.btnBan9.Size = new System.Drawing.Size(132, 125);
+            this.btnBan9.TabIndex = 8;
+            this.btnBan9.Text = "Bàn 9";
+            this.btnBan9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan9.UseVisualStyleBackColor = false;
+            this.btnBan9.Click += new System.EventHandler(this.btnBan9_Click);
+            // 
+            // btnBan8
+            // 
+            this.btnBan8.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan8.Location = new System.Drawing.Point(165, 459);
+            this.btnBan8.Name = "btnBan8";
+            this.btnBan8.Size = new System.Drawing.Size(132, 125);
+            this.btnBan8.TabIndex = 7;
+            this.btnBan8.Text = "Bàn 8\r";
+            this.btnBan8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan8.UseVisualStyleBackColor = false;
+            this.btnBan8.Click += new System.EventHandler(this.btnBan8_Click);
+            // 
+            // btnBan7
+            // 
+            this.btnBan7.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan7.Location = new System.Drawing.Point(18, 459);
+            this.btnBan7.Name = "btnBan7";
+            this.btnBan7.Size = new System.Drawing.Size(132, 125);
+            this.btnBan7.TabIndex = 6;
+            this.btnBan7.Text = "Bàn 7";
+            this.btnBan7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan7.UseVisualStyleBackColor = false;
+            this.btnBan7.Click += new System.EventHandler(this.btnBan7_Click);
+            // 
+            // btnBan6
+            // 
+            this.btnBan6.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan6.Location = new System.Drawing.Point(165, 318);
+            this.btnBan6.Name = "btnBan6";
+            this.btnBan6.Size = new System.Drawing.Size(132, 125);
+            this.btnBan6.TabIndex = 5;
+            this.btnBan6.Text = "Bàn 6\r\n";
+            this.btnBan6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan6.UseVisualStyleBackColor = false;
+            this.btnBan6.Click += new System.EventHandler(this.btnBan6_Click);
+            // 
+            // btnBan5
+            // 
+            this.btnBan5.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan5.Location = new System.Drawing.Point(18, 318);
+            this.btnBan5.Name = "btnBan5";
+            this.btnBan5.Size = new System.Drawing.Size(132, 125);
+            this.btnBan5.TabIndex = 4;
+            this.btnBan5.Text = "Bàn 5";
+            this.btnBan5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan5.UseVisualStyleBackColor = false;
+            this.btnBan5.Click += new System.EventHandler(this.btnBan5_Click);
+            // 
+            // btnBan4
+            // 
+            this.btnBan4.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan4.Location = new System.Drawing.Point(165, 176);
+            this.btnBan4.Name = "btnBan4";
+            this.btnBan4.Size = new System.Drawing.Size(132, 125);
+            this.btnBan4.TabIndex = 3;
+            this.btnBan4.Text = "Bàn 4";
+            this.btnBan4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan4.UseVisualStyleBackColor = false;
+            this.btnBan4.Click += new System.EventHandler(this.btnBan4_Click);
+            // 
+            // btnBan3
+            // 
+            this.btnBan3.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan3.Location = new System.Drawing.Point(18, 176);
+            this.btnBan3.Name = "btnBan3";
+            this.btnBan3.Size = new System.Drawing.Size(132, 125);
+            this.btnBan3.TabIndex = 2;
+            this.btnBan3.Text = "Bàn 3";
+            this.btnBan3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan3.UseVisualStyleBackColor = false;
+            this.btnBan3.Click += new System.EventHandler(this.btnBan3_Click);
+            // 
+            // btnBan2
+            // 
+            this.btnBan2.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnBan2.Location = new System.Drawing.Point(165, 35);
+            this.btnBan2.Name = "btnBan2";
+            this.btnBan2.Size = new System.Drawing.Size(132, 125);
+            this.btnBan2.TabIndex = 1;
+            this.btnBan2.Text = "Bàn 2\r\n";
+            this.btnBan2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBan2.UseVisualStyleBackColor = false;
+            this.btnBan2.Click += new System.EventHandler(this.btnBan2_Click);
             // 
             // btnBan1
             // 
@@ -308,8 +441,10 @@ namespace ProjectMonHoc
             this.btnBan1.Name = "btnBan1";
             this.btnBan1.Size = new System.Drawing.Size(132, 125);
             this.btnBan1.TabIndex = 0;
-            this.btnBan1.Text = "Bàn 1 \r\nTrống";
+            this.btnBan1.Text = "Bàn 1";
+            this.btnBan1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBan1.UseVisualStyleBackColor = false;
+            this.btnBan1.Click += new System.EventHandler(this.btnBan1_Click);
             // 
             // tabControl2
             // 
@@ -357,6 +492,53 @@ namespace ProjectMonHoc
             this.dgvBill.RowHeadersVisible = false;
             this.dgvBill.Size = new System.Drawing.Size(423, 383);
             this.dgvBill.TabIndex = 0;
+            // 
+            // columnSTT
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle2;
+            this.columnSTT.FillWeight = 35F;
+            this.columnSTT.HeaderText = "   ";
+            this.columnSTT.Name = "columnSTT";
+            this.columnSTT.ReadOnly = true;
+            this.columnSTT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.columnSTT.Width = 35;
+            // 
+            // columnTen
+            // 
+            this.columnTen.FillWeight = 150F;
+            this.columnTen.HeaderText = "Tên";
+            this.columnTen.Name = "columnTen";
+            this.columnTen.ReadOnly = true;
+            this.columnTen.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.columnTen.Width = 163;
+            // 
+            // columnGia
+            // 
+            this.columnGia.FillWeight = 80F;
+            this.columnGia.HeaderText = "Đơn giá";
+            this.columnGia.Name = "columnGia";
+            this.columnGia.ReadOnly = true;
+            this.columnGia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.columnGia.Width = 90;
+            // 
+            // columnSoLuong
+            // 
+            this.columnSoLuong.FillWeight = 35F;
+            this.columnSoLuong.HeaderText = "SL";
+            this.columnSoLuong.Name = "columnSoLuong";
+            this.columnSoLuong.ReadOnly = true;
+            this.columnSoLuong.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.columnSoLuong.Width = 35;
+            // 
+            // columnThanhTien
+            // 
+            this.columnThanhTien.FillWeight = 90F;
+            this.columnThanhTien.HeaderText = "T.tiền";
+            this.columnThanhTien.Name = "columnThanhTien";
+            this.columnThanhTien.ReadOnly = true;
+            this.columnThanhTien.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.columnThanhTien.Width = 97;
             // 
             // tbxTongTien
             // 
@@ -478,58 +660,20 @@ namespace ProjectMonHoc
             this.tbxTienThua.Size = new System.Drawing.Size(157, 27);
             this.tbxTienThua.TabIndex = 15;
             // 
-            // columnSTT
+            // dgvBan
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.columnSTT.FillWeight = 35F;
-            this.columnSTT.HeaderText = "   ";
-            this.columnSTT.Name = "columnSTT";
-            this.columnSTT.ReadOnly = true;
-            this.columnSTT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnSTT.Width = 35;
-            // 
-            // columnTen
-            // 
-            this.columnTen.FillWeight = 150F;
-            this.columnTen.HeaderText = "Tên";
-            this.columnTen.Name = "columnTen";
-            this.columnTen.ReadOnly = true;
-            this.columnTen.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnTen.Width = 163;
-            // 
-            // columnGia
-            // 
-            this.columnGia.FillWeight = 80F;
-            this.columnGia.HeaderText = "Đơn giá";
-            this.columnGia.Name = "columnGia";
-            this.columnGia.ReadOnly = true;
-            this.columnGia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnGia.Width = 90;
-            // 
-            // columnSoLuong
-            // 
-            this.columnSoLuong.FillWeight = 35F;
-            this.columnSoLuong.HeaderText = "SL";
-            this.columnSoLuong.Name = "columnSoLuong";
-            this.columnSoLuong.ReadOnly = true;
-            this.columnSoLuong.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnSoLuong.Width = 35;
-            // 
-            // columnThanhTien
-            // 
-            this.columnThanhTien.FillWeight = 90F;
-            this.columnThanhTien.HeaderText = "T.tiền";
-            this.columnThanhTien.Name = "columnThanhTien";
-            this.columnThanhTien.ReadOnly = true;
-            this.columnThanhTien.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnThanhTien.Width = 97;
+            this.dgvBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBan.Location = new System.Drawing.Point(35, 64);
+            this.dgvBan.Name = "dgvBan";
+            this.dgvBan.Size = new System.Drawing.Size(240, 150);
+            this.dgvBan.TabIndex = 0;
+            this.dgvBan.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxTienThua);
             this.Controls.Add(this.label3);
@@ -549,14 +693,18 @@ namespace ProjectMonHoc
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Quản Lí";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStripHeThong.ResumeLayout(false);
             this.menuStripHeThong.PerformLayout();
             this.tabDoUong.ResumeLayout(false);
+            this.tabCaPhe.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabBan.ResumeLayout(false);
+            this.tabBan.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,15 +730,15 @@ namespace ProjectMonHoc
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbbGiamGia;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBan10;
+        private System.Windows.Forms.Button btnBan9;
+        private System.Windows.Forms.Button btnBan8;
+        private System.Windows.Forms.Button btnBan7;
+        private System.Windows.Forms.Button btnBan6;
+        private System.Windows.Forms.Button btnBan5;
+        private System.Windows.Forms.Button btnBan4;
+        private System.Windows.Forms.Button btnBan3;
+        private System.Windows.Forms.Button btnBan2;
         private System.Windows.Forms.Button btnBan1;
         private System.Windows.Forms.DataGridView dgvBill;
         private System.Windows.Forms.Button btnHuyBill;
@@ -604,6 +752,17 @@ namespace ProjectMonHoc
         private System.Windows.Forms.DataGridViewTextBoxColumn columnGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnThanhTien;
+        private System.Windows.Forms.Label lbTrangThaiBan1;
+        private System.Windows.Forms.Label lbTrangThaiBan10;
+        private System.Windows.Forms.Label lbTrangThaiBan9;
+        private System.Windows.Forms.Label lbTrangThaiBan8;
+        private System.Windows.Forms.Label lbTrangThaiBan7;
+        private System.Windows.Forms.Label lbTrangThaiBan6;
+        private System.Windows.Forms.Label lbTrangThaiBan5;
+        private System.Windows.Forms.Label lbTrangThaiBan4;
+        private System.Windows.Forms.Label lbTrangThaiBan3;
+        private System.Windows.Forms.Label lbTrangThaiBan2;
+        private System.Windows.Forms.DataGridView dgvBan;
     }
 }
 
