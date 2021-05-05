@@ -4,17 +4,21 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectMonHoc.BL_Layer;
+using ProjectMonHoc.Properties;
+
 namespace ProjectMonHoc
 {
     public partial class frmMain : Form
     {
         public bool iSSelect;
         List<BAN> lstBan = new List<BAN>();
-
+        ResourceManager rm = Resources.ResourceManager;
+        List<NUOCUONG> lstCafe = new List<NUOCUONG>();
         public frmMain()
         {
             InitializeComponent();
@@ -46,10 +50,66 @@ namespace ProjectMonHoc
             }
             catch
             {
-                MessageBox.Show("Lỗi get data");
+                MessageBox.Show("Lỗi load bàn");
+            }
+        }
+        void LoadMonNuoc()
+        {
+            try
+            {
+                LoadDanhMucCafe();
+            } catch
+            {
+                MessageBox.Show("Lỗi load món nước");
             }
         }
 
+        void LoadDanhMucCafe()
+        {
+            try
+            {
+                lstCafe = BLNuocUong.Instance.LayDanhMucCafe();
+                Size size = new Size(157, 138);
+                Point point = new Point(29, 28);
+                int count = 1;
+                foreach(NUOCUONG item in lstCafe)
+                {
+                    AddButtonNuoc(item, point, size);
+                    if(count % 4 != 0)
+                    {
+                        point.X = point.X + 177;
+                    } else
+                    {
+                        point.X = 26;
+                        point.Y = point.Y + 177;
+                    }
+                    count++;
+                }
+            } catch
+            {
+                MessageBox.Show("Lỗi load danh mục cafe");
+            }
+        }
+
+        void AddButtonNuoc(NUOCUONG item, Point local, Size size)
+        {
+            Button newButton = new Button();
+            Label newLabel = new Label();
+            this.tabCaPhe.Controls.Add(newButton);
+            this.tabCaPhe.Controls.Add(newLabel);
+
+            newButton.Name = "btn" + item.IDMonNuoc;
+            newButton.BackgroundImage = (Bitmap)rm.GetObject(item.IDMonNuoc);
+            newButton.BackgroundImageLayout = ImageLayout.Stretch;
+            newButton.Location = local;
+            newButton.Size = size;
+
+            newLabel.Text = item.TenMon;
+            newLabel.Location = new Point(local.X, local.Y + 140);
+            newLabel.Size = new Size(size.Width, 20);
+            newLabel.TextAlign = ContentAlignment.MiddleCenter;
+
+        }
         void AddButtonAndLabelBan(BAN item, Point local, Size size)
         {
             Button newButton = new Button();
@@ -85,12 +145,15 @@ namespace ProjectMonHoc
 
             newButton.Click += (s, e) =>
             {
-                Console.WriteLine(item.IDBan);
+                Console.WriteLine(item.IDHoaDon);
+                dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonTheoBan(item.IDHoaDon);
+                this.dgvBill.Columns["IDMonNuoc"].Visible = false;
             };
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadDataBan();
+            LoadMonNuoc();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)

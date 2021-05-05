@@ -22,7 +22,7 @@ namespace ProjectMonHoc.BL_Layer
             List<BAN> lstBan = new List<BAN>();
             QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
             var kq = from tt in qlCF.BANs
-                   select new { tt.IDBan, tt.TenBan, tt.TrangThai};
+                   select new { tt.IDBan, tt.TenBan, tt.TrangThai , tt.IDHoaDon};
 
             foreach (var item in kq.ToList())
             {
@@ -30,6 +30,7 @@ namespace ProjectMonHoc.BL_Layer
                 ban.IDBan = item.IDBan;
                 ban.TenBan = item.TenBan;
                 ban.TrangThai = item.TrangThai;
+                ban.IDHoaDon = item.IDHoaDon;
                 lstBan.Add(ban);
             }
 
@@ -59,6 +60,15 @@ namespace ProjectMonHoc.BL_Layer
             queryBan.IDHoaDon = IDHoaDon;
             qlCF.SubmitChanges();
             return true;
+        }
+
+        public IQueryable LayChiTietHoaDonTheoBan(string IDHoaDon)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            var queryCTHoaDon = from cthd in qlCF.CHITIETHOADONs join mn in qlCF.NUOCUONGs on cthd.IDMonNuoc equals mn.IDMonNuoc
+                                where cthd.IDHoaDon == IDHoaDon
+                                select new { mn.IDMonNuoc , mn.TenMon , mn.GiaTien, cthd.SoLuong, ThanhTien = cthd.GiaTien};
+            return queryCTHoaDon;
         }
     }
 }

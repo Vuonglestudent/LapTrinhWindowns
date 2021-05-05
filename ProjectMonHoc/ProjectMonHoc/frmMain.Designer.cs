@@ -29,14 +29,13 @@ namespace ProjectMonHoc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStripHeThong = new System.Windows.Forms.MenuStrip();
             this.danhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabDoUong = new System.Windows.Forms.TabControl();
             this.tabCaPhe = new System.Windows.Forms.TabPage();
-            this.dgvBan = new System.Windows.Forms.DataGridView();
             this.tabTra = new System.Windows.Forms.TabPage();
             this.tabTraSua = new System.Windows.Forms.TabPage();
             this.tabSuaTuoi = new System.Windows.Forms.TabPage();
@@ -63,8 +62,6 @@ namespace ProjectMonHoc
             this.tbxTienThua = new System.Windows.Forms.TextBox();
             this.menuStripHeThong.SuspendLayout();
             this.tabDoUong.SuspendLayout();
-            this.tabCaPhe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -121,7 +118,6 @@ namespace ProjectMonHoc
             // 
             // tabCaPhe
             // 
-            this.tabCaPhe.Controls.Add(this.dgvBan);
             this.tabCaPhe.Location = new System.Drawing.Point(4, 44);
             this.tabCaPhe.Name = "tabCaPhe";
             this.tabCaPhe.Padding = new System.Windows.Forms.Padding(3);
@@ -129,15 +125,6 @@ namespace ProjectMonHoc
             this.tabCaPhe.TabIndex = 0;
             this.tabCaPhe.Text = "Cà Phê";
             this.tabCaPhe.UseVisualStyleBackColor = true;
-            // 
-            // dgvBan
-            // 
-            this.dgvBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBan.Location = new System.Drawing.Point(35, 64);
-            this.dgvBan.Name = "dgvBan";
-            this.dgvBan.Size = new System.Drawing.Size(240, 150);
-            this.dgvBan.TabIndex = 0;
-            this.dgvBan.Visible = false;
             // 
             // tabTra
             // 
@@ -252,8 +239,8 @@ namespace ProjectMonHoc
             // 
             // columnSTT
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle6;
             this.columnSTT.FillWeight = 35F;
             this.columnSTT.HeaderText = "   ";
             this.columnSTT.Name = "columnSTT";
@@ -263,6 +250,7 @@ namespace ProjectMonHoc
             // 
             // columnTen
             // 
+            this.columnTen.DataPropertyName = "TenMon";
             this.columnTen.FillWeight = 150F;
             this.columnTen.HeaderText = "Tên";
             this.columnTen.Name = "columnTen";
@@ -272,6 +260,7 @@ namespace ProjectMonHoc
             // 
             // columnGia
             // 
+            this.columnGia.DataPropertyName = "GiaTien";
             this.columnGia.FillWeight = 80F;
             this.columnGia.HeaderText = "Đơn giá";
             this.columnGia.Name = "columnGia";
@@ -281,6 +270,7 @@ namespace ProjectMonHoc
             // 
             // columnSoLuong
             // 
+            this.columnSoLuong.DataPropertyName = "SoLuong";
             this.columnSoLuong.FillWeight = 35F;
             this.columnSoLuong.HeaderText = "SL";
             this.columnSoLuong.Name = "columnSoLuong";
@@ -290,6 +280,7 @@ namespace ProjectMonHoc
             // 
             // columnThanhTien
             // 
+            this.columnThanhTien.DataPropertyName = "ThanhTien";
             this.columnThanhTien.FillWeight = 90F;
             this.columnThanhTien.HeaderText = "T.tiền";
             this.columnThanhTien.Name = "columnThanhTien";
@@ -446,8 +437,6 @@ namespace ProjectMonHoc
             this.menuStripHeThong.ResumeLayout(false);
             this.menuStripHeThong.PerformLayout();
             this.tabDoUong.ResumeLayout(false);
-            this.tabCaPhe.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -489,7 +478,6 @@ namespace ProjectMonHoc
         private System.Windows.Forms.DataGridViewTextBoxColumn columnGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnThanhTien;
-        private System.Windows.Forms.DataGridView dgvBan;
     }
 }
 
