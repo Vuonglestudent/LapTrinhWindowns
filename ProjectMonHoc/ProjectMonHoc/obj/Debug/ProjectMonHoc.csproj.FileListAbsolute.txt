@@ -26,3 +26,4 @@ D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectM
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.exe
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectMonHoc.pdb
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Form1.resources
+D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.frmMain.resources
