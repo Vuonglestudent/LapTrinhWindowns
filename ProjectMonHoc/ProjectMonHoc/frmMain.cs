@@ -285,6 +285,7 @@ namespace ProjectMonHoc
                 ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan,true)[0]).BackColor = color.colorDangChon;
                 dgvBill.DataSource = bill;
                 this.tbxTongTien.Text = this.TinhTongBill().ToString();
+                MessageBox.Show(this.TinhTongBill().ToString());
             }
         }
 
@@ -314,7 +315,7 @@ namespace ProjectMonHoc
         private void ShowBill(int IDBan)
         {
             dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
-            tbxTongTien.Text = BLBan.Instance.LayTongTien(IDBan);
+            tbxTongTien.Text = TinhTongBill().ToString() ;
         }
 
         private void AddMon(string IDMonNuoc)
@@ -409,6 +410,7 @@ namespace ProjectMonHoc
             int sum = 0;
             foreach (DataGridViewRow row in dgvBill.Rows)
                 sum = sum + int.Parse(row.Cells["columnThanhTien"].Value.ToString());
+            MessageBox.Show(sum.ToString());
             return sum;
         }
 

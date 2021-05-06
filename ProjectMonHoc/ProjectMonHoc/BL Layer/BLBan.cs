@@ -55,18 +55,6 @@ namespace ProjectMonHoc.BL_Layer
             return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon);
         }
 
-        public string LayTongTien(int IDBan)
-        {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
-            var IDHoaDon = (from ban in qlCF.BANs
-                         where ban.IDBan == IDBan
-                         select ban.IDHoaDon);
-            var TT = from hd in qlCF.HOADONs
-                         where hd.IDHoaDon == IDHoaDon.SingleOrDefault()
-                         select hd.TongTien;
-            return TT.ToString();
-        }
-
         internal void ThayDoiTrangThai(int IDBan)
         {
             QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
