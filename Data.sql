@@ -190,9 +190,11 @@ GO
 	VALUES (6 , N'Thạch Dừa' , 5)
 	GO
 --THÊM BÀN
+
 INSERT INTO BAN (TenBan, TrangThai)
-VALUES (N'Bàn 1' , 0) , (N'Bàn 2' , 0) , (N'Bàn 3' , 0) , (N'Bàn 4' , 0) , (N'Bàn 5' , 0) , (N'Bàn 6' , 0) , (N'Bàn 7' , 0)
+VALUES (N'Bàn 1' , 0) , (N'Bàn 2' , 0) , (N'Bàn 3' , 0) , (N'Bàn 4' , 0) , (N'Bàn 5' , 0) , (N'Bàn 6' , 0) , (N'Bàn 7' , 0) , (N'Bàn 8' , 0) , (N'Bàn 9' , 0) , (N'Bàn 10' , 0)
 GO
+
 
 --THÊM HÓA ĐƠN
 INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien)

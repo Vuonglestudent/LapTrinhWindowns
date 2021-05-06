@@ -15,12 +15,12 @@ namespace ProjectMonHoc.BL_Layer
             private set { instance = value; }
         }
 
-        public List<NUOCUONG> LayDanhMucCafe()
+        public List<NUOCUONG> LayDanhMucNuocUong(int tab)
         {
             QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
             List<NUOCUONG> lstNuoc = new List<NUOCUONG>();
             var queryNU = from nu in qlCF.NUOCUONGs
-                          where nu.IDDanhMuc == 1
+                          where nu.IDDanhMuc == tab
                           select nu;
 
             foreach (var item in queryNU.ToList())
@@ -34,6 +34,32 @@ namespace ProjectMonHoc.BL_Layer
             }
 
             return lstNuoc;
+        }
+        public int LayDonGia(string IDMonNuoc)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            int gia = (from nu in qlCF.NUOCUONGs
+                          where nu.IDMonNuoc == IDMonNuoc
+                          select nu.GiaTien).SingleOrDefault();
+            return gia;
+        }
+
+        public string LayTenMonNuoc(string IDMonNuoc)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            string ten = (from nu in qlCF.NUOCUONGs
+                       where nu.IDMonNuoc == IDMonNuoc
+                       select nu.TenMon).SingleOrDefault();
+            return ten;
+        }
+
+        public string LayIDMonNuoc(string TenMon)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            string id = (from nu in qlCF.NUOCUONGs
+                          where nu.TenMon == TenMon
+                          select nu.IDMonNuoc).SingleOrDefault();
+            return id;
         }
     }
 }

@@ -54,6 +54,13 @@
     <Compile Include="BL Layer\BLNhanVien.cs" />
     <Compile Include="BL Layer\BLNuocUong.cs" />
     <Compile Include="BL Layer\BLTaiKhoan.cs" />
+    <Compile Include="color.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +74,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyCafe.dbml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,9 +114,26 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Images\NU001.jpg" />
+    <Content Include="Images\NU007.jpg" />
+    <Content Include="Images\NU008.jpg" />
+    <Content Include="Images\NU009.jpg" />
+    <Content Include="Images\NU010.jpg" />
+    <Content Include="Images\NU011.jpg" />
+    <Content Include="Images\NU012.jpg" />
+    <Content Include="Images\NU013.jpg" />
+    <Content Include="Images\NU014.jpg" />
+    <Content Include="Images\NU015.jpg" />
+    <Content Include="Images\NU016.jpg" />
+    <Content Include="Images\NU017.jpg" />
+    <Content Include="Images\NU018.jpg" />
+    <Content Include="Images\NU019.jpg" />
+    <Content Include="Images\NU020.jpg" />
+    <Content Include="Images\NU021.jpg" />
     <None Include="Images\NU006.jpg" />
     <None Include="Images\NU005.jpg" />
     <None Include="Images\NU004.jpg" />

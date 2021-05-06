@@ -29,18 +29,25 @@ namespace ProjectMonHoc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStripHeThong = new System.Windows.Forms.MenuStrip();
-            this.danhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemDangNhap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemDangXuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemDoiMatKhau = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAdmin = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemThemUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemXoaUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemXemUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
             this.tabDoUong = new System.Windows.Forms.TabControl();
             this.tabCaPhe = new System.Windows.Forms.TabPage();
             this.tabTra = new System.Windows.Forms.TabPage();
             this.tabTraSua = new System.Windows.Forms.TabPage();
-            this.tabSuaTuoi = new System.Windows.Forms.TabPage();
+            this.tabSinhTo = new System.Windows.Forms.TabPage();
+            this.tabSoda = new System.Windows.Forms.TabPage();
             this.tabCacMonKhac = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlBan = new System.Windows.Forms.TabControl();
             this.tabBan = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,9 +67,10 @@ namespace ProjectMonHoc
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxTienThua = new System.Windows.Forms.TextBox();
+            this.btnAddBill = new System.Windows.Forms.Button();
             this.menuStripHeThong.SuspendLayout();
             this.tabDoUong.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlBan.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
@@ -72,9 +80,9 @@ namespace ProjectMonHoc
             // 
             this.menuStripHeThong.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStripHeThong.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.danhMụcToolStripMenuItem,
             this.tàiKhoảnToolStripMenuItem,
-            this.adminToolStripMenuItem});
+            this.menuItemAdmin,
+            this.menuItemDanhMuc});
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -82,30 +90,81 @@ namespace ProjectMonHoc
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
-            // danhMụcToolStripMenuItem
-            // 
-            this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(86, 23);
-            this.danhMụcToolStripMenuItem.Text = "Danh mục";
-            // 
             // tàiKhoảnToolStripMenuItem
             // 
+            this.tàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemDangNhap,
+            this.menuItemDangXuat,
+            this.menuItemDoiMatKhau});
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
             this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(83, 23);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
-            // adminToolStripMenuItem
+            // menuItemDangNhap
             // 
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(62, 23);
-            this.adminToolStripMenuItem.Text = "Admin";
+            this.menuItemDangNhap.Name = "menuItemDangNhap";
+            this.menuItemDangNhap.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangNhap.Text = "Đăng Nhập";
+            this.menuItemDangNhap.Click += new System.EventHandler(this.menuItemDangNhap_Click);
+            // 
+            // menuItemDangXuat
+            // 
+            this.menuItemDangXuat.Enabled = false;
+            this.menuItemDangXuat.Name = "menuItemDangXuat";
+            this.menuItemDangXuat.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangXuat.Text = "Đăng Xuất";
+            this.menuItemDangXuat.Click += new System.EventHandler(this.menuItemDangXuat_Click);
+            // 
+            // menuItemDoiMatKhau
+            // 
+            this.menuItemDoiMatKhau.Enabled = false;
+            this.menuItemDoiMatKhau.Name = "menuItemDoiMatKhau";
+            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDoiMatKhau.Text = "Đổi Mật Khẩu";
+            // 
+            // menuItemAdmin
+            // 
+            this.menuItemAdmin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemThemUser,
+            this.menuItemXoaUser,
+            this.menuItemXemUser});
+            this.menuItemAdmin.Enabled = false;
+            this.menuItemAdmin.Name = "menuItemAdmin";
+            this.menuItemAdmin.Size = new System.Drawing.Size(62, 23);
+            this.menuItemAdmin.Text = "Admin";
+            // 
+            // menuItemThemUser
+            // 
+            this.menuItemThemUser.Name = "menuItemThemUser";
+            this.menuItemThemUser.Size = new System.Drawing.Size(148, 24);
+            this.menuItemThemUser.Text = "Thêm User";
+            // 
+            // menuItemXoaUser
+            // 
+            this.menuItemXoaUser.Name = "menuItemXoaUser";
+            this.menuItemXoaUser.Size = new System.Drawing.Size(148, 24);
+            this.menuItemXoaUser.Text = "Xóa User";
+            // 
+            // menuItemXemUser
+            // 
+            this.menuItemXemUser.Name = "menuItemXemUser";
+            this.menuItemXemUser.Size = new System.Drawing.Size(148, 24);
+            this.menuItemXemUser.Text = "Xem User";
+            // 
+            // menuItemDanhMuc
+            // 
+            this.menuItemDanhMuc.Enabled = false;
+            this.menuItemDanhMuc.Name = "menuItemDanhMuc";
+            this.menuItemDanhMuc.Size = new System.Drawing.Size(86, 23);
+            this.menuItemDanhMuc.Text = "Danh mục";
             // 
             // tabDoUong
             // 
             this.tabDoUong.Controls.Add(this.tabCaPhe);
             this.tabDoUong.Controls.Add(this.tabTra);
             this.tabDoUong.Controls.Add(this.tabTraSua);
-            this.tabDoUong.Controls.Add(this.tabSuaTuoi);
+            this.tabDoUong.Controls.Add(this.tabSinhTo);
+            this.tabDoUong.Controls.Add(this.tabSoda);
             this.tabDoUong.Controls.Add(this.tabCacMonKhac);
             this.tabDoUong.Font = new System.Drawing.Font("Calibri", 14F);
             this.tabDoUong.ItemSize = new System.Drawing.Size(70, 40);
@@ -146,39 +205,49 @@ namespace ProjectMonHoc
             this.tabTraSua.Text = "Trà Sữa";
             this.tabTraSua.UseVisualStyleBackColor = true;
             // 
-            // tabSuaTuoi
+            // tabSinhTo
             // 
-            this.tabSuaTuoi.Location = new System.Drawing.Point(4, 44);
-            this.tabSuaTuoi.Name = "tabSuaTuoi";
-            this.tabSuaTuoi.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSuaTuoi.Size = new System.Drawing.Size(745, 769);
-            this.tabSuaTuoi.TabIndex = 3;
-            this.tabSuaTuoi.Text = "Sữa tươi";
-            this.tabSuaTuoi.UseVisualStyleBackColor = true;
+            this.tabSinhTo.Location = new System.Drawing.Point(4, 44);
+            this.tabSinhTo.Name = "tabSinhTo";
+            this.tabSinhTo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSinhTo.Size = new System.Drawing.Size(745, 769);
+            this.tabSinhTo.TabIndex = 3;
+            this.tabSinhTo.Text = "Sinh Tố";
+            this.tabSinhTo.UseVisualStyleBackColor = true;
+            // 
+            // tabSoda
+            // 
+            this.tabSoda.Font = new System.Drawing.Font("Calibri", 12F);
+            this.tabSoda.Location = new System.Drawing.Point(4, 44);
+            this.tabSoda.Name = "tabSoda";
+            this.tabSoda.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSoda.Size = new System.Drawing.Size(745, 769);
+            this.tabSoda.TabIndex = 4;
+            this.tabSoda.Text = "Soda";
+            this.tabSoda.UseVisualStyleBackColor = true;
             // 
             // tabCacMonKhac
             // 
-            this.tabCacMonKhac.Font = new System.Drawing.Font("Calibri", 12F);
             this.tabCacMonKhac.Location = new System.Drawing.Point(4, 44);
             this.tabCacMonKhac.Name = "tabCacMonKhac";
             this.tabCacMonKhac.Padding = new System.Windows.Forms.Padding(3);
             this.tabCacMonKhac.Size = new System.Drawing.Size(745, 769);
-            this.tabCacMonKhac.TabIndex = 4;
-            this.tabCacMonKhac.Text = "Các món khác";
+            this.tabCacMonKhac.TabIndex = 5;
+            this.tabCacMonKhac.Text = "Các Món Khác";
             this.tabCacMonKhac.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // tabControlBan
             // 
-            this.tabControl1.Controls.Add(this.tabBan);
-            this.tabControl1.Font = new System.Drawing.Font("Calibri", 14F);
-            this.tabControl1.ItemSize = new System.Drawing.Size(70, 40);
-            this.tabControl1.Location = new System.Drawing.Point(16, 32);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(6, 6);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(327, 817);
-            this.tabControl1.TabIndex = 4;
+            this.tabControlBan.Controls.Add(this.tabBan);
+            this.tabControlBan.Font = new System.Drawing.Font("Calibri", 14F);
+            this.tabControlBan.ItemSize = new System.Drawing.Size(70, 40);
+            this.tabControlBan.Location = new System.Drawing.Point(16, 32);
+            this.tabControlBan.Multiline = true;
+            this.tabControlBan.Name = "tabControlBan";
+            this.tabControlBan.Padding = new System.Drawing.Point(6, 6);
+            this.tabControlBan.SelectedIndex = 0;
+            this.tabControlBan.Size = new System.Drawing.Size(327, 817);
+            this.tabControlBan.TabIndex = 4;
             // 
             // tabBan
             // 
@@ -239,8 +308,8 @@ namespace ProjectMonHoc
             // 
             // columnSTT
             // 
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnSTT.FillWeight = 35F;
             this.columnSTT.HeaderText = "   ";
             this.columnSTT.Name = "columnSTT";
@@ -295,7 +364,7 @@ namespace ProjectMonHoc
             this.tbxTongTien.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbxTongTien.Enabled = false;
             this.tbxTongTien.Font = new System.Drawing.Font("Calibri", 16F, System.Drawing.FontStyle.Bold);
-            this.tbxTongTien.Location = new System.Drawing.Point(1411, 561);
+            this.tbxTongTien.Location = new System.Drawing.Point(1408, 610);
             this.tbxTongTien.Name = "tbxTongTien";
             this.tbxTongTien.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tbxTongTien.Size = new System.Drawing.Size(157, 27);
@@ -305,7 +374,7 @@ namespace ProjectMonHoc
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(1292, 561);
+            this.label1.Location = new System.Drawing.Point(1289, 610);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 27);
             this.label1.TabIndex = 7;
@@ -315,7 +384,7 @@ namespace ProjectMonHoc
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label2.Location = new System.Drawing.Point(1348, 505);
+            this.label2.Location = new System.Drawing.Point(1345, 554);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 23);
             this.label2.TabIndex = 9;
@@ -328,6 +397,7 @@ namespace ProjectMonHoc
             this.cbbGiamGia.Font = new System.Drawing.Font("Calibri", 16F);
             this.cbbGiamGia.FormattingEnabled = true;
             this.cbbGiamGia.Items.AddRange(new object[] {
+            "0%",
             "10%",
             "20%",
             "30%",
@@ -335,11 +405,12 @@ namespace ProjectMonHoc
             "50%",
             "60%",
             "70%"});
-            this.cbbGiamGia.Location = new System.Drawing.Point(1469, 500);
+            this.cbbGiamGia.Location = new System.Drawing.Point(1466, 549);
             this.cbbGiamGia.Name = "cbbGiamGia";
             this.cbbGiamGia.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbbGiamGia.Size = new System.Drawing.Size(99, 34);
             this.cbbGiamGia.TabIndex = 10;
+            this.cbbGiamGia.Text = "0%";
             // 
             // btnHuyBill
             // 
@@ -351,6 +422,7 @@ namespace ProjectMonHoc
             this.btnHuyBill.TabIndex = 11;
             this.btnHuyBill.Text = "Hủy bill";
             this.btnHuyBill.UseVisualStyleBackColor = false;
+            this.btnHuyBill.Click += new System.EventHandler(this.btnHuyBill_Click);
             // 
             // btnThanhToan
             // 
@@ -370,7 +442,7 @@ namespace ProjectMonHoc
             this.tbxTienKhachDua.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxTienKhachDua.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbxTienKhachDua.Font = new System.Drawing.Font("Calibri", 16F);
-            this.tbxTienKhachDua.Location = new System.Drawing.Point(1411, 617);
+            this.tbxTienKhachDua.Location = new System.Drawing.Point(1408, 666);
             this.tbxTienKhachDua.Name = "tbxTienKhachDua";
             this.tbxTienKhachDua.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tbxTienKhachDua.Size = new System.Drawing.Size(157, 27);
@@ -380,7 +452,7 @@ namespace ProjectMonHoc
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label3.Location = new System.Drawing.Point(1264, 619);
+            this.label3.Location = new System.Drawing.Point(1261, 668);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 23);
             this.label3.TabIndex = 14;
@@ -390,7 +462,7 @@ namespace ProjectMonHoc
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label4.Location = new System.Drawing.Point(1308, 680);
+            this.label4.Location = new System.Drawing.Point(1305, 729);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 23);
             this.label4.TabIndex = 16;
@@ -403,17 +475,30 @@ namespace ProjectMonHoc
             this.tbxTienThua.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbxTienThua.Enabled = false;
             this.tbxTienThua.Font = new System.Drawing.Font("Calibri", 16F);
-            this.tbxTienThua.Location = new System.Drawing.Point(1411, 678);
+            this.tbxTienThua.Location = new System.Drawing.Point(1408, 727);
             this.tbxTienThua.Name = "tbxTienThua";
             this.tbxTienThua.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tbxTienThua.Size = new System.Drawing.Size(157, 27);
             this.tbxTienThua.TabIndex = 15;
+            // 
+            // btnAddBill
+            // 
+            this.btnAddBill.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnAddBill.Font = new System.Drawing.Font("Calibri", 14F);
+            this.btnAddBill.Location = new System.Drawing.Point(1132, 498);
+            this.btnAddBill.Name = "btnAddBill";
+            this.btnAddBill.Size = new System.Drawing.Size(123, 37);
+            this.btnAddBill.TabIndex = 17;
+            this.btnAddBill.Text = "Add Bill";
+            this.btnAddBill.UseVisualStyleBackColor = false;
+            this.btnAddBill.Click += new System.EventHandler(this.btnAddBill_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1594, 859);
+            this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxTienThua);
             this.Controls.Add(this.label3);
@@ -425,7 +510,7 @@ namespace ProjectMonHoc
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxTongTien);
             this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlBan);
             this.Controls.Add(this.tabDoUong);
             this.Controls.Add(this.menuStripHeThong);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -437,7 +522,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.ResumeLayout(false);
             this.menuStripHeThong.PerformLayout();
             this.tabDoUong.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlBan.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
@@ -449,16 +534,16 @@ namespace ProjectMonHoc
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStripHeThong;
-        private System.Windows.Forms.ToolStripMenuItem danhMụcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemDanhMuc;
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemAdmin;
         private System.Windows.Forms.TabControl tabDoUong;
         private System.Windows.Forms.TabPage tabCaPhe;
         private System.Windows.Forms.TabPage tabTra;
         private System.Windows.Forms.TabPage tabTraSua;
-        private System.Windows.Forms.TabPage tabSuaTuoi;
-        private System.Windows.Forms.TabPage tabCacMonKhac;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabSinhTo;
+        private System.Windows.Forms.TabPage tabSoda;
+        private System.Windows.Forms.TabControl tabControlBan;
         private System.Windows.Forms.TabPage tabBan;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
@@ -478,6 +563,14 @@ namespace ProjectMonHoc
         private System.Windows.Forms.DataGridViewTextBoxColumn columnGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnThanhTien;
+        private System.Windows.Forms.TabPage tabCacMonKhac;
+        private System.Windows.Forms.Button btnAddBill;
+        private System.Windows.Forms.ToolStripMenuItem menuItemDangNhap;
+        private System.Windows.Forms.ToolStripMenuItem menuItemDangXuat;
+        private System.Windows.Forms.ToolStripMenuItem menuItemDoiMatKhau;
+        private System.Windows.Forms.ToolStripMenuItem menuItemThemUser;
+        private System.Windows.Forms.ToolStripMenuItem menuItemXoaUser;
+        private System.Windows.Forms.ToolStripMenuItem menuItemXemUser;
     }
 }
 

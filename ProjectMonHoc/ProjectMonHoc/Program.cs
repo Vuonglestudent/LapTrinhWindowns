@@ -11,12 +11,14 @@ namespace ProjectMonHoc
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        static public frmMain mainForm;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            mainForm = new frmMain();
+            Application.Run(mainForm);
         }
     }
 }

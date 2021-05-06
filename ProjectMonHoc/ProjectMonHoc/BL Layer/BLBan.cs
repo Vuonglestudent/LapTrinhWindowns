@@ -36,39 +36,60 @@ namespace ProjectMonHoc.BL_Layer
 
             return lstBan;
         }
-        public IQueryable TrangThai()
+
+        public bool TrangThai(int IDBan)
         {
             QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
-            IQueryable kq = from tt in qlCF.BANs
-                            select new { tt.TrangThai };
-                            
-            return kq;
-        }
-        public bool CapNhatBan(int IDBan, string TenBan, bool TrangThai, string IDHoaDon)
-        {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
-            var queryBan = (from ban in qlCF.BANs
-                            where ban.IDBan == IDBan
-                            select ban).SingleOrDefault();
-            if (queryBan is null)
-            {
-                return false;
-            }
-            queryBan.IDBan = IDBan;
-            queryBan.TenBan = TenBan;
-            queryBan.TrangThai = TrangThai;
-            queryBan.IDHoaDon = IDHoaDon;
-            qlCF.SubmitChanges();
-            return true;
+            BAN kq = (from tt in qlCF.BANs
+                      where tt.IDBan == IDBan
+                      select tt).SingleOrDefault();                            
+            return kq.TrangThai;
         }
 
-        public IQueryable LayChiTietHoaDonTheoBan(string IDHoaDon)
+        public IQueryable LayChiTietHoaDonBan(int IDBan)
         {
             QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
-            var queryCTHoaDon = from cthd in qlCF.CHITIETHOADONs join mn in qlCF.NUOCUONGs on cthd.IDMonNuoc equals mn.IDMonNuoc
-                                where cthd.IDHoaDon == IDHoaDon
-                                select new { mn.IDMonNuoc , mn.TenMon , mn.GiaTien, cthd.SoLuong, ThanhTien = cthd.GiaTien};
-            return queryCTHoaDon;
+            string IDHoaDon = (from ban in qlCF.BANs
+                               where ban.IDBan == IDBan
+                               select ban.IDHoaDon).SingleOrDefault();
+            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon);
+        }
+
+        public string LayTongTien(int IDBan)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            var IDHoaDon = (from ban in qlCF.BANs
+                         where ban.IDBan == IDBan
+                         select ban.IDHoaDon);
+            var TT = from hd in qlCF.HOADONs
+                         where hd.IDHoaDon == IDHoaDon.SingleOrDefault()
+                         select hd.TongTien;
+            return TT.ToString();
+        }
+
+        internal void ThayDoiTrangThai(int IDBan)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            var ban = (from b in qlCF.BANs
+                   where b.IDBan == IDBan
+                   select b).SingleOrDefault();
+            if (ban != null)
+                ban.TrangThai = !ban.TrangThai;
+            else return;
+            qlCF.SubmitChanges();
+        }
+
+        internal void ThemHoaDonBan(int IDBan, string IDHoaDon)
+        {
+            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            var ban = (from b in qlCF.BANs
+                       where b.IDBan == IDBan
+                       select b).SingleOrDefault();
+            if (ban != null)
+                ban.IDHoaDon = IDHoaDon;
+            else
+                return;
+            qlCF.SubmitChanges();
         }
     }
 }
