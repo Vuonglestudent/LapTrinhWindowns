@@ -51,7 +51,7 @@ namespace ProjectMonHoc
     #endregion
 		
 		public QuanLyCafeDataContext() : 
-				base(global::ProjectMonHoc.Properties.Settings.Default.QuanLyCafeConnectionString1, mappingSource)
+				base(global::ProjectMonHoc.Properties.Settings.Default.QuanLyCafeConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

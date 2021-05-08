@@ -86,7 +86,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStripHeThong.Size = new System.Drawing.Size(1594, 29);
+            this.menuStripHeThong.Size = new System.Drawing.Size(1370, 29);
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
@@ -497,7 +497,7 @@ namespace ProjectMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1594, 859);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxTienThua);

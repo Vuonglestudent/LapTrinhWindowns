@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyCafe" Class="QuanLyCafeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-P8SSJG9\SQLEXPRESS;Initial Catalog=QuanLyCafe;Integrated Security=True" SettingsObjectName="ProjectMonHoc.Properties.Settings" SettingsPropertyName="QuanLyCafeConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=QuanLyCafe;Integrated Security=True" SettingsObjectName="ProjectMonHoc.Properties.Settings" SettingsPropertyName="QuanLyCafeConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BAN" Member="BANs">
     <Type Name="BAN">
       <Column Name="IDBan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

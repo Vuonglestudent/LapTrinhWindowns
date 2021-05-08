@@ -21,6 +21,9 @@ namespace ProjectMonHoc
         List<NUOCUONG> lstCafe = new List<NUOCUONG>();
         List<NUOCUONG> lstTra = new List<NUOCUONG>();
         List<NUOCUONG> lstTraSua = new List<NUOCUONG>();
+        List<NUOCUONG> lstSinhTo = new List<NUOCUONG>();
+        List<NUOCUONG> lstSoda = new List<NUOCUONG>();
+        List<NUOCUONG> lstCacMonKhac = new List<NUOCUONG>();
         List<BAN> lstBan = new List<BAN>();
 
         Button BanDangChon = null;
@@ -38,9 +41,6 @@ namespace ProjectMonHoc
         {
             InitializeComponent();
         }
-        /// <summary>
-        /// Load dữ liệu từ Table BAN
-        /// </summary>
         
         void khoiTaoBillTam()
         {
@@ -52,7 +52,9 @@ namespace ProjectMonHoc
             new DataColumn("ThanhTien"),
             });
         }
-
+        /// <summary>
+        /// Load dữ liệu từ Table BAN
+        /// </summary>
         void LoadDataBan()
         {
             try
@@ -87,6 +89,9 @@ namespace ProjectMonHoc
                 LoadDanhMucCafe();
                 LoadDanhMucTra();
                 LoadDanhMucTraSua();
+                LoadDanhMucSinhTo();
+                LoadDanhMucSoda();
+                LoadDanhMucCacMonKhac();
             } catch
             {
                 MessageBox.Show("Lỗi load món nước");
@@ -171,9 +176,90 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load danh mục Trà Sữa");
             }
         }
-
-        
-
+        void LoadDanhMucSinhTo()
+        {
+            try
+            {
+                lstSinhTo = BLNuocUong.Instance.LayDanhMucNuocUong(4);// Hàm LayDanhMucNuocUong() có tham số là index
+                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
+                Point point = new Point(29, 28);
+                int count = 1;
+                foreach (NUOCUONG item in lstSinhTo)
+                {
+                    AddButtonNuoc(item, point, size, this.tabSinhTo);
+                    if (count % 4 != 0)
+                    {
+                        point.X = point.X + 177;
+                    }
+                    else
+                    {
+                        point.X = 26;
+                        point.Y = point.Y + 177;
+                    }
+                    count++;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load danh mục Sinh Tố");
+            }
+        }
+        void LoadDanhMucSoda()
+        {
+            try
+            {
+                lstSoda = BLNuocUong.Instance.LayDanhMucNuocUong(5);// Hàm LayDanhMucNuocUong() có tham số là index
+                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
+                Point point = new Point(29, 28);
+                int count = 1;
+                foreach (NUOCUONG item in lstSoda)
+                {
+                    AddButtonNuoc(item, point, size, this.tabSoda);
+                    if (count % 4 != 0)
+                    {
+                        point.X = point.X + 177;
+                    }
+                    else
+                    {
+                        point.X = 26;
+                        point.Y = point.Y + 177;
+                    }
+                    count++;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load danh mục Soda");
+            }
+        }
+        void LoadDanhMucCacMonKhac()
+        {
+            try
+            {
+                lstCacMonKhac = BLNuocUong.Instance.LayDanhMucNuocUong(6);// Hàm LayDanhMucNuocUong() có tham số là index
+                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
+                Point point = new Point(29, 28);
+                int count = 1;
+                foreach (NUOCUONG item in lstCacMonKhac)
+                {
+                    AddButtonNuoc(item, point, size, this.tabCacMonKhac);
+                    if (count % 4 != 0)
+                    {
+                        point.X = point.X + 177;
+                    }
+                    else
+                    {
+                        point.X = 26;
+                        point.Y = point.Y + 177;
+                    }
+                    count++;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load danh mục Các Món Khác");
+            }
+        }
         void AddButtonNuoc(NUOCUONG item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
@@ -464,7 +550,6 @@ namespace ProjectMonHoc
         }
 
         #endregion
-
 
     }
 }

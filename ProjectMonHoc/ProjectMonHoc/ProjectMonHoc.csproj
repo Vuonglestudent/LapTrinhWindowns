@@ -90,6 +90,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="QuanLyCafe.dbml.layout">
+      <DependentUpon>QuanLyCafe.dbml</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,9 +106,6 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QuanLyCafe.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyCafe.dbml.layout">
-      <DependentUpon>QuanLyCafe.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +134,30 @@
     <Content Include="Images\NU019.jpg" />
     <Content Include="Images\NU020.jpg" />
     <Content Include="Images\NU021.jpg" />
+    <None Include="Resources\NU022.jpg" />
+    <None Include="Resources\NU023.jpg" />
+    <None Include="Resources\NU024.jpg" />
+    <None Include="Resources\NU025.jpg" />
+    <None Include="Resources\NU026.jpg" />
+    <None Include="Resources\NU027.jpg" />
+    <None Include="Resources\NU028.jpg" />
+    <None Include="Resources\NU029.jpg" />
+    <None Include="Resources\NU030.jpg" />
+    <None Include="Resources\NU031.jpg" />
+    <None Include="Resources\NU032.jpg" />
+    <None Include="Resources\NU033.jpg" />
+    <None Include="Resources\NU034.jpg" />
+    <None Include="Resources\NU035.jpg" />
+    <None Include="Resources\NU036.jpg" />
+    <None Include="Resources\NU037.jpg" />
+    <None Include="Resources\NU038.jpg" />
+    <None Include="Resources\NU039.jpg" />
     <None Include="Images\NU006.jpg" />
     <None Include="Images\NU005.jpg" />
     <None Include="Images\NU004.jpg" />
     <None Include="Images\NU003.jpg" />
     <None Include="Images\NU002.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
