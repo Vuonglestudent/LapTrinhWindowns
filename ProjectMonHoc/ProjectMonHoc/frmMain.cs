@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectMonHoc.BL_Layer;
 using ProjectMonHoc.Properties;
+using ProjectMonHoc.EntityModel;
 
 namespace ProjectMonHoc
 {
     public partial class frmMain : Form
     {
         public bool iSSelect;
-        ResourceManager rm = Resources.ResourceManager;
 
+        ResourceManager rm = Resources.ResourceManager;
         List<NUOCUONG> lstCafe = new List<NUOCUONG>();
         List<NUOCUONG> lstTra = new List<NUOCUONG>();
         List<NUOCUONG> lstTraSua = new List<NUOCUONG>();
@@ -27,8 +28,7 @@ namespace ProjectMonHoc
         List<BAN> lstBan = new List<BAN>();
 
         Button BanDangChon = null;
-        List<CHITIETHOADON> billTam = new List<CHITIETHOADON>();
-        //HOADON hoaDonTam = new HOADON();
+        List<TabPage> listTabDanhMuc = new List<TabPage>();
 
         public string loginStatus = null;
         string user;
@@ -40,8 +40,19 @@ namespace ProjectMonHoc
         public frmMain()
         {
             InitializeComponent();
+            TabPage[] tabPage = { this.tabCaPhe, this.tabTra, this.tabTraSua, this.tabSinhTo, this.tabSoda, this.tabCacMonKhac };
+            listTabDanhMuc.AddRange(tabPage);
         }
-        
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            LoadDataBan();
+            LoadMon();
+            khoiTaoBillTam();
+            tabDoUong.Enabled = false;
+            tabControlBan.Enabled = false;
+        }
+
         void khoiTaoBillTam()
         {
             bill.Columns.AddRange(new DataColumn[]
@@ -82,184 +93,39 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load bàn");
             }
         }
-        void LoadMonNuoc()
+        void LoadMon()
         {
+            int number = BLDanhMuc.Instance.SoLuongDanhMuc();
             try
             {
-                LoadDanhMucCafe();
-                LoadDanhMucTra();
-                LoadDanhMucTraSua();
-                LoadDanhMucSinhTo();
-                LoadDanhMucSoda();
-                LoadDanhMucCacMonKhac();
-            } catch
+                for (int i = 0; i < number; i++)
+                {
+                    lstCafe = BLNuocUong.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
+                    Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
+                    Point point = new Point(29, 28);
+                    int count = 1;
+                    foreach (NUOCUONG item in lstCafe)
+                    {
+                        AddButtonNuoc(item, point, size, listTabDanhMuc[i]);
+                        if (count % 4 != 0)
+                        {
+                            point.X = point.X + 177;
+                        }
+                        else
+                        {
+                            point.X = 26;
+                            point.Y = point.Y + 177;
+                        }
+                        count++;
+                    }
+                }
+            }
+            catch
             {
                 MessageBox.Show("Lỗi load món nước");
             }
         }
 
-        void LoadDanhMucCafe()
-        {
-            try
-            {
-                lstCafe = BLNuocUong.Instance.LayDanhMucNuocUong(1);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach(NUOCUONG item in lstCafe)
-                {
-                    AddButtonNuoc(item, point, size, this.tabCaPhe);
-                    if(count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    } else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            } catch
-            {
-                MessageBox.Show("Lỗi load danh mục cafe");
-            }
-        }
-        void LoadDanhMucTra()
-        {
-            try
-            {
-                lstTra = BLNuocUong.Instance.LayDanhMucNuocUong(2);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach(NUOCUONG item in lstTra)
-                {
-                    AddButtonNuoc(item, point, size, this.tabTra);
-                    if(count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    } else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            } catch
-            {
-                MessageBox.Show("Lỗi load danh mục Trà");
-            }
-        }
-        void LoadDanhMucTraSua()
-        {
-            try
-            {
-                lstTra = BLNuocUong.Instance.LayDanhMucNuocUong(3);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach(NUOCUONG item in lstTra)
-                {
-                    AddButtonNuoc(item, point, size, this.tabTraSua);
-                    if(count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    } else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            } catch
-            {
-                MessageBox.Show("Lỗi load danh mục Trà Sữa");
-            }
-        }
-        void LoadDanhMucSinhTo()
-        {
-            try
-            {
-                lstSinhTo = BLNuocUong.Instance.LayDanhMucNuocUong(4);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach (NUOCUONG item in lstSinhTo)
-                {
-                    AddButtonNuoc(item, point, size, this.tabSinhTo);
-                    if (count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    }
-                    else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi load danh mục Sinh Tố");
-            }
-        }
-        void LoadDanhMucSoda()
-        {
-            try
-            {
-                lstSoda = BLNuocUong.Instance.LayDanhMucNuocUong(5);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach (NUOCUONG item in lstSoda)
-                {
-                    AddButtonNuoc(item, point, size, this.tabSoda);
-                    if (count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    }
-                    else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi load danh mục Soda");
-            }
-        }
-        void LoadDanhMucCacMonKhac()
-        {
-            try
-            {
-                lstCacMonKhac = BLNuocUong.Instance.LayDanhMucNuocUong(6);// Hàm LayDanhMucNuocUong() có tham số là index
-                Size size = new Size(157, 138);                    // của tab cần lấy danh mục bắt đầu từ 1(caphe)
-                Point point = new Point(29, 28);
-                int count = 1;
-                foreach (NUOCUONG item in lstCacMonKhac)
-                {
-                    AddButtonNuoc(item, point, size, this.tabCacMonKhac);
-                    if (count % 4 != 0)
-                    {
-                        point.X = point.X + 177;
-                    }
-                    else
-                    {
-                        point.X = 26;
-                        point.Y = point.Y + 177;
-                    }
-                    count++;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi load danh mục Các Món Khác");
-            }
-        }
         void AddButtonNuoc(NUOCUONG item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
@@ -317,62 +183,54 @@ namespace ProjectMonHoc
 
             //Tạm comment
 
-            //newButton.Click += (s, e) =>
-            //{
-            //    Console.WriteLine(item.IDHoaDon);
-            //    dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(item.IDBan);
-            //    this.dgvBill.Columns["IDMonNuoc"].Visible = false;
-            //};
+            newButton.Click += (s, e) =>
+            {
+                btnBan_Click(s, e, newButton, newLabel, item);
+            };
 
             //thay bằng :
-            newButton.Click += btnBan_Click;
+            //newButton.Click += btnBan_Click;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadDataBan();
-            LoadMonNuoc();
-            khoiTaoBillTam();
-            tabDoUong.Enabled = false;
-            tabControlBan.Enabled = false;
-        }
 
-        private void btnBan_Click(object sender, EventArgs e)
+        private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
         {
-            int IDBan = int.Parse(((Button)sender).Tag.ToString()); //Lấy IDBan của Bàn được click;
+            int IDBan = item.IDBan;  //Lấy IDBan của Bàn đang được click;
 
-            if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái
+            if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái bàn
             {
-                if (BanDangChon != null)
+                if (BanDangChon != null && !xemBillBan) // Set bàn đang được chọn và rest bàn cũ.
                 {
-                    int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString()); //Lấy IDBan của Bàn được click;
-                    BanDangChon.BackColor = color.colorTrong;                  //của IDBan được Click :))
-                    ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).BackColor = color.colorTrong;
-                    BanDangChon = null;
-                }                                           
-                this.ShowBill(IDBan);
+                    ChangeStateBan();
+                }
                 xemBillBan = true;
+                this.ShowBill(IDBan);
+                BanDangChon = btnBan;
             }
             else
             {
                 if (xemBillBan)
                 {
-                    dgvBill.Rows.Clear();
                     xemBillBan = false;
                 }
-                if (BanDangChon != null)
+                else if (BanDangChon != null)
                 {
-                    int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString()); //Lấy IDBan của Bàn được click;
-                    BanDangChon.BackColor = color.colorTrong;
-                    ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).BackColor = color.colorTrong;
+                    ChangeStateBan();
                 }
                 BanDangChon = (Button)sender;
                 BanDangChon.BackColor = color.colorDangChon;
                 ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan,true)[0]).BackColor = color.colorDangChon;
                 dgvBill.DataSource = bill;
                 this.tbxTongTien.Text = this.TinhTongBill().ToString();
-                MessageBox.Show(this.TinhTongBill().ToString());
             }
+        }
+
+        private void ChangeStateBan()
+        {
+            int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString()); //Lấy IDBan của Bàn được click trước đó;
+            BanDangChon.BackColor = color.colorTrong; 
+            ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).BackColor = color.colorTrong;
+            ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).Text = "Còn trống";
         }
 
         private void btnMonNuoc_Click(object sender, MouseEventArgs e)
@@ -401,6 +259,7 @@ namespace ProjectMonHoc
         private void ShowBill(int IDBan)
         {
             dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
+            dgvBill.Columns["IDHoaDon"].Visible = false;
             tbxTongTien.Text = TinhTongBill().ToString() ;
         }
 
@@ -408,14 +267,16 @@ namespace ProjectMonHoc
         {
             bool checkNull = true; //Ban đầu giả sử món nước chưa từng được add vào bill tạm thì check = true
 
-            for (int i = 0; i < bill.Rows.Count; i++)           
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i].Field<string>("TenMon")) == IDMonNuoc)
+            for (int i = 0; i < bill.Rows.Count; i++)
+                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
                 {
                     checkNull = false; //Đã có trong bill tạm
-                    bill.Rows[i].SetField<string>("SoLuong", (int.Parse(bill.Rows[i].Field<string>("SoLuong")) + 1).ToString());
-                    bill.Rows[i].SetField<string>("ThanhTien", (int.Parse(bill.Rows[i].Field<string>("SoLuong")) * int.Parse(bill.Rows[i].Field<string>("GiaTien"))).ToString());
+                    int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) + 1;
+                    bill.Rows[i]["SoLuong"] = (soLuong).ToString();
+                    bill.Rows[i]["ThanhTien"] = (soLuong * int.Parse(bill.Rows[i]["GiaTien"].ToString())).ToString();
+
                     break;
-                }    
+                }
             if (checkNull)
             {
                 bill.Rows.Add(BLNuocUong.Instance.LayTenMonNuoc(IDMonNuoc),
@@ -427,11 +288,12 @@ namespace ProjectMonHoc
         private void SubtractMon(string IDMonNuoc)
         {
             for (int i = 0; i < bill.Rows.Count; i++)
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i].Field<string>("TenMon")) == IDMonNuoc)
+                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
                 {
-                    bill.Rows[i].SetField<string>("SoLuong", (int.Parse(bill.Rows[i].Field<string>("SoLuong")) - 1).ToString());
-                    bill.Rows[i].SetField<string>("ThanhTien", (int.Parse(bill.Rows[i].Field<string>("SoLuong")) * int.Parse(bill.Rows[i].Field<string>("GiaTien"))).ToString());
-                    if (int.Parse(bill.Rows[i].Field<string>("SoLuong")) == 0)
+                    int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) - 1;
+                    bill.Rows[i]["SoLuong"] = (soLuong).ToString();
+                    bill.Rows[i]["ThanhTien"] = (soLuong * int.Parse(bill.Rows[i]["GiaTien"].ToString())).ToString();
+                    if (int.Parse(bill.Rows[i]["SoLuong"].ToString()) == 0)
                         bill.Rows.RemoveAt(i);
                     break;
                 }
@@ -440,7 +302,36 @@ namespace ProjectMonHoc
         }
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int tienThua = int.Parse(tbxTienThua.Text);
+                if (tienThua >= 0)
+                {
+                    int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
+                    BLBan.Instance.DaThanhToanBan(IDBanDangChon);
+                    ChangeStateBan();
+                    cleanTien();
+                }
+                else
+                {
+                    MessageBox.Show("Số tiền thanh toán không đầy đủ!");
+                }
+            } 
+            catch
+            {
+                MessageBox.Show("Thanh toán không thành công");
+            }
         }
+
+        void cleanTien()
+        {
+            this.tbxTienThua.ResetText();
+            this.tbxTongTien.ResetText();
+            this.tbxTienKhachDua.ResetText();
+            this.cbbGiamGia.SelectedIndex = 0;
+            this.dgvBill.DataSource = bill;
+        }
+
         #region LOGIN
         private void menuItemDangNhap_Click(object sender, EventArgs e)
         {
@@ -450,7 +341,7 @@ namespace ProjectMonHoc
 
         public void login(byte type, string user) //hàm login theo type được gọi ở form Login nếu đăng nhập đúng
         {
-            MessageBox.Show("Đăng nhập thành công!");
+
             this.menuItemDangXuat.Enabled = true;
             this.menuItemDoiMatKhau.Enabled = true;
             this.menuItemDanhMuc.Enabled = true;
@@ -496,7 +387,6 @@ namespace ProjectMonHoc
             int sum = 0;
             foreach (DataGridViewRow row in dgvBill.Rows)
                 sum = sum + int.Parse(row.Cells["columnThanhTien"].Value.ToString());
-            MessageBox.Show(sum.ToString());
             return sum;
         }
 
@@ -551,5 +441,37 @@ namespace ProjectMonHoc
 
         #endregion
 
+        private void tbxTienKhachDua_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if (((e.KeyChar == '.') || (e.KeyChar == '0')) && (sender as TextBox).Text == "")
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxTienKhachDua_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxTienKhachDua.Text != "" && tbxTongTien.Text != "")
+            {
+                int tienThua = int.Parse(tbxTienKhachDua.Text) - int.Parse(tbxTongTien.Text);
+                if (tienThua >= 0)
+                {
+                    this.tbxTienThua.Text = tienThua.ToString();
+                } else
+                {
+                    this.tbxTienThua.ResetText();
+                }
+            }
+        }
     }
 }

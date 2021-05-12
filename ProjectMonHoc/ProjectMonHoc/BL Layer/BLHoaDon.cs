@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ProjectMonHoc.EntityModel;
 
 namespace ProjectMonHoc.BL_Layer
 {
@@ -19,17 +19,17 @@ namespace ProjectMonHoc.BL_Layer
 
         public void ThemHoaDon (string IDHoaDon,string IDNhanVien, DateTime NgayLap, int tongTien, string khuyenMai)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             HOADON hoadon = new HOADON();
             hoadon.IDNhanVien = IDNhanVien;
             hoadon.NgayLap = NgayLap;
             hoadon.TongTien = tongTien;
             hoadon.KhuyenMai = khuyenMai;
             hoadon.IDHoaDon = IDHoaDon;
-            qlCF.HOADONs.InsertOnSubmit(hoadon);
+            qlCF.HOADONs.Add(hoadon);
             try
             {
-                qlCF.SubmitChanges();
+                qlCF.SaveChanges();
             }
             catch
             {

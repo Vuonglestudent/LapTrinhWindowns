@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ProjectMonHoc.EntityModel;
 namespace ProjectMonHoc.BL_Layer
 {
     class BLNuocUong
@@ -17,7 +17,7 @@ namespace ProjectMonHoc.BL_Layer
 
         public List<NUOCUONG> LayDanhMucNuocUong(int tab)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             List<NUOCUONG> lstNuoc = new List<NUOCUONG>();
             var queryNU = from nu in qlCF.NUOCUONGs
                           where nu.IDDanhMuc == tab
@@ -37,7 +37,7 @@ namespace ProjectMonHoc.BL_Layer
         }
         public int LayDonGia(string IDMonNuoc)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             int gia = (from nu in qlCF.NUOCUONGs
                           where nu.IDMonNuoc == IDMonNuoc
                           select nu.GiaTien).SingleOrDefault();
@@ -46,7 +46,7 @@ namespace ProjectMonHoc.BL_Layer
 
         public string LayTenMonNuoc(string IDMonNuoc)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             string ten = (from nu in qlCF.NUOCUONGs
                        where nu.IDMonNuoc == IDMonNuoc
                        select nu.TenMon).SingleOrDefault();
@@ -55,7 +55,7 @@ namespace ProjectMonHoc.BL_Layer
 
         public string LayIDMonNuoc(string TenMon)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             string id = (from nu in qlCF.NUOCUONGs
                           where nu.TenMon == TenMon
                           select nu.IDMonNuoc).SingleOrDefault();

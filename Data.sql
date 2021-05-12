@@ -1,4 +1,4 @@
-﻿USE QuanLyCafe
+﻿USE QuanLyNhaHangProject
 GO
 
 --Add Data 

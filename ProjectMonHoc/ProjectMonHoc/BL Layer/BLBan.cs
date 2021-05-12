@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Linq;
 using System.Data;
+using ProjectMonHoc.EntityModel;
 
 namespace ProjectMonHoc.BL_Layer
 {
@@ -20,7 +21,7 @@ namespace ProjectMonHoc.BL_Layer
         public List<BAN> LayBan()
         {
             List<BAN> lstBan = new List<BAN>();
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var kq = from tt in qlCF.BANs
                    select new { tt.IDBan, tt.TenBan, tt.TrangThai , tt.IDHoaDon};
 
@@ -39,37 +40,49 @@ namespace ProjectMonHoc.BL_Layer
 
         public bool TrangThai(int IDBan)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             BAN kq = (from tt in qlCF.BANs
                       where tt.IDBan == IDBan
                       select tt).SingleOrDefault();                            
             return kq.TrangThai;
         }
 
-        public IQueryable LayChiTietHoaDonBan(int IDBan)
+        public DataTable LayChiTietHoaDonBan(int IDBan)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
-            string IDHoaDon = (from ban in qlCF.BANs
-                               where ban.IDBan == IDBan
-                               select ban.IDHoaDon).SingleOrDefault();
-            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon);
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
+            var IDHoaDon = qlCF.BANs.Find(IDBan);
+
+            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon.IDHoaDon);
         }
 
-        internal void ThayDoiTrangThai(int IDBan)
+        public void ThayDoiTrangThai(int IDBan)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var ban = (from b in qlCF.BANs
                    where b.IDBan == IDBan
                    select b).SingleOrDefault();
             if (ban != null)
                 ban.TrangThai = !ban.TrangThai;
             else return;
-            qlCF.SubmitChanges();
+            qlCF.SaveChanges();
         }
 
-        internal void ThemHoaDonBan(int IDBan, string IDHoaDon)
+        public void DaThanhToanBan(int idBan)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var ban = ql.BANs.Find(idBan);
+
+            if (ban != null)
+            {
+                ban.TrangThai = false;
+                ban.IDHoaDon = null;
+                ql.SaveChanges();
+            }
+        }
+
+        public void ThemHoaDonBan(int IDBan, string IDHoaDon)
+        {
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var ban = (from b in qlCF.BANs
                        where b.IDBan == IDBan
                        select b).SingleOrDefault();
@@ -77,7 +90,7 @@ namespace ProjectMonHoc.BL_Layer
                 ban.IDHoaDon = IDHoaDon;
             else
                 return;
-            qlCF.SubmitChanges();
+            qlCF.SaveChanges();
         }
     }
 }

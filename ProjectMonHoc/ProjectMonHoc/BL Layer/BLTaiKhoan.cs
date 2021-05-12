@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ProjectMonHoc.EntityModel;
 namespace ProjectMonHoc.BL_Layer
 {
     class BLTaiKhoan
@@ -17,7 +17,7 @@ namespace ProjectMonHoc.BL_Layer
 
         public byte checkLogin (string taikhoan, string matkhau)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             TAIKHOAN tk = null;
             tk = (from TK in qlCF.TAIKHOANs
                            where TK.TaiKhoan1 == taikhoan && TK.MatKhau == matkhau
@@ -29,7 +29,7 @@ namespace ProjectMonHoc.BL_Layer
         }
         public string LayIDNhanVien(string taikhoan)
         {
-            QuanLyCafeDataContext qlCF = new QuanLyCafeDataContext();
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             TAIKHOAN tk = (from TK in qlCF.TAIKHOANs
                          where TK.TaiKhoan1 == taikhoan
                          select TK).SingleOrDefault();

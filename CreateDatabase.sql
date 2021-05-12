@@ -2,13 +2,13 @@
 go
 -- Tạo Database QuanLyTuýeninh
 IF DB_ID('QuanLyCafe') IS NOT NULL
-	DROP DATABASE QuanLyCafe;
+	DROP DATABASE QuanLyNhaHangProject;
 GO
 
-CREATE DATABASE QuanLyCafe;
+CREATE DATABASE QuanLyNhaHangProject;
 GO
 -- Tạo Table.
-USE QuanLyCafe;
+USE QuanLyNhaHangProject;
 GO
 ----TẠO TABLE TÀI KHOẢN.
 IF OBJECT_ID('TAIKHOAN') IS NOT NULL
