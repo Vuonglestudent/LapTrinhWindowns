@@ -64,42 +64,6 @@
     <Compile Include="BL Layer\BLNuocUong.cs" />
     <Compile Include="BL Layer\BLTaiKhoan.cs" />
     <Compile Include="color.cs" />
-    <Compile Include="EntityModel\BAN.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\CHITIETHOADON.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\DANHMUC.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\HOADON.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\NHANVIEN.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\NUOCUONG.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangEntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangEntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangEntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangEntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangEntityModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\TAIKHOAN.cs">
-      <DependentUpon>QuanLyNhaHangEntityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Screen\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,13 +94,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="EntityModel\QuanLyNhaHangEntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyNhaHangEntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EntityModel\QuanLyNhaHangEntityModel.edmx.diagram">
-      <DependentUpon>QuanLyNhaHangEntityModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -159,16 +116,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EntityModel\QuanLyNhaHangEntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyNhaHangEntityModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyNhaHangEntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityModel\QuanLyNhaHangEntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyNhaHangEntityModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyNhaHangEntityModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Images\NU001.jpg" />
     <Content Include="Images\NU007.jpg" />
     <Content Include="Images\NU008.jpg" />
@@ -209,6 +156,8 @@
     <None Include="Images\NU003.jpg" />
     <None Include="Images\NU002.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="EntityModel\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
