@@ -61,5 +61,27 @@ namespace ProjectMonHoc.BL_Layer
                           select nu.IDMonNuoc).SingleOrDefault();
             return id;
         }
+
+        public void ThemMonAn(string tenMon, int danhMucMon, int giaMon, string pathHinh)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var m = ql.NUOCUONGs.OrderByDescending(x => x.IDMonNuoc).FirstOrDefault();
+            int idMonNuoc = int.Parse(m.IDMonNuoc.Split('U')[1]);
+            NUOCUONG ma = new NUOCUONG();
+            ma.IDMonNuoc = idMonNuoc>= 100 ? "NU" + (idMonNuoc + 1) : "NU0" + (idMonNuoc + 1);
+            ma.IDDanhMuc = danhMucMon;
+            ma.TenMon = tenMon;
+            ma.GiaTien = giaMon;
+            ma.HinhNU = pathHinh;
+            ql.NUOCUONGs.Add(ma);
+            ql.SaveChanges();
+        }
+
+        int LayIdMonNuocMoiNhat()
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var m = ql.NUOCUONGs.OrderByDescending(x => x.IDMonNuoc).FirstOrDefault();
+            return int.Parse(m.IDMonNuoc.Split('U')[1]);
+        }
     }
 }

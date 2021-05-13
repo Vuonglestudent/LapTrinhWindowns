@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,27 @@ namespace ProjectMonHoc.BL_Layer
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             return ql.DANHMUCs.Count();
+        }
+
+        public DataTable LayDanhMucMon()
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var dmm = ql.DANHMUCs.Select(x => x);
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("IDDanhMuc"),
+                new DataColumn("TenDanhMuc")
+            });
+
+            foreach(var i in dmm)
+            {
+                dt.Rows.Add(i.IDDanhMuc, i.TenDanhMuc);
+            }
+
+            return dt;
         }
     }
 }

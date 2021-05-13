@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using ProjectMonHoc.BL_Layer;
 using ProjectMonHoc.Properties;
 using ProjectMonHoc.EntityModel;
+using ProjectMonHoc.Screen;
+using System.IO;
+using System.Reflection;
 
 namespace ProjectMonHoc
 {
@@ -134,7 +137,8 @@ namespace ProjectMonHoc
             tab.Controls.Add(newLabel);
 
             newButton.Name = "btn" + item.IDMonNuoc;
-            newButton.BackgroundImage = (Bitmap)rm.GetObject(item.IDMonNuoc);
+            Image img = Image.FromFile(@"../../Images/" + item.IDMonNuoc + ".jpg");
+            newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
             newButton.Size = size;
@@ -472,6 +476,14 @@ namespace ProjectMonHoc
                     this.tbxTienThua.ResetText();
                 }
             }
+        }
+
+        private void quảnLýMónĂnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmQuanLyMon frm = new frmQuanLyMon();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }

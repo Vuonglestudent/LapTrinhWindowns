@@ -68,6 +68,7 @@ namespace ProjectMonHoc
             this.label4 = new System.Windows.Forms.Label();
             this.tbxTienThua = new System.Windows.Forms.TextBox();
             this.btnAddBill = new System.Windows.Forms.Button();
+            this.quảnLýMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripHeThong.SuspendLayout();
             this.tabDoUong.SuspendLayout();
             this.tabControlBan.SuspendLayout();
@@ -153,6 +154,8 @@ namespace ProjectMonHoc
             // 
             // menuItemDanhMuc
             // 
+            this.menuItemDanhMuc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýMónĂnToolStripMenuItem});
             this.menuItemDanhMuc.Enabled = false;
             this.menuItemDanhMuc.Name = "menuItemDanhMuc";
             this.menuItemDanhMuc.Size = new System.Drawing.Size(86, 23);
@@ -495,6 +498,13 @@ namespace ProjectMonHoc
             this.btnAddBill.UseVisualStyleBackColor = false;
             this.btnAddBill.Click += new System.EventHandler(this.btnAddBill_Click);
             // 
+            // quảnLýMónĂnToolStripMenuItem
+            // 
+            this.quảnLýMónĂnToolStripMenuItem.Name = "quảnLýMónĂnToolStripMenuItem";
+            this.quảnLýMónĂnToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
+            this.quảnLýMónĂnToolStripMenuItem.Text = "Quản Lý Món Ăn";
+            this.quảnLýMónĂnToolStripMenuItem.Click += new System.EventHandler(this.quảnLýMónĂnToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -573,6 +583,7 @@ namespace ProjectMonHoc
         private System.Windows.Forms.ToolStripMenuItem menuItemThemUser;
         private System.Windows.Forms.ToolStripMenuItem menuItemXoaUser;
         private System.Windows.Forms.ToolStripMenuItem menuItemXemUser;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýMónĂnToolStripMenuItem;
     }
 }
 

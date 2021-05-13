@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Screen\frmQuanLyMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyMon.Designer.cs">
+      <DependentUpon>frmQuanLyMon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Screen\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +99,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmQuanLyMon.resx">
+      <DependentUpon>frmQuanLyMon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -116,6 +125,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\default.jpg" />
     <Content Include="Images\NU001.jpg" />
     <Content Include="Images\NU007.jpg" />
     <Content Include="Images\NU008.jpg" />
