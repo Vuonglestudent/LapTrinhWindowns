@@ -35,7 +35,7 @@ namespace ProjectMonHoc.Screen
                 var mn = BLNuocUong.Instance.LayDanhMucNuocUong(idDanhMuc);
                 for (int i = 0; i < mn.Count; i++)
                 {
-                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].IDMonNuoc + ".jpg"));
+                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].IDMonAn + ".jpg"));
                     dgvQLMonAn.Rows[i].Height = 100;
                 }
                 ((DataGridViewImageColumn)dgvQLMonAn.Columns[2]).ImageLayout = DataGridViewImageCellLayout.Stretch;

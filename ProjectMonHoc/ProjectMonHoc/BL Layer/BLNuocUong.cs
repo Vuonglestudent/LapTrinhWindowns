@@ -15,18 +15,18 @@ namespace ProjectMonHoc.BL_Layer
             private set { instance = value; }
         }
 
-        public List<NUOCUONG> LayDanhMucNuocUong(int tab)
+        public List<MONAN> LayDanhMucNuocUong(int tab)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            List<NUOCUONG> lstNuoc = new List<NUOCUONG>();
-            var queryNU = from nu in qlCF.NUOCUONGs
+            List<MONAN> lstNuoc = new List<MONAN>();
+            var queryNU = from nu in qlCF.MONANs
                           where nu.IDDanhMuc == tab
                           select nu;
 
             foreach (var item in queryNU.ToList())
             {
-                NUOCUONG nu = new NUOCUONG();
-                nu.IDMonNuoc = item.IDMonNuoc;
+                MONAN nu = new MONAN();
+                nu.IDMonAn = item.IDMonAn;
                 nu.IDDanhMuc = item.IDDanhMuc;
                 nu.GiaTien = item.GiaTien;
                 nu.TenMon = item.TenMon;
@@ -35,11 +35,11 @@ namespace ProjectMonHoc.BL_Layer
 
             return lstNuoc;
         }
-        public int LayDonGia(string IDMonNuoc)
+        public int LayDonGia(string IDMonAn)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            int gia = (from nu in qlCF.NUOCUONGs
-                          where nu.IDMonNuoc == IDMonNuoc
+            int gia = (from nu in qlCF.MONANs
+                       where nu.IDMonAn == IDMonAn
                           select nu.GiaTien).SingleOrDefault();
             return gia;
         }
@@ -47,8 +47,8 @@ namespace ProjectMonHoc.BL_Layer
         public string LayTenMonNuoc(string IDMonNuoc)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            string ten = (from nu in qlCF.NUOCUONGs
-                       where nu.IDMonNuoc == IDMonNuoc
+            string ten = (from nu in qlCF.MONANs
+                          where nu.IDMonAn == IDMonNuoc
                        select nu.TenMon).SingleOrDefault();
             return ten;
         }
@@ -56,32 +56,32 @@ namespace ProjectMonHoc.BL_Layer
         public string LayIDMonNuoc(string TenMon)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            string id = (from nu in qlCF.NUOCUONGs
-                          where nu.TenMon == TenMon
-                          select nu.IDMonNuoc).SingleOrDefault();
+            string id = (from nu in qlCF.MONANs
+                         where nu.TenMon == TenMon
+                          select nu.IDMonAn).SingleOrDefault();
             return id;
         }
 
         public void ThemMonAn(string tenMon, int danhMucMon, int giaMon, string pathHinh)
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var m = ql.NUOCUONGs.OrderByDescending(x => x.IDMonNuoc).FirstOrDefault();
-            int idMonNuoc = int.Parse(m.IDMonNuoc.Split('U')[1]);
-            NUOCUONG ma = new NUOCUONG();
-            ma.IDMonNuoc = idMonNuoc>= 100 ? "NU" + (idMonNuoc + 1) : "NU0" + (idMonNuoc + 1);
+            var m = ql.MONANs.OrderByDescending(x => x.IDMonAn).FirstOrDefault();
+            int idMonNuoc = int.Parse(m.IDMonAn.Split('U')[1]);
+            MONAN ma = new MONAN();
+            ma.IDMonAn = idMonNuoc>= 100 ? "NU" + (idMonNuoc + 1) : "NU0" + (idMonNuoc + 1);
             ma.IDDanhMuc = danhMucMon;
             ma.TenMon = tenMon;
             ma.GiaTien = giaMon;
-            ma.HinhNU = pathHinh;
-            ql.NUOCUONGs.Add(ma);
+            ma.HinhMA = pathHinh;
+            ql.MONANs.Add(ma);
             ql.SaveChanges();
         }
 
         int LayIdMonNuocMoiNhat()
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var m = ql.NUOCUONGs.OrderByDescending(x => x.IDMonNuoc).FirstOrDefault();
-            return int.Parse(m.IDMonNuoc.Split('U')[1]);
+            var m = ql.MONANs.OrderByDescending(x => x.IDMonAn).FirstOrDefault();
+            return int.Parse(m.IDMonAn.Split('U')[1]);
         }
     }
 }

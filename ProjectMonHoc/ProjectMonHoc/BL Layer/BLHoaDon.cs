@@ -17,7 +17,7 @@ namespace ProjectMonHoc.BL_Layer
             private set { instance = value; }
         }
 
-        public void ThemHoaDon (string IDHoaDon,string IDNhanVien, DateTime NgayLap, int tongTien, string khuyenMai)
+        public void ThemHoaDon (string IDHoaDon,string IDNhanVien, int IDBan, DateTime NgayLap, int tongTien, string khuyenMai)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             HOADON hoadon = new HOADON();
@@ -25,6 +25,7 @@ namespace ProjectMonHoc.BL_Layer
             hoadon.NgayLap = NgayLap;
             hoadon.TongTien = tongTien;
             hoadon.KhuyenMai = khuyenMai;
+            hoadon.IDBan = IDBan;
             hoadon.IDHoaDon = IDHoaDon;
             qlCF.HOADONs.Add(hoadon);
             try
@@ -35,6 +36,20 @@ namespace ProjectMonHoc.BL_Layer
             {
                 MessageBox.Show("Đã xảy ra lỗi, vui lòng thử lại!");
             }
+        }
+
+        public bool ThanhToanHoaDon(string idHoaDon)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var hd = ql.HOADONs.Find(idHoaDon);
+
+            if (hd != null)
+            {
+                hd.NgayThanhToan = DateTime.Now;
+                ql.SaveChanges();
+                return true;
+            }
+            else return false;
         }
 
     }

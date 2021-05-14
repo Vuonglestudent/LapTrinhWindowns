@@ -22,12 +22,12 @@ namespace ProjectMonHoc
         public bool iSSelect;
 
         ResourceManager rm = Resources.ResourceManager;
-        List<NUOCUONG> lstCafe = new List<NUOCUONG>();
-        List<NUOCUONG> lstTra = new List<NUOCUONG>();
-        List<NUOCUONG> lstTraSua = new List<NUOCUONG>();
-        List<NUOCUONG> lstSinhTo = new List<NUOCUONG>();
-        List<NUOCUONG> lstSoda = new List<NUOCUONG>();
-        List<NUOCUONG> lstCacMonKhac = new List<NUOCUONG>();
+        List<MONAN> lstCafe = new List<MONAN>();
+        List<MONAN> lstTra = new List<MONAN>();
+        List<MONAN> lstTraSua = new List<MONAN>();
+        List<MONAN> lstSinhTo = new List<MONAN>();
+        List<MONAN> lstSoda = new List<MONAN>();
+        List<MONAN> lstCacMonKhac = new List<MONAN>();
         List<BAN> lstBan = new List<BAN>();
 
         Button BanDangChon = null;
@@ -107,7 +107,7 @@ namespace ProjectMonHoc
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
-                    foreach (NUOCUONG item in lstCafe)
+                    foreach (MONAN item in lstCafe)
                     {
                         AddButtonNuoc(item, point, size, listTabDanhMuc[i]);
                         if (count % 4 != 0)
@@ -129,27 +129,27 @@ namespace ProjectMonHoc
             }
         }
 
-        void AddButtonNuoc(NUOCUONG item, Point local, Size size, TabPage tab)
+        void AddButtonNuoc(MONAN item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
             Label newLabel = new Label();
             tab.Controls.Add(newButton);
             tab.Controls.Add(newLabel);
 
-            newButton.Name = "btn" + item.IDMonNuoc;
-            Image img = Image.FromFile(@"../../Images/" + item.IDMonNuoc + ".jpg");
+            newButton.Name = "btn" + item.IDMonAn;
+            Image img = Image.FromFile(@"../../Images/" + item.IDMonAn + ".jpg");
             newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
             newButton.Size = size;
             newButton.MouseDown += btnMonNuoc_Click;
-            newButton.Tag = item.IDMonNuoc;
+            newButton.Tag = item.IDMonAn;
 
             newLabel.Text = item.TenMon;
             newLabel.Location = new Point(local.X, local.Y + 140);
             newLabel.Size = new Size(size.Width, 20);
             newLabel.TextAlign = ContentAlignment.MiddleCenter;
-            newLabel.Name = "lb" + item.IDMonNuoc;
+            newLabel.Name = "lb" + item.IDMonAn;
         }
 
         void AddButtonAndLabelBan(BAN item, Point local, Size size)
@@ -312,9 +312,14 @@ namespace ProjectMonHoc
                 if (tienThua >= 0)
                 {
                     int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
-                    BLBan.Instance.DaThanhToanBan(IDBanDangChon);
-                    ChangeStateBan();
-                    cleanTien();
+                    string idHoaDon = dgvBill.Rows[0].Cells[1].Value.ToString();
+                    bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
+                    if (check)
+                    {
+                        BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
+                        ChangeStateBan();
+                        cleanTien();
+                    }
                 }
                 else
                 {
@@ -398,7 +403,7 @@ namespace ProjectMonHoc
         {
             DateTime time = DateTime.Now;
             string IDHoaDon = TaoIDHoaDon();
-            BLHoaDon.Instance.ThemHoaDon(IDHoaDon,BLTaiKhoan.Instance.LayIDNhanVien(user), time, int.Parse(tbxTongTien.Text), cbbGiamGia.SelectedText);
+            BLHoaDon.Instance.ThemHoaDon(IDHoaDon,BLTaiKhoan.Instance.LayIDNhanVien(user), int.Parse(BanDangChon.Tag.ToString()), time, int.Parse(tbxTongTien.Text), cbbGiamGia.SelectedText);
             foreach (DataGridViewRow row in dgvBill.Rows)
             {
                 string IDMonNuoc = BLNuocUong.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
@@ -411,7 +416,7 @@ namespace ProjectMonHoc
             lbBanDangChon.BackColor = color.colorCoKhach;
             lbBanDangChon.Text = "Đã có khách";
             BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()));
-            BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
+            //BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
             BanDangChon = null;
             bill.Rows.Clear();
         }
