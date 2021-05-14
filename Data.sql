@@ -195,23 +195,23 @@ GO
 	GO
 --THÊM BÀN
 
-INSERT INTO BAN (TenBan, TrangThai)
-VALUES (N'Bàn 1' , 0) , (N'Bàn 2' , 0) , (N'Bàn 3' , 0) , (N'Bàn 4' , 0) , (N'Bàn 5' , 0) , (N'Bàn 6' , 0) , (N'Bàn 7' , 0) , (N'Bàn 8' , 0) , (N'Bàn 9' , 0) , (N'Bàn 10' , 0)
+INSERT INTO BAN (TenBan, TrangThai, SucChua)
+VALUES (N'Bàn 1' , 0 , 2) , (N'Bàn 2' , 0 , 2) , (N'Bàn 3' , 0, 2) , (N'Bàn 4' , 0, 4) , (N'Bàn 5' , 0, 4) , (N'Bàn 6' , 0, 4) , (N'Bàn 7' , 0, 8) , (N'Bàn 8' , 0, 8) , (N'Bàn 9' , 0, 10) , (N'Bàn 10' , 0, 10)
 GO
 
 
 --THÊM HÓA ĐƠN
-INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien)
-VALUES ('NV001' , '06/05/2021 13:50:00' , 91) -- 33 + 28 +30
+INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien, IDBan)
+VALUES ('NV001' , '06/05/2021 13:50:00' , 91, 1) -- 33 + 28 +30
 GO
-INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien)
-VALUES ('NV002' , '06/05/2021 14:02:00' , 85) -- 25 +33 +27
+INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien, IDBan)
+VALUES ('NV002' , '06/05/2021 14:02:00' , 85, 3) -- 25 +33 +27
 GO
-INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien)
-VALUES ('NV003' , '06/05/2021 14:10:00' , 45) --15 + 30
+INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien, IDBan)
+VALUES ('NV003' , '06/05/2021 14:10:00' , 45, 6) --15 + 30
 GO
-INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien)
-VALUES ('NV002' , '06/05/2021 14:30:00' , 42) --15 + 27
+INSERT INTO HOADON (IDNhanVien , NgayLap , TongTien, IDBan)
+VALUES ('NV002' , '06/05/2021 14:30:00' , 42, 5) --15 + 27
 GO
 
 ----CHITIETHOADON
