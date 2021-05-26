@@ -32,7 +32,7 @@ namespace ProjectMonHoc.Screen
             try
             {
                 dgvQLMonAn.Rows.Clear();
-                var mn = BLNuocUong.Instance.LayDanhMucNuocUong(idDanhMuc);
+                var mn = BLMonAn.Instance.LayDanhMucNuocUong(idDanhMuc);
                 for (int i = 0; i < mn.Count; i++)
                 {
                     dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].IDMonAn + ".jpg"));
@@ -79,7 +79,7 @@ namespace ProjectMonHoc.Screen
             if (txtTenMon.Text != "" && numGiaTien.Value != 0 && imgFile != null)
             {
                 int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
-                BLNuocUong.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                BLMonAn.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
                 imgFile.Save(@"../../Images/" + pathImg);
             }
         }

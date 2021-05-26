@@ -29,9 +29,9 @@ namespace ProjectMonHoc
         List<MONAN> lstSoda = new List<MONAN>();
         List<MONAN> lstCacMonKhac = new List<MONAN>();
         List<BAN> lstBan = new List<BAN>();
-
-        Button BanDangChon = null;
+        List<DANHMUC> listDanhMuc = new List<DANHMUC>();
         List<TabPage> listTabDanhMuc = new List<TabPage>();
+        Button BanDangChon = null;
 
         public string loginStatus = null;
         string user;
@@ -42,15 +42,14 @@ namespace ProjectMonHoc
 
         public frmMain()
         {
-            InitializeComponent();
-            TabPage[] tabPage = { this.tabCaPhe, this.tabTra, this.tabTraSua, this.tabSinhTo, this.tabSoda, this.tabCacMonKhac };
-            listTabDanhMuc.AddRange(tabPage);
+            InitializeComponent();            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadDataBan();
             LoadMon();
+            LoadDataDanhMuc();
             khoiTaoBillTam();
             tabDoUong.Enabled = false;
             tabControlBan.Enabled = false;
@@ -96,6 +95,21 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load bàn");
             }
         }
+        void LoadDataDanhMuc()
+        {
+            try
+            {
+                this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
+                foreach (DANHMUC item in listDanhMuc)
+                {
+                    AddTabDanhMuc(item);                    
+                }                
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load danh mục");
+            }
+        }
         void LoadMon()
         {
             int number = BLDanhMuc.Instance.SoLuongDanhMuc();
@@ -103,7 +117,7 @@ namespace ProjectMonHoc
             {
                 for (int i = 0; i < number; i++)
                 {
-                    lstCafe = BLNuocUong.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
+                    lstCafe = BLMonAn.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
@@ -128,11 +142,12 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load món nước");
             }
         }
-
+        
         void AddButtonNuoc(MONAN item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
             Label newLabel = new Label();
+
             tab.Controls.Add(newButton);
             tab.Controls.Add(newLabel);
 
@@ -195,7 +210,14 @@ namespace ProjectMonHoc
             //thay bằng :
             //newButton.Click += btnBan_Click;
         }
-
+        void AddTabDanhMuc(DANHMUC item)
+        {
+            TabPage newtabPage = new TabPage();
+            tabDoUong.Controls.Add(newtabPage);
+            newtabPage.Name = "tab" + item.TenDanhMuc;
+            newtabPage.Text = item.TenDanhMuc.ToString();
+            listTabDanhMuc.Add(newtabPage);
+        }
 
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
         {
@@ -267,12 +289,12 @@ namespace ProjectMonHoc
             tbxTongTien.Text = TinhTongBill().ToString() ;
         }
 
-        private void AddMon(string IDMonNuoc)
+        private void AddMon(string IDMonAn)
         {
             bool checkNull = true; //Ban đầu giả sử món nước chưa từng được add vào bill tạm thì check = true
 
             for (int i = 0; i < bill.Rows.Count; i++)
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
+                if (BLMonAn.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonAn)
                 {
                     checkNull = false; //Đã có trong bill tạm
                     int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) + 1;
@@ -283,16 +305,16 @@ namespace ProjectMonHoc
                 }
             if (checkNull)
             {
-                bill.Rows.Add(BLNuocUong.Instance.LayTenMonNuoc(IDMonNuoc),
-                    BLNuocUong.Instance.LayDonGia(IDMonNuoc),"1",BLNuocUong.Instance.LayDonGia(IDMonNuoc));
+                bill.Rows.Add(BLMonAn.Instance.LayTenMonNuoc(IDMonAn),
+                    BLMonAn.Instance.LayDonGia(IDMonAn),"1",BLMonAn.Instance.LayDonGia(IDMonAn));
             }
             dgvBill.DataSource = bill;
             this.tbxTongTien.Text = this.TinhTongBill().ToString();
         }
-        private void SubtractMon(string IDMonNuoc)
+        private void SubtractMon(string IDMonAn)
         {
             for (int i = 0; i < bill.Rows.Count; i++)
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
+                if (BLMonAn.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonAn)
                 {
                     int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) - 1;
                     bill.Rows[i]["SoLuong"] = (soLuong).ToString();
@@ -406,7 +428,7 @@ namespace ProjectMonHoc
             BLHoaDon.Instance.ThemHoaDon(IDHoaDon,BLTaiKhoan.Instance.LayIDNhanVien(user), int.Parse(BanDangChon.Tag.ToString()), time, int.Parse(tbxTongTien.Text), cbbGiamGia.SelectedText);
             foreach (DataGridViewRow row in dgvBill.Rows)
             {
-                string IDMonNuoc = BLNuocUong.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
+                string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
                 int SoLuong = int.Parse(row.Cells["columnSoLuong"].Value.ToString());
                 int GiaTien = int.Parse(row.Cells["columnThanhTien"].Value.ToString());
                 BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
@@ -489,6 +511,19 @@ namespace ProjectMonHoc
             this.Hide();
             frm.ShowDialog();
             this.Show();
+        }
+
+        private void chỉnhSửaDanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormChinhSuaDanhMuc frmCRUDDM = new FormChinhSuaDanhMuc();
+            frmCRUDDM.ShowDialog();
+            LoadDataDanhMuc();
+        }
+
+        private void menuItemThemUser_Click(object sender, EventArgs e)
+        {
+            FormChinhSuaNhanVien frmCRUDNV = new FormChinhSuaNhanVien();
+            frmCRUDNV.ShowDialog();
         }
     }
 }

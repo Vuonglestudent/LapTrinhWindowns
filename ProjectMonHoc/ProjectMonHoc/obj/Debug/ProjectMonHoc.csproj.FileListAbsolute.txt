@@ -28,3 +28,11 @@ D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\ProjectM
 D:\Nam4_HK2\LTWD\Project\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.frmMain.resources
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.frmLogin.resources
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.frmMain.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.FormChinhSuaDanhMuc.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmQuanLyMon.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.dll
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.SqlServer.dll
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.xml
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.SqlServer.xml
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.CopyComplete
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.FormChinhSuaNhanVien.resources
