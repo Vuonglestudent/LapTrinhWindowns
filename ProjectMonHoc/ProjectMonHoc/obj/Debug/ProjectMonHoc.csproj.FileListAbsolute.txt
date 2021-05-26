@@ -35,3 +35,4 @@ D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFr
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.xml
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\bin\Debug\EntityFramework.SqlServer.xml
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.csproj.CopyComplete
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.FormChinhSuaNhanVien.resources

@@ -31,7 +31,6 @@ namespace ProjectMonHoc
         List<BAN> lstBan = new List<BAN>();
         List<DANHMUC> listDanhMuc = new List<DANHMUC>();
         List<TabPage> listTabDanhMuc = new List<TabPage>();
-
         Button BanDangChon = null;
 
         public string loginStatus = null;
@@ -43,7 +42,7 @@ namespace ProjectMonHoc
 
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -103,7 +102,7 @@ namespace ProjectMonHoc
                 this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
                 foreach (DANHMUC item in listDanhMuc)
                 {
-                    AddTabDanhMuc(item);                   
+                    AddTabDanhMuc(item);                    
                 }                
             }
             catch
@@ -216,7 +215,7 @@ namespace ProjectMonHoc
             TabPage newtabPage = new TabPage();
             tabDoUong.Controls.Add(newtabPage);
             newtabPage.Name = "tab" + item.TenDanhMuc;
-            newtabPage.Text = item.TenDanhMuc.ToString();   
+            newtabPage.Text = item.TenDanhMuc.ToString();
             listTabDanhMuc.Add(newtabPage);
         }
 
@@ -511,9 +510,15 @@ namespace ProjectMonHoc
 
         private void chỉnhSửaDanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormChinhSuaDanhMuc frmCRUD = new FormChinhSuaDanhMuc();
-            frmCRUD.ShowDialog();
+            FormChinhSuaDanhMuc frmCRUDDM = new FormChinhSuaDanhMuc();
+            frmCRUDDM.ShowDialog();
             LoadDataDanhMuc();
+        }
+
+        private void menuItemThemUser_Click(object sender, EventArgs e)
+        {
+            FormChinhSuaNhanVien frmCRUDNV = new FormChinhSuaNhanVien();
+            frmCRUDNV.ShowDialog();
         }
     }
 }

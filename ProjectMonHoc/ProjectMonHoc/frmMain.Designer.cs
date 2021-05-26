@@ -37,8 +37,6 @@ namespace ProjectMonHoc
             this.menuItemDoiMatKhau = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemThemUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemXoaUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemXemUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chỉnhSửaDanhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,9 +118,7 @@ namespace ProjectMonHoc
             // menuItemAdmin
             // 
             this.menuItemAdmin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemThemUser,
-            this.menuItemXoaUser,
-            this.menuItemXemUser});
+            this.menuItemThemUser});
             this.menuItemAdmin.Enabled = false;
             this.menuItemAdmin.Name = "menuItemAdmin";
             this.menuItemAdmin.Size = new System.Drawing.Size(62, 23);
@@ -131,20 +127,9 @@ namespace ProjectMonHoc
             // menuItemThemUser
             // 
             this.menuItemThemUser.Name = "menuItemThemUser";
-            this.menuItemThemUser.Size = new System.Drawing.Size(148, 24);
-            this.menuItemThemUser.Text = "Thêm User";
-            // 
-            // menuItemXoaUser
-            // 
-            this.menuItemXoaUser.Name = "menuItemXoaUser";
-            this.menuItemXoaUser.Size = new System.Drawing.Size(148, 24);
-            this.menuItemXoaUser.Text = "Xóa User";
-            // 
-            // menuItemXemUser
-            // 
-            this.menuItemXemUser.Name = "menuItemXemUser";
-            this.menuItemXemUser.Size = new System.Drawing.Size(148, 24);
-            this.menuItemXemUser.Text = "Xem User";
+            this.menuItemThemUser.Size = new System.Drawing.Size(201, 24);
+            this.menuItemThemUser.Text = "Quản Lý Nhân Viên";
+            this.menuItemThemUser.Click += new System.EventHandler(this.menuItemThemUser_Click);
             // 
             // menuItemDanhMuc
             // 
@@ -505,8 +490,6 @@ namespace ProjectMonHoc
         private System.Windows.Forms.ToolStripMenuItem menuItemDangXuat;
         private System.Windows.Forms.ToolStripMenuItem menuItemDoiMatKhau;
         private System.Windows.Forms.ToolStripMenuItem menuItemThemUser;
-        private System.Windows.Forms.ToolStripMenuItem menuItemXoaUser;
-        private System.Windows.Forms.ToolStripMenuItem menuItemXemUser;
         private System.Windows.Forms.ToolStripMenuItem quảnLýMónĂnToolStripMenuItem;
         private System.Windows.Forms.TabControl tabDoUong;
         private System.Windows.Forms.ToolStripMenuItem chỉnhSửaDanhMụcToolStripMenuItem;
