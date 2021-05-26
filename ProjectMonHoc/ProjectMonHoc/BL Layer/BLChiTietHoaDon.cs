@@ -22,9 +22,9 @@ namespace ProjectMonHoc.BL_Layer
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
 
             var queryCTHoaDon = from cthd in qlCF.CHITIETHOADONs
-                                join mn in qlCF.NUOCUONGs on cthd.IDMonNuoc equals mn.IDMonNuoc
+                                join ma in qlCF.MONANs on cthd.IDMonAn equals ma.IDMonAn
                                 where cthd.IDHoaDon == IDHoaDon
-                                select new { cthd.IDHoaDon, mn.TenMon, mn.GiaTien, cthd.SoLuong, ThanhTien = cthd.GiaTien };
+                                select new { cthd.IDHoaDon, ma.TenMon, ma.GiaTien, cthd.SoLuong };
 
             DataTable dt = new DataTable();
 
@@ -39,7 +39,7 @@ namespace ProjectMonHoc.BL_Layer
 
             foreach (var i in queryCTHoaDon)
             {
-                dt.Rows.Add(i.IDHoaDon, i.TenMon, i.GiaTien, i.SoLuong, i.ThanhTien);
+                dt.Rows.Add(i.IDHoaDon, i.TenMon, i.GiaTien, i.SoLuong);
             }
             return dt;
         }
@@ -48,9 +48,8 @@ namespace ProjectMonHoc.BL_Layer
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             CHITIETHOADON cthd = new CHITIETHOADON();
             cthd.IDHoaDon = IDHoaDon;
-            cthd.IDMonNuoc = IDMonNuoc;
-            cthd.SoLuong = SoLuong;
-            cthd.GiaTien = GiaTien;
+            cthd.IDMonAn = IDMonNuoc;
+            cthd.SoLuong = SoLuong;           
             qlCF.CHITIETHOADONs.Add(cthd);
             try
             {

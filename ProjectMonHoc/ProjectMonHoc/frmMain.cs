@@ -22,16 +22,17 @@ namespace ProjectMonHoc
         public bool iSSelect;
 
         ResourceManager rm = Resources.ResourceManager;
-        List<NUOCUONG> lstCafe = new List<NUOCUONG>();
-        List<NUOCUONG> lstTra = new List<NUOCUONG>();
-        List<NUOCUONG> lstTraSua = new List<NUOCUONG>();
-        List<NUOCUONG> lstSinhTo = new List<NUOCUONG>();
-        List<NUOCUONG> lstSoda = new List<NUOCUONG>();
-        List<NUOCUONG> lstCacMonKhac = new List<NUOCUONG>();
+        List<MONAN> lstCafe = new List<MONAN>();
+        List<MONAN> lstTra = new List<MONAN>();
+        List<MONAN> lstTraSua = new List<MONAN>();
+        List<MONAN> lstSinhTo = new List<MONAN>();
+        List<MONAN> lstSoda = new List<MONAN>();
+        List<MONAN> lstCacMonKhac = new List<MONAN>();
         List<BAN> lstBan = new List<BAN>();
+        List<DANHMUC> listDanhMuc = new List<DANHMUC>();
+        List<TabPage> listTabDanhMuc = new List<TabPage>();
 
         Button BanDangChon = null;
-        List<TabPage> listTabDanhMuc = new List<TabPage>();
 
         public string loginStatus = null;
         string user;
@@ -43,14 +44,13 @@ namespace ProjectMonHoc
         public frmMain()
         {
             InitializeComponent();
-            TabPage[] tabPage = { this.tabCaPhe, this.tabTra, this.tabTraSua, this.tabSinhTo, this.tabSoda, this.tabCacMonKhac };
-            listTabDanhMuc.AddRange(tabPage);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadDataBan();
             LoadMon();
+            LoadDataDanhMuc();
             khoiTaoBillTam();
             tabDoUong.Enabled = false;
             tabControlBan.Enabled = false;
@@ -96,6 +96,21 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load bàn");
             }
         }
+        void LoadDataDanhMuc()
+        {
+            try
+            {
+                this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
+                foreach (DANHMUC item in listDanhMuc)
+                {
+                    AddTabDanhMuc(item);                   
+                }                
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load danh mục");
+            }
+        }
         void LoadMon()
         {
             int number = BLDanhMuc.Instance.SoLuongDanhMuc();
@@ -103,11 +118,11 @@ namespace ProjectMonHoc
             {
                 for (int i = 0; i < number; i++)
                 {
-                    lstCafe = BLNuocUong.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
+                    lstCafe = BLMonAn.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
-                    foreach (NUOCUONG item in lstCafe)
+                    foreach (MONAN item in lstCafe)
                     {
                         AddButtonNuoc(item, point, size, listTabDanhMuc[i]);
                         if (count % 4 != 0)
@@ -128,28 +143,29 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load món nước");
             }
         }
-
-        void AddButtonNuoc(NUOCUONG item, Point local, Size size, TabPage tab)
+        
+        void AddButtonNuoc(MONAN item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
             Label newLabel = new Label();
+
             tab.Controls.Add(newButton);
             tab.Controls.Add(newLabel);
 
-            newButton.Name = "btn" + item.IDMonNuoc;
-            Image img = Image.FromFile(@"../../Images/" + item.IDMonNuoc + ".jpg");
+            newButton.Name = "btn" + item.IDMonAn;
+            Image img = Image.FromFile(@"../../Images/" + item.IDMonAn + ".jpg");
             newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
             newButton.Size = size;
             newButton.MouseDown += btnMonNuoc_Click;
-            newButton.Tag = item.IDMonNuoc;
+            newButton.Tag = item.IDMonAn;
 
             newLabel.Text = item.TenMon;
             newLabel.Location = new Point(local.X, local.Y + 140);
             newLabel.Size = new Size(size.Width, 20);
             newLabel.TextAlign = ContentAlignment.MiddleCenter;
-            newLabel.Name = "lb" + item.IDMonNuoc;
+            newLabel.Name = "lb" + item.IDMonAn;
         }
 
         void AddButtonAndLabelBan(BAN item, Point local, Size size)
@@ -195,7 +211,14 @@ namespace ProjectMonHoc
             //thay bằng :
             //newButton.Click += btnBan_Click;
         }
-
+        void AddTabDanhMuc(DANHMUC item)
+        {
+            TabPage newtabPage = new TabPage();
+            tabDoUong.Controls.Add(newtabPage);
+            newtabPage.Name = "tab" + item.TenDanhMuc;
+            newtabPage.Text = item.TenDanhMuc.ToString();   
+            listTabDanhMuc.Add(newtabPage);
+        }
 
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
         {
@@ -267,12 +290,12 @@ namespace ProjectMonHoc
             tbxTongTien.Text = TinhTongBill().ToString() ;
         }
 
-        private void AddMon(string IDMonNuoc)
+        private void AddMon(string IDMonAn)
         {
             bool checkNull = true; //Ban đầu giả sử món nước chưa từng được add vào bill tạm thì check = true
 
             for (int i = 0; i < bill.Rows.Count; i++)
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
+                if (BLMonAn.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonAn)
                 {
                     checkNull = false; //Đã có trong bill tạm
                     int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) + 1;
@@ -283,16 +306,16 @@ namespace ProjectMonHoc
                 }
             if (checkNull)
             {
-                bill.Rows.Add(BLNuocUong.Instance.LayTenMonNuoc(IDMonNuoc),
-                    BLNuocUong.Instance.LayDonGia(IDMonNuoc),"1",BLNuocUong.Instance.LayDonGia(IDMonNuoc));
+                bill.Rows.Add(BLMonAn.Instance.LayTenMonNuoc(IDMonAn),
+                    BLMonAn.Instance.LayDonGia(IDMonAn),"1",BLMonAn.Instance.LayDonGia(IDMonAn));
             }
             dgvBill.DataSource = bill;
             this.tbxTongTien.Text = this.TinhTongBill().ToString();
         }
-        private void SubtractMon(string IDMonNuoc)
+        private void SubtractMon(string IDMonAn)
         {
             for (int i = 0; i < bill.Rows.Count; i++)
-                if (BLNuocUong.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonNuoc)
+                if (BLMonAn.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonAn)
                 {
                     int soLuong = int.Parse(bill.Rows[i]["SoLuong"].ToString()) - 1;
                     bill.Rows[i]["SoLuong"] = (soLuong).ToString();
@@ -401,7 +424,7 @@ namespace ProjectMonHoc
             BLHoaDon.Instance.ThemHoaDon(IDHoaDon,BLTaiKhoan.Instance.LayIDNhanVien(user), time, int.Parse(tbxTongTien.Text), cbbGiamGia.SelectedText);
             foreach (DataGridViewRow row in dgvBill.Rows)
             {
-                string IDMonNuoc = BLNuocUong.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
+                string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
                 int SoLuong = int.Parse(row.Cells["columnSoLuong"].Value.ToString());
                 int GiaTien = int.Parse(row.Cells["columnThanhTien"].Value.ToString());
                 BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
@@ -411,7 +434,7 @@ namespace ProjectMonHoc
             lbBanDangChon.BackColor = color.colorCoKhach;
             lbBanDangChon.Text = "Đã có khách";
             BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()));
-            BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
+            BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()), int.Parse(IDHoaDon));
             BanDangChon = null;
             bill.Rows.Clear();
         }
@@ -484,6 +507,13 @@ namespace ProjectMonHoc
             this.Hide();
             frm.ShowDialog();
             this.Show();
+        }
+
+        private void chỉnhSửaDanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormChinhSuaDanhMuc frmCRUD = new FormChinhSuaDanhMuc();
+            frmCRUD.ShowDialog();
+            LoadDataDanhMuc();
         }
     }
 }

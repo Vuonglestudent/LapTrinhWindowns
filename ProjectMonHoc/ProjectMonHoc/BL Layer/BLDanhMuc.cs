@@ -35,12 +35,62 @@ namespace ProjectMonHoc.BL_Layer
                 new DataColumn("TenDanhMuc")
             });
 
-            foreach(var i in dmm)
+            foreach (var i in dmm)
             {
                 dt.Rows.Add(i.IDDanhMuc, i.TenDanhMuc);
             }
 
             return dt;
+        }
+        public List<DANHMUC> LayTenDanhMuc()
+        {
+            List<DANHMUC> lstTabDanhMuc = new List<DANHMUC>();
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var tdm = from dm in ql.DANHMUCs
+                      select new { dm.TenDanhMuc };
+            foreach (var item in tdm.ToList())
+            {
+                DANHMUC dm = new DANHMUC();
+                dm.TenDanhMuc = item.TenDanhMuc;
+                lstTabDanhMuc.Add(dm);
+            }
+            return lstTabDanhMuc;
+        }
+        public bool ThemDanhMuc(int IDDanhMuc, string TenDanhMuc)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            DANHMUC dm = new DANHMUC();
+            dm.IDDanhMuc = IDDanhMuc;
+            dm.TenDanhMuc = TenDanhMuc;
+            ql.DANHMUCs.Add(dm);
+            ql.SaveChanges();
+            return true;
+        }
+        public bool CapNhatDanhMuc(int IDDanhMuc, string TenDanhMuc)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var dmQuery = (from item
+                           in ql.DANHMUCs
+                           where item.IDDanhMuc == IDDanhMuc
+                           select item).SingleOrDefault();
+            if (dmQuery == null)
+            {
+                return false;
+            }
+            DANHMUC dm = new DANHMUC();
+            dm.TenDanhMuc = TenDanhMuc;
+            ql.SaveChanges();
+            return true;
+        }
+        public bool XoaDanhMuc(int IDDanhMuc)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            DANHMUC dm = new DANHMUC();
+            dm.IDDanhMuc = IDDanhMuc;
+            ql.DANHMUCs.Attach(dm);
+            ql.DANHMUCs.Remove(dm);
+            ql.SaveChanges();
+            return true;
         }
     }
 }

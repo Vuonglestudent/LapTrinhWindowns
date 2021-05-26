@@ -24,8 +24,8 @@ namespace ProjectMonHoc.BL_Layer
                            select TK).SingleOrDefault();
             if (tk == null)
                 return 0;
-            if (tk.LoaiTaiKhoan == 1) return 1;
-            return 2;
+            //if (tk.LoaiTaiKhoan == 1) return 1;
+            return 1;
         }
         public string LayIDNhanVien(string taikhoan)
         {

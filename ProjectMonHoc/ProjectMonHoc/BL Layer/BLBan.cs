@@ -23,7 +23,7 @@ namespace ProjectMonHoc.BL_Layer
             List<BAN> lstBan = new List<BAN>();
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var kq = from tt in qlCF.BANs
-                   select new { tt.IDBan, tt.TenBan, tt.TrangThai , tt.IDHoaDon};
+                   select new { tt.IDBan, tt.TenBan, tt.TrangThai , tt.SucChua};
 
             foreach (var item in kq.ToList())
             {
@@ -31,7 +31,7 @@ namespace ProjectMonHoc.BL_Layer
                 ban.IDBan = item.IDBan;
                 ban.TenBan = item.TenBan;
                 ban.TrangThai = item.TrangThai;
-                ban.IDHoaDon = item.IDHoaDon;
+                ban.SucChua = item.SucChua;
                 lstBan.Add(ban);
             }
 
@@ -50,9 +50,9 @@ namespace ProjectMonHoc.BL_Layer
         public DataTable LayChiTietHoaDonBan(int IDBan)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            var IDHoaDon = qlCF.BANs.Find(IDBan);
+            var SucChua = qlCF.BANs.Find(IDBan);
 
-            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon.IDHoaDon);
+            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(SucChua.SucChua.ToString());
         }
 
         public void ThayDoiTrangThai(int IDBan)
@@ -75,19 +75,19 @@ namespace ProjectMonHoc.BL_Layer
             if (ban != null)
             {
                 ban.TrangThai = false;
-                ban.IDHoaDon = null;
+                //ban.SucChua = null;
                 ql.SaveChanges();
             }
         }
 
-        public void ThemHoaDonBan(int IDBan, string IDHoaDon)
+        public void ThemHoaDonBan(int IDBan, int SucChua)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var ban = (from b in qlCF.BANs
                        where b.IDBan == IDBan
                        select b).SingleOrDefault();
             if (ban != null)
-                ban.IDHoaDon = IDHoaDon;
+                ban.SucChua = SucChua;
             else
                 return;
             qlCF.SaveChanges();
