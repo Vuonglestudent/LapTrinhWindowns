@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="BL Layer\BLBan.cs" />
     <Compile Include="BL Layer\BLChiTietHoaDon.cs" />
+    <Compile Include="BL Layer\BLCongViec.cs" />
     <Compile Include="BL Layer\BLDanhMuc.cs" />
     <Compile Include="BL Layer\BLHoaDon.cs" />
     <Compile Include="BL Layer\BLMonAn.cs" />
@@ -160,6 +161,17 @@
     <Content Include="Images\MA019.jpg" />
     <Content Include="Images\MA020.jpg" />
     <Content Include="Images\MA021.jpg" />
+    <Content Include="Images\NV001.jpg" />
+    <Content Include="Images\NV002.jpg" />
+    <Content Include="Images\NV003.jpg" />
+    <Content Include="Images\NV004.jpg" />
+    <Content Include="Images\NV005.jpg" />
+    <Content Include="Images\NV006.jpg" />
+    <Content Include="Images\NV007.jpg" />
+    <Content Include="Images\NV008.jpg" />
+    <Content Include="Images\NV009.jpg" />
+    <Content Include="Images\NV010.jpg" />
+    <Content Include="Images\NV011.jpg" />
     <None Include="Images\MA022.jpg" />
     <None Include="Images\MA023.jpg" />
     <None Include="Images\MA024.jpg" />
