@@ -1,7 +1,7 @@
 ﻿USE MASTER;
 go
 -- Tạo Database QuanLyTuýeninh
-IF DB_ID('QuanLyCafe') IS NOT NULL
+IF DB_ID('QuanLyNhaHangProject') IS NOT NULL
 	DROP DATABASE QuanLyNhaHangProject;
 GO
 

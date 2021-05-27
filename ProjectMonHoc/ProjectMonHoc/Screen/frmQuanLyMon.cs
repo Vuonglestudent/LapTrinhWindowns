@@ -35,8 +35,8 @@ namespace ProjectMonHoc.Screen
                 var mn = BLMonAn.Instance.LayDanhMucMonAn(idDanhMuc);
                 for (int i = 0; i < mn.Count; i++)
                 {
-                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].HinhMA + ".jpg"));
-                    dgvQLMonAn.Rows[i].Height = 100;
+                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].HinhMA));
+                    dgvQLMonAn.Rows[i].Height = 200;
                 }
                 ((DataGridViewImageColumn)dgvQLMonAn.Columns[2]).ImageLayout = DataGridViewImageCellLayout.Stretch;
             }
@@ -63,8 +63,7 @@ namespace ProjectMonHoc.Screen
                 imgFile = Bitmap.FromFile(f.FileName);
                 pbImage.BackgroundImage = imgFile;
                 pbImage.BackgroundImageLayout = ImageLayout.Stretch;
-                pathImg = f.SafeFileName;
-                
+                pathImg = f.SafeFileName;               
             }
         }
 
@@ -79,9 +78,64 @@ namespace ProjectMonHoc.Screen
             if (txtTenMon.Text != "" && numGiaTien.Value != 0 && imgFile != null)
             {
                 int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
-                BLMonAn.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
-                imgFile.Save(@"../../Images/" + pathImg);
+                try
+                {
+                    imgFile.Save(@"../../Images/" + pathImg);
+                    BLMonAn.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể lưu hình ảnh vào hệ thống, vui lòng thử lại sau!");
+                }
             }
+        }
+
+        private void btnXoaMon_Click(object sender, EventArgs e)
+        {
+            if (dgvQLMonAn.SelectedCells.Count == 1)
+            {
+                string tenMon = dgvQLMonAn.CurrentRow.Cells[0].Value.ToString();
+                string question = "Bạn có muốn xóa món " + tenMon + " không ?";
+                DialogResult traloi = MessageBox.Show(question, "Confirm", MessageBoxButtons.YesNo);
+                if (traloi == DialogResult.Yes)
+                {
+                    BLMonAn.Instance.XoaMonAn_TenMon(tenMon);
+                    int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
+                    LoadData(dm);
+                }    
+            }    
+        }
+
+        private void btnSuaMon_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow m = dgvQLMonAn.CurrentRow;
+            if ((Bitmap)pbImage.BackgroundImage != (Bitmap)m.Cells[2].Value)
+            {
+                try
+                {
+                    imgFile.Save(@"../../Images/" + pathImg);
+                    BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), txtTenMon.Text, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể lưu hình ảnh vào hệ thống, vui lòng thử lại sau!");
+                }
+            }
+            else
+            {
+                BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), txtTenMon.Text, int.Parse(numGiaTien.Value.ToString()), string.Empty);
+            }
+            int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
+            LoadData(dm);
+        }
+
+        private void dgvQLMonAn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow m = dgvQLMonAn.CurrentRow;
+            txtTenMon.Text = m.Cells[0].Value.ToString();
+            numGiaTien.Value = decimal.Parse(m.Cells[1].Value.ToString());
+            pbImage.BackgroundImage = (Bitmap)m.Cells[2].Value;
+            pbImage.BackgroundImageLayout = ImageLayout.Stretch;
         }
     }
 }
