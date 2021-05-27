@@ -82,6 +82,7 @@ namespace ProjectMonHoc.Screen
                 {
                     imgFile.Save(@"../../Images/" + pathImg);
                     BLMonAn.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                    LoadData(dm);
                 }
                 catch
                 {

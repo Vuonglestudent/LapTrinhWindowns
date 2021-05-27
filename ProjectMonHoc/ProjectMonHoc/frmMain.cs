@@ -21,13 +21,13 @@ namespace ProjectMonHoc
     {
         public bool iSSelect;
 
-        ResourceManager rm = Resources.ResourceManager;
-        List<MONAN> lstCafe = new List<MONAN>();
-        List<MONAN> lstTra = new List<MONAN>();
-        List<MONAN> lstTraSua = new List<MONAN>();
-        List<MONAN> lstSinhTo = new List<MONAN>();
-        List<MONAN> lstSoda = new List<MONAN>();
-        List<MONAN> lstCacMonKhac = new List<MONAN>();
+        //ResourceManager rm = Resources.ResourceManager;
+        //List<MONAN> lstCafe = new List<MONAN>();
+        //List<MONAN> lstTra = new List<MONAN>();
+        //List<MONAN> lstTraSua = new List<MONAN>();
+        //List<MONAN> lstSinhTo = new List<MONAN>();
+        //List<MONAN> lstSoda = new List<MONAN>();
+        //List<MONAN> lstCacMonKhac = new List<MONAN>();
         List<BAN> lstBan = new List<BAN>();
         List<DANHMUC> listDanhMuc = new List<DANHMUC>();
         List<TabPage> listTabDanhMuc = new List<TabPage>();

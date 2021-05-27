@@ -31,12 +31,12 @@ namespace ProjectMonHoc.Screen
                     data[i].Email, 
                     data[i].DiaChi, 
                     data[i].SDT, 
-                    Image.FromFile(@"../../Images/" + data[i].HinhNV + ".jpg"), 
+                    Image.FromFile(@"../../Images/" + data[i].HinhNV), 
                     data[i].IDNhanVien);
-                dgvNHANVIEN.Rows[i].Height = 100;
+                dgvNHANVIEN.Rows[i].Height = 150;
             }
             ((DataGridViewImageColumn)dgvNHANVIEN.Columns[5]).ImageLayout = DataGridViewImageCellLayout.Stretch;
-            panel.Enabled = false;
+            gbInfo.Enabled = false;
             btnReload.Enabled = true;
             btnThem.Enabled = true;
             btnSua.Enabled = true;

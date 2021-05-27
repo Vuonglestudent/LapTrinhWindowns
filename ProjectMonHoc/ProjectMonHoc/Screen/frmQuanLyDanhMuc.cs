@@ -22,7 +22,7 @@ namespace ProjectMonHoc.Screen
         {
             dataGridView1.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
             dataGridView1_CellClick(null, null);
-            panel.Enabled = false;
+            gbInfo.Enabled = false;
             txtIDDanhMuc.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
@@ -32,20 +32,10 @@ namespace ProjectMonHoc.Screen
             LoadDataDanhMuc();
         }
 
-        private void txtIDDanhMuc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             Them = true;
-            panel.Enabled = true;
+            gbInfo.Enabled = true;
             btnSua.Enabled = false;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
@@ -58,7 +48,7 @@ namespace ProjectMonHoc.Screen
         private void btnSua_Click(object sender, EventArgs e)
         {
             Them = false;
-            panel.Enabled = true;
+            gbInfo.Enabled = true;
             txtTenDanhMuc.Focus();
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -104,7 +94,7 @@ namespace ProjectMonHoc.Screen
         private void btnHuy_Click(object sender, EventArgs e)
         {
             btnThem.Enabled = true;
-            panel.Enabled = false;
+            gbInfo.Enabled = false;
             btnSua.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
@@ -138,11 +128,6 @@ namespace ProjectMonHoc.Screen
             int r = dataGridView1.CurrentCell.RowIndex;
             txtIDDanhMuc.Text = dataGridView1.Rows[r].Cells[0].Value.ToString();
             txtTenDanhMuc.Text = dataGridView1.Rows[r].Cells[1].Value.ToString();
-        }
-
-        private void FormChinhSuaDanhMuc_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
     }
 }
