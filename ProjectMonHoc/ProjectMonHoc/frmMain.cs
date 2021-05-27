@@ -51,6 +51,11 @@ namespace ProjectMonHoc
             khoiTaoBillTam();
             tabControlBan.Enabled = false;
             tabDoUong.Enabled = false;
+            btnAddBill.Enabled = false;
+            btnThanhToan.Enabled = false;
+            btnHuyBill.Enabled = false;
+            cbbGiamGia.Visible = false;
+            label2.Visible = false;
         }
 
         private void LoadFrom()
@@ -386,9 +391,12 @@ namespace ProjectMonHoc
             this.menuItemDanhMuc.Enabled = true;
             this.menuItemDangNhap.Enabled = false;
             this.user = user;
+            btnAddBill.Enabled = true;
+            btnThanhToan.Enabled = true;
+            btnHuyBill.Enabled = true;
             if (type == 1)
             {
-                menuItemAdmin.Enabled = true;
+                this.menuItemAdmin.Enabled = true;
             }
             tabDoUong.Enabled = true;
             tabControlBan.Enabled = true;
@@ -399,7 +407,11 @@ namespace ProjectMonHoc
             this.menuItemDangXuat.Enabled = false;
             this.menuItemDoiMatKhau.Enabled = false;
             this.menuItemDanhMuc.Enabled = false;
+            this.menuItemAdmin.Enabled = false;
             this.menuItemDangNhap.Enabled = true;
+            btnHuyBill.Enabled = false;
+            btnAddBill.Enabled = false;
+            btnHuyBill.Enabled = false;
             this.user = "";
             MessageBox.Show("Đã đăng xuất!");
             tabDoUong.Enabled = false;
