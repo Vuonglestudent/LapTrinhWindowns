@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using ProjectMonHoc.EntityModel;
+using System.Drawing;
 
 namespace ProjectMonHoc.BL_Layer
 {
@@ -21,25 +22,27 @@ namespace ProjectMonHoc.BL_Layer
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             return ql.NHANVIENs.Count();
         }
-        public DataTable LayNhanVien()
+        public List<NHANVIEN> LayNhanVien()
         {
             QuanLyNhaHangProjectEntities qlbhEntity = new QuanLyNhaHangProjectEntities();
-            var nvs = qlbhEntity.NHANVIENs.Select(x => x);
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID Nhân viên");
-            dt.Columns.Add("ID Công việc");
-            dt.Columns.Add("Họ");
-            dt.Columns.Add("Tên");           
-            dt.Columns.Add("Ngày sinh");
-            dt.Columns.Add("Email");
-            dt.Columns.Add("Địa chỉ");
-            dt.Columns.Add("Điện thoại");
-            dt.Columns.Add("Hình");
+            var nvs = qlbhEntity.NHANVIENs.Where(x => x.TrangThai == false).Select(x => x);
+            List<NHANVIEN> lstNV = new List<NHANVIEN>();
+            
             foreach (var p in nvs)
             {
-                dt.Rows.Add(p.IDNhanVien, p.IDCongViec, p.Ho, p.Ten, p.Email, p.NgaySinh, p.DiaChi, p.SDT, p.HinhNV);
+                NHANVIEN nv = new NHANVIEN();
+                nv.IDNhanVien = p.IDNhanVien;
+                nv.Ho = p.Ho;
+                nv.Ten = p.Ten;
+                //nv.IDCongViec = p.IDCongViec;
+                nv.NgaySinh = p.NgaySinh;
+                nv.Email = p.Email;
+                nv.DiaChi = p.DiaChi;
+                nv.SDT = p.SDT;
+                nv.HinhNV = p.HinhNV;
+                lstNV.Add(nv);
             }
-            return dt;
+            return lstNV;
         }
         public bool ThemNhanVien(string IDNhanVien, int IDCongViec, string Ho, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
         {
