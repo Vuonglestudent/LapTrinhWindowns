@@ -18,9 +18,9 @@ namespace ProjectMonHoc.BL_Layer
 
         public List<MONAN> LayDanhMucMonAn(int tab)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             List<MONAN> lstNuoc = new List<MONAN>();
-            var queryMA = from nu in qlCF.MONANs
+            var queryMA = from nu in ql.MONANs
                           where nu.IDDanhMuc == tab && nu.TrangThai == false
                           select nu;
 
@@ -39,8 +39,8 @@ namespace ProjectMonHoc.BL_Layer
         }
         public int LayDonGia(string IDMonAn)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            int gia = (from nu in qlCF.MONANs
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            int gia = (from nu in ql.MONANs
                        where nu.IDMonAn == IDMonAn
                        select nu.GiaTien).SingleOrDefault();
             return gia;
@@ -48,8 +48,8 @@ namespace ProjectMonHoc.BL_Layer
 
         public string LayTenMonNuoc(string IDMonAn)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            string ten = (from nu in qlCF.MONANs
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            string ten = (from nu in ql.MONANs
                           where nu.IDMonAn == IDMonAn
                           select nu.TenMon).SingleOrDefault();
             return ten;
@@ -57,8 +57,8 @@ namespace ProjectMonHoc.BL_Layer
 
         public string LayIDMonNuoc(string TenMon)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            string id = (from nu in qlCF.MONANs
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            string id = (from nu in ql.MONANs
                          where nu.TenMon == TenMon
                          select nu.IDMonAn).SingleOrDefault();
             return id;
@@ -76,6 +76,31 @@ namespace ProjectMonHoc.BL_Layer
             ma.GiaTien = giaMon;
             ma.HinhMA = pathHinh;
             ql.MONANs.Add(ma);
+            ql.SaveChanges();
+        }
+
+        //Hàm xóa món ăn dựa trên tên món sử dụng trong frmQuanLyMon
+        public void XoaMonAn_TenMon(string tenMon)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var m = (from nu in ql.MONANs
+                     where nu.TenMon == tenMon
+                     select nu).SingleOrDefault();
+            m.TrangThai = true;
+            ql.SaveChanges();
+        }
+        public void CapNhatMon_TenMon(string tenMon, string tenMonMoi, int giaMon, string pathHinh)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var m = (from nu in ql.MONANs
+                     where nu.TenMon == tenMon
+                     select nu).SingleOrDefault();
+            m.TenMon = tenMonMoi;
+            m.GiaTien = giaMon;
+            if (pathHinh != string.Empty)
+            {
+                m.HinhMA = pathHinh;
+            }
             ql.SaveChanges();
         }
 

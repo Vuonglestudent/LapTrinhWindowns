@@ -123,11 +123,12 @@ namespace ProjectMonHoc
             {
                 for (int i = 0; i < number; i++)
                 {
-                    lstCafe = BLMonAn.Instance.LayDanhMucMonAn(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
+                    List<MONAN> listMon = BLMonAn.Instance.LayDanhMucMonAn(i + 1);
+                    //lstCafe = BLMonAn.Instance.LayDanhMucMonAn(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
-                    foreach (MONAN item in lstCafe)
+                    foreach (MONAN item in listMon)
                     {
                         AddButtonNuoc(item, point, size, listTabDanhMuc[i]);
                         if (count % 4 != 0)
@@ -158,7 +159,7 @@ namespace ProjectMonHoc
             tab.Controls.Add(newLabel);
 
             newButton.Name = "btn" + item.IDMonAn;
-            Image img = Image.FromFile(@"../../Images/" + item.HinhMA + ".jpg");
+            Image img = Image.FromFile(@"../../Images/" + item.HinhMA);
             newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
