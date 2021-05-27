@@ -53,6 +53,7 @@ namespace ProjectMonHoc
             this.tbxTK.Name = "tbxTK";
             this.tbxTK.Size = new System.Drawing.Size(232, 31);
             this.tbxTK.TabIndex = 1;
+            this.tbxTK.Text = "vuong";
             this.tbxTK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxMK_KeyDown);
             // 
             // tbxMK
@@ -61,6 +62,7 @@ namespace ProjectMonHoc
             this.tbxMK.Name = "tbxMK";
             this.tbxMK.Size = new System.Drawing.Size(232, 31);
             this.tbxMK.TabIndex = 3;
+            this.tbxMK.Text = "admin";
             this.tbxMK.UseSystemPasswordChar = true;
             this.tbxMK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxMK_KeyDown);
             // 

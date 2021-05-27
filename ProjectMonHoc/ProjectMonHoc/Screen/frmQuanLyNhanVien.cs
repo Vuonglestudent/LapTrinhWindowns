@@ -11,10 +11,10 @@ using ProjectMonHoc.BL_Layer;
 
 namespace ProjectMonHoc.Screen
 {
-    public partial class FormChinhSuaNhanVien : Form
+    public partial class frmQuanLyNhanVien : Form
     {
         bool Them;
-        public FormChinhSuaNhanVien()
+        public frmQuanLyNhanVien()
         {
             InitializeComponent();
         }

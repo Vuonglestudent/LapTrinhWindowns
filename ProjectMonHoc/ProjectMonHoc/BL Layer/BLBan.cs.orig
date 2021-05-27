@@ -23,7 +23,6 @@ namespace ProjectMonHoc.BL_Layer
             List<BAN> lstBan = new List<BAN>();
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             var kq = from tt in qlCF.BANs
-                     where tt.TrangThaiXoa == false
                    select new { tt.IDBan, tt.TenBan, tt.TrangThai , tt.SucChua};
 
             foreach (var item in kq.ToList())
@@ -51,6 +50,7 @@ namespace ProjectMonHoc.BL_Layer
         public DataTable LayChiTietHoaDonBan(int IDBan)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
+<<<<<<< HEAD
             var IDHoaDon = qlCF.HOADONs
                 .Where(x => x.IDBan == IDBan)
                 .Where(x => x.NgayLap < DateTime.Now)
@@ -58,6 +58,11 @@ namespace ProjectMonHoc.BL_Layer
                 .Select(x => x.IDHoaDon).SingleOrDefault();
 
             return BLChiTietHoaDon.Instance.LayChiTietHoaDon(IDHoaDon);
+=======
+            var SucChua = qlCF.BANs.Find(IDBan);
+
+            return BLChiTietHoaDon.Instance.LayChiTietHoaDon(SucChua.SucChua.ToString());
+>>>>>>> e7abac87095757c34327b062181b2215b0b87263
         }
 
         public void ThayDoiTrangThai(int idBan)
@@ -65,6 +70,7 @@ namespace ProjectMonHoc.BL_Layer
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             var ban = ql.BANs.Find(idBan);
             if (ban != null)
+<<<<<<< HEAD
                 ban.TrangThai = !ban.TrangThai;
             else return;
             ql.SaveChanges();
@@ -82,5 +88,26 @@ namespace ProjectMonHoc.BL_Layer
         //        return;
         //    qlCF.SaveChanges();
         //}
+=======
+            {
+                ban.TrangThai = false;
+                //ban.SucChua = null;
+                ql.SaveChanges();
+            }
+        }
+
+        public void ThemHoaDonBan(int IDBan, int SucChua)
+        {
+            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
+            var ban = (from b in qlCF.BANs
+                       where b.IDBan == IDBan
+                       select b).SingleOrDefault();
+            if (ban != null)
+                ban.SucChua = SucChua;
+            else
+                return;
+            qlCF.SaveChanges();
+        }
+>>>>>>> e7abac87095757c34327b062181b2215b0b87263
     }
 }

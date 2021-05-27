@@ -11,10 +11,10 @@ using ProjectMonHoc.BL_Layer;
 
 namespace ProjectMonHoc.Screen
 {
-    public partial class FormChinhSuaDanhMuc : Form
+    public partial class frmQuanLyDanhMuc : Form
     {
         bool Them;
-        public FormChinhSuaDanhMuc()
+        public frmQuanLyDanhMuc()
         {
             InitializeComponent();
         }
@@ -22,6 +22,8 @@ namespace ProjectMonHoc.Screen
         {
             dataGridView1.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
             dataGridView1_CellClick(null, null);
+            panel.Enabled = false;
+            txtIDDanhMuc.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
         }
@@ -43,11 +45,12 @@ namespace ProjectMonHoc.Screen
         private void btnThem_Click(object sender, EventArgs e)
         {
             Them = true;
-            btnThem.Enabled = false;
+            panel.Enabled = true;
             btnSua.Enabled = false;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
             txtIDDanhMuc.Text = (BLDanhMuc.Instance.SoLuongDanhMuc() + 1).ToString();
+            txtIDDanhMuc.Enabled = false;
             txtTenDanhMuc.ResetText();
             txtTenDanhMuc.Focus();
         }
@@ -55,7 +58,8 @@ namespace ProjectMonHoc.Screen
         private void btnSua_Click(object sender, EventArgs e)
         {
             Them = false;
-            txtIDDanhMuc.Focus();
+            panel.Enabled = true;
+            txtTenDanhMuc.Focus();
             btnThem.Enabled = false;
             btnSua.Enabled = false;
             btnLuu.Enabled = true;
@@ -100,6 +104,7 @@ namespace ProjectMonHoc.Screen
         private void btnHuy_Click(object sender, EventArgs e)
         {
             btnThem.Enabled = true;
+            panel.Enabled = false;
             btnSua.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;

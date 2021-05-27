@@ -47,12 +47,17 @@ namespace ProjectMonHoc
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            LoadDataBan();
-            LoadMon();
-            LoadDataDanhMuc();
+            LoadFrom();
             khoiTaoBillTam();
-            tabDoUong.Enabled = false;
             tabControlBan.Enabled = false;
+            tabDoUong.Enabled = false;
+        }
+
+        private void LoadFrom()
+        {
+            LoadDataBan();
+            LoadDataDanhMuc();
+            LoadMon();
         }
 
         void khoiTaoBillTam()
@@ -102,7 +107,8 @@ namespace ProjectMonHoc
                 this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
                 foreach (DANHMUC item in listDanhMuc)
                 {
-                    AddTabDanhMuc(item);                    
+                    var tab = listTabDanhMuc.Where(x => x.Name == "tab" + item.TenDanhMuc).SingleOrDefault();
+                    if(tab == null) AddTabDanhMuc(item);                    
                 }                
             }
             catch
@@ -117,7 +123,7 @@ namespace ProjectMonHoc
             {
                 for (int i = 0; i < number; i++)
                 {
-                    lstCafe = BLMonAn.Instance.LayDanhMucNuocUong(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
+                    lstCafe = BLMonAn.Instance.LayDanhMucMonAn(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
@@ -152,7 +158,7 @@ namespace ProjectMonHoc
             tab.Controls.Add(newLabel);
 
             newButton.Name = "btn" + item.IDMonAn;
-            Image img = Image.FromFile(@"../../Images/" + item.IDMonAn + ".jpg");
+            Image img = Image.FromFile(@"../../Images/" + item.HinhMA + ".jpg");
             newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
@@ -217,6 +223,7 @@ namespace ProjectMonHoc
             newtabPage.Name = "tab" + item.TenDanhMuc;
             newtabPage.Text = item.TenDanhMuc.ToString();
             listTabDanhMuc.Add(newtabPage);
+            
         }
 
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
@@ -510,19 +517,20 @@ namespace ProjectMonHoc
             frmQuanLyMon frm = new frmQuanLyMon();
             this.Hide();
             frm.ShowDialog();
+            this.LoadFrom();
             this.Show();
         }
 
         private void chỉnhSửaDanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormChinhSuaDanhMuc frmCRUDDM = new FormChinhSuaDanhMuc();
+            frmQuanLyDanhMuc frmCRUDDM = new frmQuanLyDanhMuc();
             frmCRUDDM.ShowDialog();
             LoadDataDanhMuc();
         }
 
         private void menuItemThemUser_Click(object sender, EventArgs e)
         {
-            FormChinhSuaNhanVien frmCRUDNV = new FormChinhSuaNhanVien();
+            frmQuanLyNhanVien frmCRUDNV = new frmQuanLyNhanVien();
             frmCRUDNV.ShowDialog();
         }
     }

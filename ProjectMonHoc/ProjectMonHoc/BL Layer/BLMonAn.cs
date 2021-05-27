@@ -16,12 +16,12 @@ namespace ProjectMonHoc.BL_Layer
             private set { instance = value; }
         }
 
-        public List<MONAN> LayDanhMucNuocUong(int tab)
+        public List<MONAN> LayDanhMucMonAn(int tab)
         {
             QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
             List<MONAN> lstNuoc = new List<MONAN>();
             var queryMA = from nu in qlCF.MONANs
-                          where nu.IDDanhMuc == tab
+                          where nu.IDDanhMuc == tab && nu.TrangThai == false
                           select nu;
 
             foreach (var item in queryMA.ToList())
@@ -31,6 +31,7 @@ namespace ProjectMonHoc.BL_Layer
                 nu.IDDanhMuc = item.IDDanhMuc;
                 nu.GiaTien = item.GiaTien;
                 nu.TenMon = item.TenMon;
+                nu.HinhMA = item.HinhMA;
                 lstNuoc.Add(nu);
             }
 
@@ -67,9 +68,9 @@ namespace ProjectMonHoc.BL_Layer
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             var m = ql.MONANs.OrderByDescending(x => x.IDMonAn).FirstOrDefault();
-            int idMonNuoc = int.Parse(m.IDMonAn.Split('U')[1]);
+            int idMonNuoc = int.Parse(m.IDMonAn.Split('A')[1]);
             MONAN ma = new MONAN();
-            ma.IDMonAn = idMonNuoc >= 100 ? "NU" + (idMonNuoc + 1) : "NU0" + (idMonNuoc + 1);
+            ma.IDMonAn = idMonNuoc >= 100 ? "MA" + (idMonNuoc + 1) : "MA0" + (idMonNuoc + 1);
             ma.IDDanhMuc = danhMucMon;
             ma.TenMon = tenMon;
             ma.GiaTien = giaMon;

@@ -32,10 +32,10 @@ namespace ProjectMonHoc.Screen
             try
             {
                 dgvQLMonAn.Rows.Clear();
-                var mn = BLMonAn.Instance.LayDanhMucNuocUong(idDanhMuc);
+                var mn = BLMonAn.Instance.LayDanhMucMonAn(idDanhMuc);
                 for (int i = 0; i < mn.Count; i++)
                 {
-                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].IDMonAn + ".jpg"));
+                    dgvQLMonAn.Rows.Add(mn[i].TenMon, mn[i].GiaTien, Image.FromFile(@"../../Images/" + mn[i].HinhMA + ".jpg"));
                     dgvQLMonAn.Rows[i].Height = 100;
                 }
                 ((DataGridViewImageColumn)dgvQLMonAn.Columns[2]).ImageLayout = DataGridViewImageCellLayout.Stretch;

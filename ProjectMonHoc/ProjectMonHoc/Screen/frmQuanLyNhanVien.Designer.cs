@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectMonHoc.Screen
 {
-    partial class FormChinhSuaNhanVien
+    partial class frmQuanLyNhanVien
     {
         /// <summary>
         /// Required designer variable.

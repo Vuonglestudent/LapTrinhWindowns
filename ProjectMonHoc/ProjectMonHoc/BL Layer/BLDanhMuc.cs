@@ -19,13 +19,13 @@ namespace ProjectMonHoc.BL_Layer
         public int SoLuongDanhMuc()
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            return ql.DANHMUCs.Count();
+            return ql.DANHMUCs.Where(x => x.TrangThai == false).Count();
         }
 
         public DataTable LayDanhMucMon()
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var dmm = ql.DANHMUCs.Select(x => x);
+            var dmm = ql.DANHMUCs.Where(x => x.TrangThai == false).Select(x => x);
 
             DataTable dt = new DataTable();
 
@@ -47,6 +47,7 @@ namespace ProjectMonHoc.BL_Layer
             List<DANHMUC> lstTabDanhMuc = new List<DANHMUC>();
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             var tdm = from dm in ql.DANHMUCs
+                      where dm.TrangThai == false
                       select new { dm.TenDanhMuc };
             foreach (var item in tdm.ToList())
             {
@@ -77,19 +78,19 @@ namespace ProjectMonHoc.BL_Layer
             {
                 return false;
             }
-            DANHMUC dm = new DANHMUC();
-            dm.TenDanhMuc = TenDanhMuc;
+            dmQuery.TenDanhMuc = TenDanhMuc;
             ql.SaveChanges();
             return true;
         }
         public bool XoaDanhMuc(int IDDanhMuc)
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            DANHMUC dm = new DANHMUC();
-            dm.IDDanhMuc = IDDanhMuc;
-            ql.DANHMUCs.Attach(dm);
-            ql.DANHMUCs.Remove(dm);
-            ql.SaveChanges();
+            var query = ql.DANHMUCs.Find(IDDanhMuc);
+            if ( query != null)
+            {
+                ql.DANHMUCs.Remove(query);
+                ql.SaveChanges();
+            }
             return true;
         }
     }

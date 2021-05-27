@@ -1,6 +1,6 @@
 ﻿namespace ProjectMonHoc.Screen
 {
-    partial class FormChinhSuaDanhMuc
+    partial class frmQuanLyDanhMuc
     {
         /// <summary>
         /// Required designer variable.
@@ -38,14 +38,17 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.panel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 73);
+            this.label2.Location = new System.Drawing.Point(14, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 24);
             this.label2.TabIndex = 19;
@@ -55,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 18);
+            this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 24);
             this.label1.TabIndex = 18;
@@ -63,7 +66,7 @@
             // 
             // txtTenDanhMuc
             // 
-            this.txtTenDanhMuc.Location = new System.Drawing.Point(196, 73);
+            this.txtTenDanhMuc.Location = new System.Drawing.Point(154, 70);
             this.txtTenDanhMuc.Multiline = true;
             this.txtTenDanhMuc.Name = "txtTenDanhMuc";
             this.txtTenDanhMuc.Size = new System.Drawing.Size(193, 32);
@@ -71,7 +74,7 @@
             // 
             // txtIDDanhMuc
             // 
-            this.txtIDDanhMuc.Location = new System.Drawing.Point(196, 18);
+            this.txtIDDanhMuc.Location = new System.Drawing.Point(154, 15);
             this.txtIDDanhMuc.Multiline = true;
             this.txtIDDanhMuc.Name = "txtIDDanhMuc";
             this.txtIDDanhMuc.Size = new System.Drawing.Size(193, 32);
@@ -131,35 +134,54 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(85, 149);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 149);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(354, 182);
+            this.dataGridView1.Size = new System.Drawing.Size(473, 182);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // FormChinhSuaDanhMuc
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(405, 18);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(88, 87);
+            this.btnReload.TabIndex = 20;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.label1);
+            this.panel.Controls.Add(this.txtTenDanhMuc);
+            this.panel.Controls.Add(this.label2);
+            this.panel.Controls.Add(this.txtIDDanhMuc);
+            this.panel.Location = new System.Drawing.Point(48, 12);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(351, 115);
+            this.panel.TabIndex = 21;
+            // 
+            // frmQuanLyDanhMuc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 399);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTenDanhMuc);
-            this.Controls.Add(this.txtIDDanhMuc);
+            this.Controls.Add(this.panel);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "FormChinhSuaDanhMuc";
+            this.Name = "frmQuanLyDanhMuc";
             this.Text = "FormChinhSuaDanhMuc";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormChinhSuaDanhMuc_FormClosed);
             this.Load += new System.EventHandler(this.FormChinhSuaDanhMuc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -175,5 +197,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Panel panel;
     }
 }
