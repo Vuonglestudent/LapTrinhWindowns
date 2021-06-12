@@ -37,7 +37,7 @@ namespace ProjectMonHoc.BL_Layer
             {
                 MessageBox.Show("Đã xảy ra lỗi, vui lòng thử lại!");
             }
-        }
+}
 
         public bool ThanhToanHoaDon(string idHoaDon)
         {
@@ -69,7 +69,12 @@ namespace ProjectMonHoc.BL_Layer
             foreach (HOADON hd in hoadon)
             {
                 string ngaylap = hd.NgayLap.ToString("HH:mm   dd/MM/yyyy");
-                string ngaythanhtoan = hd.NgayThanhToan.ToString("HH:mm   dd/MM/yyyy");
+                string ngaythanhtoan;
+                if (hd.NgayThanhToan != null)
+                {
+                    ngaythanhtoan = hd.NgayThanhToan.GetValueOrDefault().ToString("HH:mm   dd/MM/yyyy");
+                }
+                else ngaythanhtoan = "";
                 dt.Rows.Add(hd.IDHoaDon, hd.IDNhanVien, ngaylap, ngaythanhtoan, hd.TongTien);
             }
             return dt;
@@ -88,11 +93,17 @@ namespace ProjectMonHoc.BL_Layer
                 new DataColumn("NgayThanhToan"),
                 new DataColumn("TongTien")
             });
-            var hoadon = ql.HOADONs.OrderBy(x=>x.NgayLap).Where(x=>(x.NgayLap <= ketthuc && x.NgayLap >= batdau)).Select(x=>x);
+            DateTime kt = ketthuc.AddDays(1);
+            var hoadon = ql.HOADONs.OrderBy(x=>x.NgayLap).Where(x=>(x.NgayLap < kt.Date && x.NgayLap >= batdau.Date)).Select(x=>x);
             foreach (HOADON hd in hoadon)
             {
                 string ngaylap = hd.NgayLap.ToString("HH:mm   dd/MM/yyyy");
-                string ngaythanhtoan = hd.NgayThanhToan.ToString("HH:mm   dd/MM/yyyy");
+                string ngaythanhtoan;
+                if (hd.NgayThanhToan != null)
+                {
+                    ngaythanhtoan = hd.NgayThanhToan.GetValueOrDefault().ToString("HH:mm   dd/MM/yyyy");
+                }
+                else ngaythanhtoan = "";
                 dt.Rows.Add(hd.IDHoaDon, hd.IDNhanVien, ngaylap, ngaythanhtoan, hd.TongTien);
             }
             return dt;

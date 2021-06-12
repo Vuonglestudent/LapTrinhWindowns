@@ -22,6 +22,9 @@ namespace ProjectMonHoc.Screen
             dtpkKetThuc.CustomFormat = "dd/MM/yyyy";
             btnSwap.BackgroundImage = Image.FromFile(@"../../Icon/swapIcon.png");
             btnReset.BackgroundImage = Image.FromFile(@"../../Icon/resetIcon.png");
+            ptbMoneyIcon.BackgroundImage = Image.FromFile(@"../../Icon/moneyIcon.png");
+            ptbBillIcon.BackgroundImage = Image.FromFile(@"../../Icon/billIcon.png");
+            ptbCalendarIcon.BackgroundImage = Image.FromFile(@"../../Icon/calendarIcon.png");
         }
 
         private void frmXemHoaDon_Load(object sender, EventArgs e)
@@ -30,12 +33,25 @@ namespace ProjectMonHoc.Screen
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).DisplayMember = "Ten";
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).ValueMember = "IDNhanVien";
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+            //cập nhật giá trị 2 datetimepicker ban đầu :
             btnReset_Click(sender, e);
         }
 
         private void CapNhatBangHoaDon(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = BLHoaDon.Instance.LayHoaDon(dtpkBatDau.Value, dtpkKetThuc.Value);
+            CapNhatTongKet();
+        }
+
+        private void CapNhatTongKet()
+        {
+            int DoanhThu = 0;
+            foreach (DataGridViewRow hd in dgvHoaDon.Rows)
+            {
+                DoanhThu += int.Parse(hd.Cells["TongTien"].Value.ToString());
+            }
+            lbDoanhThu.Text = DoanhThu.ToString();
+            lbTongSoBill.Text = dgvHoaDon.Rows.Count.ToString();
         }
 
         private void btnSwap_Click(object sender, EventArgs e)
