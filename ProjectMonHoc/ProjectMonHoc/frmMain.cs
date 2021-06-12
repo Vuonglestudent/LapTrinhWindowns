@@ -546,5 +546,11 @@ namespace ProjectMonHoc
             frmQuanLyNhanVien frmCRUDNV = new frmQuanLyNhanVien();
             frmCRUDNV.ShowDialog();
         }
+
+        private void xemHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmXemHoaDon frmHoaDon = new frmXemHoaDon();
+            frmHoaDon.ShowDialog();
+        }
     }
 }
