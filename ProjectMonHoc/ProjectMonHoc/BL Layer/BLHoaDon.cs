@@ -113,16 +113,35 @@ namespace ProjectMonHoc.BL_Layer
         public DateTime TimeOfFirstBill()
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            return ql.HOADONs.OrderBy(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            DateTime result = ql.HOADONs.OrderBy(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            if (result != default)
+            {
+                return result;
+            }
+            return DateTime.Now;
         }
         
         //Hàm lấy thời gian lập của bill gần nhất
         public DateTime TimeOfLastBill()
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            return ql.HOADONs.OrderByDescending(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            DateTime result = ql.HOADONs.OrderByDescending(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            if (result != default)
+            {
+                return result;
+            }
+            return DateTime.Now;
         }
 
         //2 hàm trên hỗ trợ việc đưa thời gian vào 2 datetimepicker khi mới mở form
+   
+        
+        public bool CheckExist()
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            if (ql.HOADONs.Count() > 0)
+                return true;
+            return false;
+        }
     }
 }
