@@ -37,6 +37,7 @@ namespace ProjectMonHoc
             this.menuItemDoiMatKhau = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemThemUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chỉnhSửaDanhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +80,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStripHeThong.Size = new System.Drawing.Size(1370, 29);
+            this.menuStripHeThong.Size = new System.Drawing.Size(1584, 29);
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
@@ -118,7 +119,8 @@ namespace ProjectMonHoc
             // menuItemAdmin
             // 
             this.menuItemAdmin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemThemUser});
+            this.menuItemThemUser,
+            this.xemHóaĐơnToolStripMenuItem});
             this.menuItemAdmin.Enabled = false;
             this.menuItemAdmin.Name = "menuItemAdmin";
             this.menuItemAdmin.Size = new System.Drawing.Size(62, 23);
@@ -130,6 +132,13 @@ namespace ProjectMonHoc
             this.menuItemThemUser.Size = new System.Drawing.Size(201, 24);
             this.menuItemThemUser.Text = "Quản Lý Nhân Viên";
             this.menuItemThemUser.Click += new System.EventHandler(this.menuItemThemUser_Click);
+            // 
+            // xemHóaĐơnToolStripMenuItem
+            // 
+            this.xemHóaĐơnToolStripMenuItem.Name = "xemHóaĐơnToolStripMenuItem";
+            this.xemHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.xemHóaĐơnToolStripMenuItem.Text = "Xem Hóa Đơn";
+            this.xemHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.xemHóaĐơnToolStripMenuItem_Click);
             // 
             // menuItemDanhMuc
             // 
@@ -426,7 +435,7 @@ namespace ProjectMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.tabDoUong);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.label4);
@@ -493,6 +502,7 @@ namespace ProjectMonHoc
         private System.Windows.Forms.ToolStripMenuItem quảnLýMónĂnToolStripMenuItem;
         private System.Windows.Forms.TabControl tabDoUong;
         private System.Windows.Forms.ToolStripMenuItem chỉnhSửaDanhMụcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xemHóaĐơnToolStripMenuItem;
     }
 }
 
