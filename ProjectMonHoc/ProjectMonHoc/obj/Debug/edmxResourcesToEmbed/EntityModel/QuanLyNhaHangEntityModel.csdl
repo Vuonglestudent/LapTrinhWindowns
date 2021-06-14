@@ -8,6 +8,7 @@
     <Property Name="TenBan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <Property Name="SucChua" Type="Int32" Nullable="false" />
+    <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_BAN" FromRole="BAN" ToRole="HOADON" />
   </EntityType>
   <EntityType Name="CHITIETHOADON">
@@ -36,6 +37,7 @@
     </Key>
     <Property Name="IDDanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenDanhMuc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="MONANs" Relationship="Self.FK_MONAN_DANHMUC" FromRole="DANHMUC" ToRole="MONAN" />
   </EntityType>
   <EntityType Name="HOADON">
@@ -46,6 +48,7 @@
     <Property Name="IDBan" Type="Int32" Nullable="false" />
     <Property Name="IDNhanVien" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NgayLap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NgayThanhToan" Type="DateTime" Precision="3" />
     <Property Name="TongTien" Type="Int32" Nullable="false" />
     <Property Name="KhuyenMai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BAN" Relationship="Self.FK_HOADON_BAN" FromRole="HOADON" ToRole="BAN" />
@@ -61,6 +64,7 @@
     <Property Name="TenMon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GiaTien" Type="Int32" Nullable="false" />
     <Property Name="HinhMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK_CHITIETHOADON_MONAN" FromRole="MONAN" ToRole="CHITIETHOADON" />
     <NavigationProperty Name="DANHMUC" Relationship="Self.FK_MONAN_DANHMUC" FromRole="MONAN" ToRole="DANHMUC" />
   </EntityType>
@@ -77,6 +81,7 @@
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="HinhNV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="IDCongViec" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CONGVIEC" Relationship="Self.FK_NHANVIEN_CONGVIEC" FromRole="NHANVIEN" ToRole="CONGVIEC" />
     <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_NHANVIEN" FromRole="NHANVIEN" ToRole="HOADON" />
     <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK_TAIKHOAN_NHANVIEN" FromRole="NHANVIEN" ToRole="TAIKHOAN" />

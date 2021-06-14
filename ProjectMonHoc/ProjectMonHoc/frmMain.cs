@@ -113,7 +113,7 @@ namespace ProjectMonHoc
                 foreach (DANHMUC item in listDanhMuc)
                 {
                     var tab = listTabDanhMuc.Where(x => x.Name == "tab" + item.TenDanhMuc).SingleOrDefault();
-                    if(tab == null) AddTabDanhMuc(item);                    
+                    if (tab == null) AddTabDanhMuc(item);
                 }                
             }
             catch
@@ -223,13 +223,12 @@ namespace ProjectMonHoc
             //newButton.Click += btnBan_Click;
         }
         void AddTabDanhMuc(DANHMUC item)
-        {
-            TabPage newtabPage = new TabPage();
+        {            
+            TabPage newtabPage = new TabPage();            
             tabDoUong.Controls.Add(newtabPage);
             newtabPage.Name = "tab" + item.TenDanhMuc;
             newtabPage.Text = item.TenDanhMuc.ToString();
-            listTabDanhMuc.Add(newtabPage);
-            
+            listTabDanhMuc.Add(newtabPage);           
         }
 
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)

@@ -34,7 +34,7 @@ namespace ProjectMonHoc.BL_Layer
                 nv.IDNhanVien = p.IDNhanVien;
                 nv.Ho = p.Ho;
                 nv.Ten = p.Ten;
-                //nv.IDCongViec = p.IDCongViec;
+                nv.IDCongViec = p.IDCongViec;
                 nv.NgaySinh = p.NgaySinh;
                 nv.Email = p.Email;
                 nv.DiaChi = p.DiaChi;
@@ -44,12 +44,13 @@ namespace ProjectMonHoc.BL_Layer
             }
             return lstNV;
         }
-        public bool ThemNhanVien(string IDNhanVien, int IDCongViec, string Ho, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
+        public bool ThemNhanVien(string IDNhanVien, string Ho, int IDCongViec, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
         {
             QuanLyNhaHangProjectEntities qlbhEntity = new QuanLyNhaHangProjectEntities();
-
+            var m = qlbhEntity.NHANVIENs.OrderByDescending(x => x.IDNhanVien).FirstOrDefault();
+            int idNhanVien = int.Parse(m.IDNhanVien.Split('V')[1]);
             NHANVIEN nv = new NHANVIEN();
-            nv.IDNhanVien = IDNhanVien;
+            nv.IDNhanVien = idNhanVien >= 100 ? "NV" + (idNhanVien + 1) : "NV0" + (idNhanVien + 1);
             nv.IDCongViec = IDCongViec;
             nv.Ho = Ho;
             nv.Ten = Ten;
@@ -72,7 +73,7 @@ namespace ProjectMonHoc.BL_Layer
             qlbhEntity.SaveChanges();
             return true;
         }
-        public bool CapNhatNhanVien(string IDNhanVien, int IDCongViec, string Ho, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
+        public bool CapNhatNhanVien(string IDNhanVien, string Ho, int IDCongViec, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
         {
             QuanLyNhaHangProjectEntities qlbhEntity = new QuanLyNhaHangProjectEntities();
             var nvq = (from nv in qlbhEntity.NHANVIENs
@@ -90,7 +91,10 @@ namespace ProjectMonHoc.BL_Layer
             nvq.NgaySinh = NgaySinh;
             nvq.DiaChi = DiaChi;
             nvq.SDT = DienThoai;
-            nvq.HinhNV = HinhNV;
+            if (HinhNV != string.Empty)
+            {
+                nvq.HinhNV = HinhNV;
+            }
             qlbhEntity.SaveChanges();
             return true;
         }

@@ -8,6 +8,7 @@
     <Property Name="TenBan" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
     <Property Name="SucChua" Type="int" Nullable="false" />
+    <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="CHITIETHOADON">
     <Key>
@@ -32,6 +33,7 @@
     </Key>
     <Property Name="IDDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="HOADON">
     <Key>
@@ -41,6 +43,7 @@
     <Property Name="IDBan" Type="int" Nullable="false" />
     <Property Name="IDNhanVien" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="NgayLap" Type="datetime" Nullable="false" />
+    <Property Name="NgayThanhToan" Type="datetime" />
     <Property Name="TongTien" Type="int" Nullable="false" />
     <Property Name="KhuyenMai" Type="varchar" MaxLength="10" />
   </EntityType>
@@ -53,6 +56,7 @@
     <Property Name="TenMon" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="GiaTien" Type="int" Nullable="false" />
     <Property Name="HinhMA" Type="varchar" MaxLength="100" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
@@ -67,6 +71,7 @@
     <Property Name="Email" Type="varchar" MaxLength="30" />
     <Property Name="HinhNV" Type="varchar" MaxLength="100" />
     <Property Name="IDCongViec" Type="int" Nullable="false" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TAIKHOAN">
     <Key>
