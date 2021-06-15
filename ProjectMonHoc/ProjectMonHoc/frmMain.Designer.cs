@@ -179,6 +179,7 @@ namespace ProjectMonHoc
             // 
             // tabBan
             // 
+            this.tabBan.AutoScroll = true;
             this.tabBan.Location = new System.Drawing.Point(4, 44);
             this.tabBan.Name = "tabBan";
             this.tabBan.Padding = new System.Windows.Forms.Padding(3);

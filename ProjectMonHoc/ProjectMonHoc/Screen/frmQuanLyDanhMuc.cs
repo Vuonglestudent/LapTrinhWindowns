@@ -39,8 +39,8 @@ namespace ProjectMonHoc.Screen
             btnSua.Enabled = false;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
-            txtIDDanhMuc.Text = (BLDanhMuc.Instance.SoLuongDanhMuc() + 1).ToString();
             txtIDDanhMuc.Enabled = false;
+            txtIDDanhMuc.ResetText();
             txtTenDanhMuc.ResetText();
             txtTenDanhMuc.Focus();
         }
@@ -62,7 +62,7 @@ namespace ProjectMonHoc.Screen
             {
                 try
                 {
-                    BLDanhMuc.Instance.ThemDanhMuc(int.Parse(txtIDDanhMuc.Text), txtTenDanhMuc.Text);
+                    BLDanhMuc.Instance.ThemDanhMuc(txtTenDanhMuc.Text);
                     LoadDataDanhMuc();
                     MessageBox.Show("Đã thêm xong");
                 }

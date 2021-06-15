@@ -48,20 +48,20 @@ namespace ProjectMonHoc.BL_Layer
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             var tdm = from dm in ql.DANHMUCs
                       where dm.TrangThai == false
-                      select new { dm.TenDanhMuc };
+                      select new { dm.IDDanhMuc, dm.TenDanhMuc };
             foreach (var item in tdm.ToList())
             {
                 DANHMUC dm = new DANHMUC();
+                dm.IDDanhMuc = item.IDDanhMuc;
                 dm.TenDanhMuc = item.TenDanhMuc;
                 lstTabDanhMuc.Add(dm);
             }
             return lstTabDanhMuc;
         }
-        public bool ThemDanhMuc(int IDDanhMuc, string TenDanhMuc)
+        public bool ThemDanhMuc(string TenDanhMuc)
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             DANHMUC dm = new DANHMUC();
-            dm.IDDanhMuc = IDDanhMuc;
             dm.TenDanhMuc = TenDanhMuc;
             ql.DANHMUCs.Add(dm);
             ql.SaveChanges();

@@ -78,42 +78,17 @@ namespace ProjectMonHoc
         /// <summary>
         /// Load dữ liệu từ Table BAN
         /// </summary>
-        void LoadDataBan()
-        {
-            try
-            {
-                this.lstBan = BLBan.Instance.LayBan();
-                Point pointBan = new Point(18, 35);
-                Size sizeBan = new Size(132, 125);
-                int count = 1;
-                foreach (BAN item in lstBan)
-                {
-                    AddButtonAndLabelBan(item, pointBan, sizeBan);
-                    if (count%2 != 0)
-                    {
-                        pointBan.X = pointBan.X + 147;
-                    } else
-                    {
-                        pointBan.X = pointBan.X - 147;
-                        pointBan.Y = pointBan.Y + 147;
-                    }
-                    count++;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi load bàn");
-            }
-        }
+
+        #region LoadDanhMuc
         void LoadDataDanhMuc()
         {
             try
             {
+                tabDoUong.Controls.Clear();
                 this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
                 foreach (DANHMUC item in listDanhMuc)
                 {
-                    var tab = listTabDanhMuc.Where(x => x.Name == "tab" + item.TenDanhMuc).SingleOrDefault();
-                    if(tab == null) AddTabDanhMuc(item);                    
+                    AddTabDanhMuc(item);                    
                 }                
             }
             catch
@@ -121,6 +96,23 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load danh mục");
             }
         }
+        void AddTabDanhMuc(DANHMUC item)
+        {
+            TabPage newtabPage;
+            var tab = listTabDanhMuc.Where(x => x.Name == item.IDDanhMuc.ToString()).SingleOrDefault();
+            if (tab == null)
+            {
+                newtabPage = new TabPage();
+                newtabPage.Name = item.IDDanhMuc.ToString();
+                listTabDanhMuc.Add(newtabPage);
+            }
+            else newtabPage = tab;
+            newtabPage.Text = item.TenDanhMuc.ToString();
+            tabDoUong.Controls.Add(newtabPage);
+        }
+        #endregion
+
+        #region LoadMonAn
         void LoadMon()
         {
             int number = BLDanhMuc.Instance.SoLuongDanhMuc();
@@ -133,6 +125,7 @@ namespace ProjectMonHoc
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
                     Point point = new Point(29, 28);
                     int count = 1;
+                    listTabDanhMuc[i].Controls.Clear();
                     foreach (MONAN item in listMon)
                     {
                         AddButtonNuoc(item, point, size, listTabDanhMuc[i]);
@@ -178,6 +171,37 @@ namespace ProjectMonHoc
             newLabel.TextAlign = ContentAlignment.MiddleCenter;
             newLabel.Name = "lb" + item.IDMonAn;
         }
+        #endregion
+
+        #region LoadBan
+        void LoadDataBan()
+        {
+            try
+            {
+                this.lstBan = BLBan.Instance.LayBan();
+                Point pointBan = new Point(18, 35);
+                Size sizeBan = new Size(132, 125);
+                int count = 1;
+                foreach (BAN item in lstBan)
+                {
+                    AddButtonAndLabelBan(item, pointBan, sizeBan);
+                    if (count % 2 != 0)
+                    {
+                        pointBan.X = pointBan.X + 147;
+                    }
+                    else
+                    {
+                        pointBan.X = pointBan.X - 147;
+                        pointBan.Y = pointBan.Y + 147;
+                    }
+                    count++;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi load bàn");
+            }
+        }
 
         void AddButtonAndLabelBan(BAN item, Point local, Size size)
         {
@@ -222,16 +246,9 @@ namespace ProjectMonHoc
             //thay bằng :
             //newButton.Click += btnBan_Click;
         }
-        void AddTabDanhMuc(DANHMUC item)
-        {
-            TabPage newtabPage = new TabPage();
-            tabDoUong.Controls.Add(newtabPage);
-            newtabPage.Name = "tab" + item.TenDanhMuc;
-            newtabPage.Text = item.TenDanhMuc.ToString();
-            listTabDanhMuc.Add(newtabPage);
-            
-        }
+        #endregion
 
+        #region EventBanClick
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
         {
             int IDBan = item.IDBan;  //Lấy IDBan của Bàn đang được click;
@@ -271,7 +288,15 @@ namespace ProjectMonHoc
             ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).BackColor = color.colorTrong;
             ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).Text = "Còn trống";
         }
+        private void ShowBill(int IDBan)
+        {
+            dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
+            dgvBill.Columns["IDHoaDon"].Visible = false;
+            tbxTongTien.Text = TinhTongBill().ToString();
+        }
+        #endregion
 
+        #region EventMonClick
         private void btnMonNuoc_Click(object sender, MouseEventArgs e)
         {
             if (BanDangChon != null)
@@ -292,16 +317,6 @@ namespace ProjectMonHoc
                 }
             }
         }
-
-
-
-        private void ShowBill(int IDBan)
-        {
-            dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
-            dgvBill.Columns["IDHoaDon"].Visible = false;
-            tbxTongTien.Text = TinhTongBill().ToString() ;
-        }
-
         private void AddMon(string IDMonAn)
         {
             bool checkNull = true; //Ban đầu giả sử món nước chưa từng được add vào bill tạm thì check = true
@@ -339,6 +354,9 @@ namespace ProjectMonHoc
             dgvBill.DataSource = bill;
             this.tbxTongTien.Text = this.TinhTongBill().ToString();
         }
+        #endregion
+
+        #region ThanhToan
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             try
@@ -375,6 +393,7 @@ namespace ProjectMonHoc
             this.cbbGiamGia.SelectedIndex = 0;
             this.dgvBill.DataSource = bill;
         }
+        #endregion
 
         #region LOGIN
         private void menuItemDangNhap_Click(object sender, EventArgs e)
@@ -492,6 +511,7 @@ namespace ProjectMonHoc
 
         #endregion
 
+        #region event frm
         private void tbxTienKhachDua_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -552,5 +572,6 @@ namespace ProjectMonHoc
             frmXemHoaDon frmHoaDon = new frmXemHoaDon();
             frmHoaDon.ShowDialog();
         }
+        #endregion
     }
 }
