@@ -254,7 +254,6 @@
     <Content Include="Images\NV009.jpg" />
     <Content Include="Images\NV010.jpg" />
     <Content Include="Images\NV011.jpg" />
-    <Content Include="Images\NV012.jpg" />
     <None Include="Images\MA022.jpg" />
     <None Include="Images\MA023.jpg" />
     <None Include="Images\MA024.jpg" />

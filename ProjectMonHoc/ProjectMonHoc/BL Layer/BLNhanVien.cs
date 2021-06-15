@@ -83,7 +83,6 @@ namespace ProjectMonHoc.BL_Layer
             {
                 return false;
             }
-            nvq.IDNhanVien = IDNhanVien;
             nvq.IDCongViec = IDCongViec;
             nvq.Ho = Ho;
             nvq.Ten = Ten;
