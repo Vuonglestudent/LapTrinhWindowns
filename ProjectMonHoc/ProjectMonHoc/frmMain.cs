@@ -75,9 +75,6 @@ namespace ProjectMonHoc
             new DataColumn("ThanhTien"),
             });
         }
-        /// <summary>
-        /// Load dữ liệu từ Table BAN
-        /// </summary>
 
         #region LoadDanhMuc
         void LoadDataDanhMuc()
@@ -157,7 +154,14 @@ namespace ProjectMonHoc
             tab.Controls.Add(newLabel);
 
             newButton.Name = "btn" + item.IDMonAn;
-            Image img = Image.FromFile(@"../../Images/" + item.HinhMA);
+            Image img;
+            try
+            {
+                img = Image.FromFile(@"../../Images/" + item.HinhMA);
+            } catch 
+            {
+                img = Image.FromFile(@"../../Images/default.jpg");
+            }
             newButton.BackgroundImage = img;
             newButton.BackgroundImageLayout = ImageLayout.Stretch;
             newButton.Location = local;
