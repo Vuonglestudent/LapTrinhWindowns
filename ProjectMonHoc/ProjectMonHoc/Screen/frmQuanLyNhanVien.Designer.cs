@@ -29,10 +29,10 @@ namespace ProjectMonHoc.Screen
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -41,12 +41,6 @@ namespace ProjectMonHoc.Screen
             this.btnReload = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.dgvNHANVIEN = new System.Windows.Forms.DataGridView();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pbImageUser = new System.Windows.Forms.PictureBox();
@@ -63,6 +57,18 @@ namespace ProjectMonHoc.Screen
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtIDCongViec = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtIDNhanVien = new System.Windows.Forms.TextBox();
+            this.IDNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCongViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNHANVIEN)).BeginInit();
             this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImageUser)).BeginInit();
@@ -78,6 +84,7 @@ namespace ProjectMonHoc.Screen
             this.btnHuy.TabIndex = 80;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
@@ -89,6 +96,7 @@ namespace ProjectMonHoc.Screen
             this.btnLuu.TabIndex = 79;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnSua
             // 
@@ -100,6 +108,7 @@ namespace ProjectMonHoc.Screen
             this.btnSua.TabIndex = 78;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -112,6 +121,7 @@ namespace ProjectMonHoc.Screen
             this.btnThem.TabIndex = 77;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -123,6 +133,7 @@ namespace ProjectMonHoc.Screen
             this.btnXoa.TabIndex = 76;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnReload
             // 
@@ -149,97 +160,59 @@ namespace ProjectMonHoc.Screen
             // 
             this.dgvNHANVIEN.AllowUserToAddRows = false;
             this.dgvNHANVIEN.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvNHANVIEN.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvNHANVIEN.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvNHANVIEN.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvNHANVIEN.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNHANVIEN.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNHANVIEN.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvNHANVIEN.ColumnHeadersHeight = 45;
             this.dgvNHANVIEN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvNHANVIEN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDNhanVien,
             this.HoTen,
+            this.IDCongViec,
             this.NgaySinh,
             this.Email,
             this.DiaChi,
             this.SDT,
             this.Hinh});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNHANVIEN.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNHANVIEN.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvNHANVIEN.GridColor = System.Drawing.Color.White;
-            this.dgvNHANVIEN.Location = new System.Drawing.Point(12, 174);
+            this.dgvNHANVIEN.Location = new System.Drawing.Point(12, 226);
             this.dgvNHANVIEN.Name = "dgvNHANVIEN";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNHANVIEN.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNHANVIEN.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvNHANVIEN.RowHeadersVisible = false;
-            this.dgvNHANVIEN.Size = new System.Drawing.Size(1039, 355);
+            this.dgvNHANVIEN.Size = new System.Drawing.Size(1039, 303);
             this.dgvNHANVIEN.TabIndex = 82;
-            this.dgvNHANVIEN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNHANVIEN_CellContentClick);
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 287;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày Sinh";
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.Width = 256;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.Width = 287;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 277;
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "Số Điện Thoại";
-            this.SDT.Name = "SDT";
-            this.SDT.Width = 276;
-            // 
-            // Hinh
-            // 
-            this.Hinh.DataPropertyName = "Hinh";
-            this.Hinh.HeaderText = "Hình";
-            this.Hinh.Name = "Hinh";
-            this.Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Hinh.Width = 150;
+            this.dgvNHANVIEN.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNHANVIEN_CellClick);
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.txtIDNhanVien);
+            this.gbInfo.Controls.Add(this.label9);
+            this.gbInfo.Controls.Add(this.txtIDCongViec);
+            this.gbInfo.Controls.Add(this.label8);
             this.gbInfo.Controls.Add(this.label1);
             this.gbInfo.Controls.Add(this.pbImageUser);
             this.gbInfo.Controls.Add(this.btnSelectFile);
@@ -258,7 +231,7 @@ namespace ProjectMonHoc.Screen
             this.gbInfo.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbInfo.Location = new System.Drawing.Point(17, 12);
             this.gbInfo.Name = "gbInfo";
-            this.gbInfo.Size = new System.Drawing.Size(1138, 156);
+            this.gbInfo.Size = new System.Drawing.Size(1138, 195);
             this.gbInfo.TabIndex = 83;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin";
@@ -291,6 +264,7 @@ namespace ProjectMonHoc.Screen
             this.btnSelectFile.TabIndex = 54;
             this.btnSelectFile.Text = "Choose File";
             this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
             // 
             // txtEmailNV
             // 
@@ -397,6 +371,96 @@ namespace ProjectMonHoc.Screen
             this.label2.TabIndex = 42;
             this.label2.Text = "Họ";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 26);
+            this.label8.TabIndex = 57;
+            this.label8.Text = "IDCV";
+            // 
+            // txtIDCongViec
+            // 
+            this.txtIDCongViec.Location = new System.Drawing.Point(97, 152);
+            this.txtIDCongViec.Name = "txtIDCongViec";
+            this.txtIDCongViec.Size = new System.Drawing.Size(246, 33);
+            this.txtIDCongViec.TabIndex = 58;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(355, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(124, 26);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "ID Nhân Viên";
+            // 
+            // txtIDNhanVien
+            // 
+            this.txtIDNhanVien.Location = new System.Drawing.Point(490, 148);
+            this.txtIDNhanVien.Name = "txtIDNhanVien";
+            this.txtIDNhanVien.Size = new System.Drawing.Size(214, 33);
+            this.txtIDNhanVien.TabIndex = 60;
+            // 
+            // IDNhanVien
+            // 
+            this.IDNhanVien.DataPropertyName = "IDNhanVien";
+            this.IDNhanVien.HeaderText = "ID Nhân Viên";
+            this.IDNhanVien.Name = "IDNhanVien";
+            this.IDNhanVien.Width = 150;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 287;
+            // 
+            // IDCongViec
+            // 
+            this.IDCongViec.DataPropertyName = "IDCongViec";
+            this.IDCongViec.HeaderText = "ID Công Việc";
+            this.IDCongViec.Name = "IDCongViec";
+            this.IDCongViec.Width = 130;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày Sinh";
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.Width = 256;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Width = 287;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 277;
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "Số Điện Thoại";
+            this.SDT.Name = "SDT";
+            this.SDT.Width = 276;
+            // 
+            // Hinh
+            // 
+            this.Hinh.DataPropertyName = "Hinh";
+            this.Hinh.HeaderText = "Hình";
+            this.Hinh.Name = "Hinh";
+            this.Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Hinh.Width = 150;
+            // 
             // frmQuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,12 +511,18 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtIDNhanVien;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtIDCongViec;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCongViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
         private System.Windows.Forms.DataGridViewImageColumn Hinh;
-        private System.Windows.Forms.Label label1;
     }
 }
