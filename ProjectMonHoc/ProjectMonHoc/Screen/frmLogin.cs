@@ -16,6 +16,14 @@ namespace ProjectMonHoc
         public frmLogin()
         {
             InitializeComponent();
+            this.tbxTK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxTK.Controls.Add(new Label { Height = 3, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });
+            this.tbxMK.Controls.Add(new Label { Height = 3, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });
+            this.tbxTK.GotFocus += RemovePHTextUserName;
+            this.tbxTK.LostFocus += AddPHTextUserName;
+            this.tbxMK.GotFocus += RemovePHTextPassword;
+            this.tbxMK.LostFocus += AddPHTextPassword;
+
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -46,6 +54,38 @@ namespace ProjectMonHoc
         {
             if (e.KeyCode == Keys.Enter)
                 btnDangNhap_Click(sender, e);
+        }
+
+        public void RemovePHTextUserName(object sender, EventArgs e)
+        {
+            if (this.tbxTK.Text == "Tài khoản...")
+            {
+                this.tbxTK.Text = "";
+            }
+        }
+
+        public void AddPHTextUserName(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.tbxTK.Text))
+                this.tbxTK.Text = "Tài khoản...";
+        }
+
+        public void RemovePHTextPassword(object sender, EventArgs e)
+        {
+            this.tbxMK.UseSystemPasswordChar = true;
+            if (this.tbxMK.Text == "Mật khẩu...")
+            {
+                this.tbxMK.Text = "";
+            }
+        }
+
+        public void AddPHTextPassword(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.tbxMK.Text))
+            {
+                this.tbxMK.UseSystemPasswordChar = false;
+                this.tbxMK.Text = "Mật khẩu...";
+            }
         }
     }
 }

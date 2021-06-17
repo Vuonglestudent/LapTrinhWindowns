@@ -30,7 +30,6 @@ namespace ProjectMonHoc.Screen
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbDanhMucMon = new System.Windows.Forms.ComboBox();
             this.dgvQLMonAn = new System.Windows.Forms.DataGridView();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,28 +74,20 @@ namespace ProjectMonHoc.Screen
             this.dgvQLMonAn.BackgroundColor = System.Drawing.Color.White;
             this.dgvQLMonAn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvQLMonAn.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvQLMonAn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvQLMonAn.ColumnHeadersHeight = 45;
             this.dgvQLMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvQLMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenMon,
             this.GiaMon,
             this.Hinh});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvQLMonAn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvQLMonAn.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvQLMonAn.GridColor = System.Drawing.Color.White;
             this.dgvQLMonAn.Location = new System.Drawing.Point(26, 99);
             this.dgvQLMonAn.Margin = new System.Windows.Forms.Padding(5);
@@ -199,7 +190,7 @@ namespace ProjectMonHoc.Screen
             // 
             this.pbImage.BackgroundImage = global::ProjectMonHoc.Properties.Resources._default;
             this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbImage.Location = new System.Drawing.Point(176, 264);
+            this.pbImage.Location = new System.Drawing.Point(174, 264);
             this.pbImage.Margin = new System.Windows.Forms.Padding(5);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(298, 268);

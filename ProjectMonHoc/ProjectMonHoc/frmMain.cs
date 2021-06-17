@@ -14,6 +14,7 @@ using ProjectMonHoc.EntityModel;
 using ProjectMonHoc.Screen;
 using System.IO;
 using System.Reflection;
+using System.Drawing.Drawing2D;
 
 namespace ProjectMonHoc
 {
@@ -34,7 +35,7 @@ namespace ProjectMonHoc
         Button BanDangChon = null;
 
         public string loginStatus = null;
-        string user;
+        NHANVIEN userCurrent;
 
         DataTable bill = new DataTable();
 
@@ -42,20 +43,23 @@ namespace ProjectMonHoc
 
         public frmMain()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Rectangle r = new Rectangle(0, 0, ptbAvatar.Width, ptbAvatar.Height);
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(new Rectangle(0, 0, ptbAvatar.Width - 1, ptbAvatar.Height - 1));
+            Region rg = new Region(gp);
+            ptbAvatar.Region = rg;
+            ptbAvatar.BackgroundImageLayout = ImageLayout.Stretch;
+            pnDropDownMenuAvatar.Height = 0;
+
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadFrom();
             khoiTaoBillTam();
-            tabControlBan.Enabled = false;
-            tabDoUong.Enabled = false;
-            btnAddBill.Enabled = false;
-            btnThanhToan.Enabled = false;
-            btnHuyBill.Enabled = false;
-            cbbGiamGia.Visible = false;
-            label2.Visible = false;
+            this.pnMain.Enabled = false;
         }
 
         private void LoadFrom()
@@ -63,6 +67,7 @@ namespace ProjectMonHoc
             LoadDataBan();
             LoadDataDanhMuc();
             LoadMon();
+            LoadAvatar();
         }
 
         void khoiTaoBillTam()
@@ -75,6 +80,34 @@ namespace ProjectMonHoc
             new DataColumn("ThanhTien"),
             });
         }
+
+        #region avatar Menu dropdown
+        void LoadAvatar()
+        {
+            Image img;
+            img = userCurrent == null 
+                ? Image.FromFile(@"../../Images/default.jpg") 
+                : Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
+            ptbAvatar.BackgroundImage = img;
+            lbFullName.Text = userCurrent == null
+                ? "Hello"
+                : "Hello \n" + userCurrent.Ho + " " + userCurrent.Ten;
+            this.tmrDropdownMenu.Interval = 1;
+            LoadDropDownMenuAvatar();
+        }
+        void LoadDropDownMenuAvatar()
+        {
+            CreateItemMenu("account.png", this.btnXemHoSo, null);
+            CreateItemMenu("changePassword.png", this.btnChangePass, null);
+        }
+
+        void CreateItemMenu(string icon, Button btnIcon, EventHandler eventClick) 
+        {
+            Image img = Image.FromFile(@"../../Images/" + icon);
+            btnIcon.Image = (Image)(new Bitmap(img, new Size(15, 15)));
+            btnIcon.Controls.Add(new Label() { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
+        }
+        #endregion
 
         #region LoadDanhMuc
         void LoadDataDanhMuc()
@@ -365,11 +398,11 @@ namespace ProjectMonHoc
         {
             try
             {
-                int tienThua = int.Parse(tbxTienThua.Text);
+                int tienThua = int.Parse(tbxTienThua.Text.Split('$')[0]);
                 if (tienThua >= 0)
                 {
                     int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
-                    string idHoaDon = dgvBill.Rows[0].Cells[1].Value.ToString();
+                    string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
                     bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
                     if (check)
                     {
@@ -393,7 +426,9 @@ namespace ProjectMonHoc
         {
             this.tbxTienThua.ResetText();
             this.tbxTongTien.ResetText();
+            this.tbxTienKhachDua.TextChanged -= tbxTienKhachDua_TextChanged;
             this.tbxTienKhachDua.ResetText();
+            this.tbxTienKhachDua.TextChanged += tbxTienKhachDua_TextChanged;
             this.cbbGiamGia.SelectedIndex = 0;
             this.dgvBill.DataSource = bill;
         }
@@ -406,23 +441,20 @@ namespace ProjectMonHoc
             loginForm.ShowDialog();
         }
 
-        public void login(byte type, string user) //hàm login theo type được gọi ở form Login nếu đăng nhập đúng
+        public void login(byte type, string username) //hàm login theo type được gọi ở form Login nếu đăng nhập đúng
         {
 
             this.menuItemDangXuat.Enabled = true;
             this.menuItemDoiMatKhau.Enabled = true;
             this.menuItemDanhMuc.Enabled = true;
             this.menuItemDangNhap.Enabled = false;
-            this.user = user;
-            btnAddBill.Enabled = true;
-            btnThanhToan.Enabled = true;
-            btnHuyBill.Enabled = true;
+            this.userCurrent = BLNhanVien.Instance.LayNhanVienByUserName(username);
+            LoadAvatar();
+            this.pnMain.Enabled = true;
             if (type == 1)
             {
                 this.menuItemAdmin.Enabled = true;
             }
-            tabDoUong.Enabled = true;
-            tabControlBan.Enabled = true;
         }
 
         private void menuItemDangXuat_Click(object sender, EventArgs e)
@@ -432,13 +464,10 @@ namespace ProjectMonHoc
             this.menuItemDanhMuc.Enabled = false;
             this.menuItemAdmin.Enabled = false;
             this.menuItemDangNhap.Enabled = true;
-            btnHuyBill.Enabled = false;
-            btnAddBill.Enabled = false;
-            btnHuyBill.Enabled = false;
-            this.user = "";
+            this.pnMain.Enabled = false;
+            this.userCurrent = null;
+            LoadAvatar();
             MessageBox.Show("Đã đăng xuất!");
-            tabDoUong.Enabled = false;
-            tabControlBan.Enabled = false;
         }
         #endregion
 
@@ -456,24 +485,31 @@ namespace ProjectMonHoc
             }
         }
 
-        int TinhTongBill()
+        string TinhTongBill()
         {
             int sum = 0;
             foreach (DataGridViewRow row in dgvBill.Rows)
-                sum = sum + int.Parse(row.Cells["columnThanhTien"].Value.ToString());
-            return sum;
+                sum = sum + int.Parse(row.Cells["ThanhTien"].Value.ToString());
+            return sum + "$";
         }
 
         private void btnAddBill_Click(object sender, EventArgs e)
         {
             DateTime time = DateTime.Now;
             string IDHoaDon = TaoIDHoaDon();
-            BLHoaDon.Instance.ThemHoaDon(IDHoaDon,BLTaiKhoan.Instance.LayIDNhanVien(user), int.Parse(BanDangChon.Tag.ToString()), time, int.Parse(tbxTongTien.Text), cbbGiamGia.SelectedText);
+            BLHoaDon.Instance.ThemHoaDon(
+                IDHoaDon, 
+                userCurrent.IDNhanVien, 
+                int.Parse(BanDangChon.Tag.ToString()), 
+                time, 
+                int.Parse(tbxTongTien.Text.Split('$')[0]), 
+                cbbGiamGia.SelectedText
+            );
             foreach (DataGridViewRow row in dgvBill.Rows)
             {
-                string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["columnTen"].Value.ToString());
-                int SoLuong = int.Parse(row.Cells["columnSoLuong"].Value.ToString());
-                int GiaTien = int.Parse(row.Cells["columnThanhTien"].Value.ToString());
+                string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["TenMon"].Value.ToString());
+                int SoLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
+                int GiaTien = int.Parse(row.Cells["ThanhTien"].Value.ToString());
                 BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
             }
             BanDangChon.BackColor = color.colorCoKhach;
@@ -536,17 +572,22 @@ namespace ProjectMonHoc
 
         private void tbxTienKhachDua_TextChanged(object sender, EventArgs e)
         {
-            if (tbxTienKhachDua.Text != "" && tbxTongTien.Text != "")
+            int tienKhachDua = tbxTienKhachDua.Text != "$" 
+                ? int.Parse(tbxTienKhachDua.Text.Split('$')[0].ToString()) 
+                : 0;
+            int tongTien = int.Parse(tbxTongTien.Text.Split('$')[0].ToString());
+            if (tienKhachDua.ToString() != "" && tongTien.ToString() != "")
             {
-                int tienThua = int.Parse(tbxTienKhachDua.Text) - int.Parse(tbxTongTien.Text);
+                float tienThua = tienKhachDua - tongTien;
                 if (tienThua >= 0)
                 {
-                    this.tbxTienThua.Text = tienThua.ToString();
+                    this.tbxTienThua.Text = tienThua.ToString() + "$";
                 } else
                 {
                     this.tbxTienThua.ResetText();
                 }
             }
+            tbxTienKhachDua.Text = tienKhachDua + "$";
         }
 
         private void quảnLýMónĂnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -577,5 +618,38 @@ namespace ProjectMonHoc
             frmHoaDon.ShowDialog();
         }
         #endregion
+
+        private void ptbAvatar_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    {
+                        pnDropDownMenuAvatar.Height = 0;
+                        this.tmrDropdownMenu.Enabled = true;
+                        this.pnMain.Click += eventClick;
+                    }
+                    break;
+            }
+        }
+
+        private void eventClick(object sender, EventArgs e)
+        {
+            tmrDropdownMenu.Enabled = false;
+            pnDropDownMenuAvatar.Height = 0;
+            this.pnMain.Click -= eventClick;
+        }
+
+        private void tmrDropdownMenu_Tick(object sender, EventArgs e)
+        {
+            while (pnDropDownMenuAvatar.Height< 100)
+            {
+                if (pnDropDownMenuAvatar.Height < 100)
+                {
+                    pnDropDownMenuAvatar.Height = pnDropDownMenuAvatar.Height + 5;
+                }
+                break;
+            }
+        }
     }
 }
