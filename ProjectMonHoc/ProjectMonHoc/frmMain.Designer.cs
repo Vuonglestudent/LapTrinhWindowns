@@ -52,7 +52,6 @@ namespace ProjectMonHoc
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnXemHoSo = new System.Windows.Forms.Button();
             this.lbFullName = new System.Windows.Forms.Label();
-            this.ptbAvatar = new System.Windows.Forms.PictureBox();
             this.tabDoUong = new System.Windows.Forms.TabControl();
             this.btnAddBill = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,14 +74,15 @@ namespace ProjectMonHoc
             this.tabControlBan = new System.Windows.Forms.TabControl();
             this.tabBan = new System.Windows.Forms.TabPage();
             this.tmrDropdownMenu = new System.Windows.Forms.Timer(this.components);
+            this.ptbAvatar = new System.Windows.Forms.PictureBox();
             this.menuStripHeThong.SuspendLayout();
             this.pnMain.SuspendLayout();
             this.pnDropDownMenuAvatar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.tabControlBan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // tàiKhoảnToolStripMenuItem
@@ -98,7 +98,7 @@ namespace ProjectMonHoc
             // menuItemDangNhap
             // 
             this.menuItemDangNhap.Name = "menuItemDangNhap";
-            this.menuItemDangNhap.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangNhap.Size = new System.Drawing.Size(180, 24);
             this.menuItemDangNhap.Text = "Đăng Nhập";
             this.menuItemDangNhap.Click += new System.EventHandler(this.menuItemDangNhap_Click);
             // 
@@ -106,7 +106,7 @@ namespace ProjectMonHoc
             // 
             this.menuItemDangXuat.Enabled = false;
             this.menuItemDangXuat.Name = "menuItemDangXuat";
-            this.menuItemDangXuat.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangXuat.Size = new System.Drawing.Size(180, 24);
             this.menuItemDangXuat.Text = "Đăng Xuất";
             this.menuItemDangXuat.Click += new System.EventHandler(this.menuItemDangXuat_Click);
             // 
@@ -114,7 +114,7 @@ namespace ProjectMonHoc
             // 
             this.menuItemDoiMatKhau.Enabled = false;
             this.menuItemDoiMatKhau.Name = "menuItemDoiMatKhau";
-            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(180, 24);
             this.menuItemDoiMatKhau.Text = "Đổi Mật Khẩu";
             // 
             // menuItemAdmin
@@ -278,6 +278,7 @@ namespace ProjectMonHoc
             this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // btnXemHoSo
             // 
@@ -293,6 +294,7 @@ namespace ProjectMonHoc
             this.btnXemHoSo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXemHoSo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXemHoSo.UseVisualStyleBackColor = true;
+            this.btnXemHoSo.Click += new System.EventHandler(this.btnXemHoSo_Click);
             // 
             // lbFullName
             // 
@@ -302,15 +304,6 @@ namespace ProjectMonHoc
             this.lbFullName.Size = new System.Drawing.Size(152, 37);
             this.lbFullName.TabIndex = 35;
             this.lbFullName.Text = "Hello";
-            // 
-            // ptbAvatar
-            // 
-            this.ptbAvatar.Location = new System.Drawing.Point(1509, 0);
-            this.ptbAvatar.Name = "ptbAvatar";
-            this.ptbAvatar.Size = new System.Drawing.Size(42, 42);
-            this.ptbAvatar.TabIndex = 34;
-            this.ptbAvatar.TabStop = false;
-            this.ptbAvatar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbAvatar_MouseClick);
             // 
             // tabDoUong
             // 
@@ -557,6 +550,15 @@ namespace ProjectMonHoc
             // 
             this.tmrDropdownMenu.Tick += new System.EventHandler(this.tmrDropdownMenu_Tick);
             // 
+            // ptbAvatar
+            // 
+            this.ptbAvatar.Location = new System.Drawing.Point(1509, 0);
+            this.ptbAvatar.Name = "ptbAvatar";
+            this.ptbAvatar.Size = new System.Drawing.Size(42, 42);
+            this.ptbAvatar.TabIndex = 34;
+            this.ptbAvatar.TabStop = false;
+            this.ptbAvatar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbAvatar_MouseClick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -576,11 +578,11 @@ namespace ProjectMonHoc
             this.pnMain.ResumeLayout(false);
             this.pnMain.PerformLayout();
             this.pnDropDownMenuAvatar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.tabControlBan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

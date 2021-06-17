@@ -619,6 +619,7 @@ namespace ProjectMonHoc
         }
         #endregion
 
+        #region eventAvatarMenu
         private void ptbAvatar_MouseClick(object sender, MouseEventArgs e)
         {
             switch (e.Button)
@@ -650,6 +651,19 @@ namespace ProjectMonHoc
                 }
                 break;
             }
+        }
+
+        private void btnXemHoSo_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        #endregion
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            frmChangePassword changePassword = new frmChangePassword();
+            changePassword.ShowDialog();
         }
     }
 }
