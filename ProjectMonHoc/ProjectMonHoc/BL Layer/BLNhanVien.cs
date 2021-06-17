@@ -44,6 +44,22 @@ namespace ProjectMonHoc.BL_Layer
             }
             return lstNV;
         }
+        public NHANVIEN LayNhanVienByUserName(string username)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var query = ql.TAIKHOANs.Where(x => x.TaiKhoan1 == username)
+                .Join(ql.NHANVIENs, x => x.IDNhanVien, y => y.IDNhanVien, (x, y) => y)
+                .SingleOrDefault();
+            NHANVIEN nv = new NHANVIEN();
+            if (query != null)
+            {
+                nv.IDNhanVien = query.IDNhanVien;
+                nv.Ho = query.Ho;
+                nv.Ten = query.Ten;
+                nv.HinhNV = query.HinhNV;
+            }
+            return nv;
+        }
         public bool ThemNhanVien(string IDNhanVien, string Ho, int IDCongViec, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV)
         {
             QuanLyNhaHangProjectEntities qlbhEntity = new QuanLyNhaHangProjectEntities();

@@ -48,9 +48,9 @@ namespace ProjectMonHoc.BL_Layer
             {
                 hd.NgayThanhToan = DateTime.Now;
                 ql.SaveChanges();
-                return true;
             }
-            else return false;
+            return true;
+
         }
 
         public DataTable LayHoaDon() //Không sử dụng
