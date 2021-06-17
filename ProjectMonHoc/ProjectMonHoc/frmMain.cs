@@ -682,7 +682,7 @@ namespace ProjectMonHoc
         #endregion
 
         private void ptbAvatar_MouseClick(object sender, MouseEventArgs e)
-        
+        {             
             switch (e.Button)
             {
                 case MouseButtons.Left:
