@@ -176,6 +176,7 @@ namespace ProjectMonHoc
         #region LoadBan
         void LoadDataBan()
         {
+            tabBan.Controls.Clear();
             try
             {
                 this.lstBan = BLBan.Instance.LayBan();
@@ -237,15 +238,20 @@ namespace ProjectMonHoc
             }
 
             //Tạm comment
-
+            
             newButton.Click += (s, e) =>
             {
                 btnBan_Click(s, e, newButton, newLabel, item);
             };
-
+            newButton.MouseDown += (s, e) =>
+            {
+                btnBan_MouseDown(s, e, newButton, newLabel, item);
+            };
+            
             //thay bằng :
             //newButton.Click += btnBan_Click;
         }
+        
         #endregion
 
         #region EventBanClick
@@ -279,6 +285,62 @@ namespace ProjectMonHoc
                 dgvBill.DataSource = bill;
                 this.tbxTongTien.Text = this.TinhTongBill().ToString();
             }
+        }
+
+        private void btnBan_MouseDown(object sender, MouseEventArgs e, Button btnBan, Label lbBan, BAN item)
+        {            
+            int IDBan = item.IDBan;
+            BanDangChon = (Button)sender;
+            ContextMenuStrip cmsBtnBan = new ContextMenuStrip();
+            var sua = new ToolStripMenuItem() { Text = "Sửa" };
+            var xoa = new ToolStripMenuItem() { Text = "Xóa" };
+            cmsBtnBan.Items.Add(sua);
+            cmsBtnBan.Items.Add(xoa);
+            Point p = new Point();
+            p.X = btnBan.Location.X + 150;
+            p.Y = btnBan.Location.Y + 150;
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    cmsBtnBan.Show(p);
+                    break;
+            }
+            sua.Click += (s, ev) =>
+            {
+                Sua_Click(s, e, btnBan, item);
+            };
+            xoa.Click += (s, ev) =>
+            {
+                Xoa_Click(s, e, btnBan, item);
+            };
+        }
+
+        private void Xoa_Click(object sender, EventArgs e, Button btnBan, BAN item)
+        {
+            string question = "Bạn có muốn xóa " + item.TenBan + " không?";
+            DialogResult traloi = MessageBox.Show(question, "Confirm", MessageBoxButtons.YesNo);
+            if (traloi == DialogResult.Yes)
+            {
+                try
+                {
+                    BLBan.Instance.XoaBan(item.IDBan);
+                    MessageBox.Show("Xóa thành công");
+                    LoadDataBan();
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa không thành công");
+                }
+            }
+        }
+
+        private void Sua_Click(object sender, EventArgs e, Button btnBan, BAN item)
+        {
+            frmSuaBan formsua = new frmSuaBan();
+            formsua.idban = item.IDBan;
+            formsua.succhua = item.SucChua;
+            formsua.tenban = item.TenBan;
+            formsua.ShowDialog();
         }
 
         private void ChangeStateBan()
@@ -573,5 +635,30 @@ namespace ProjectMonHoc
             frmHoaDon.ShowDialog();
         }
         #endregion
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadDataBan();
+        }
+
+        private void tabBan_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point p = new Point();
+            p.X = e.X + 30;
+            p.Y = e.Y + 105;
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    ctmTabBan.Show(p);
+                    break;
+            }
+        }
+
+        private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmThemBan formthemban = new frmThemBan();
+            formthemban.ShowDialog();
+            LoadDataBan();
+        }        
     }
 }

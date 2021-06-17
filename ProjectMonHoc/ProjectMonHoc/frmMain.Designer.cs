@@ -29,6 +29,7 @@ namespace ProjectMonHoc
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStripHeThong = new System.Windows.Forms.MenuStrip();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,11 +64,15 @@ namespace ProjectMonHoc
             this.tbxTienThua = new System.Windows.Forms.TextBox();
             this.btnAddBill = new System.Windows.Forms.Button();
             this.tabDoUong = new System.Windows.Forms.TabControl();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmTabBan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStripHeThong.SuspendLayout();
             this.tabControlBan.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
+            this.ctmTabBan.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripHeThong
@@ -80,7 +85,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStripHeThong.Size = new System.Drawing.Size(1584, 29);
+            this.menuStripHeThong.Size = new System.Drawing.Size(1370, 29);
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
@@ -187,6 +192,7 @@ namespace ProjectMonHoc
             this.tabBan.TabIndex = 0;
             this.tabBan.Text = "Bàn";
             this.tabBan.UseVisualStyleBackColor = true;
+            this.tabBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabBan_MouseDown);
             // 
             // tabControl2
             // 
@@ -432,11 +438,33 @@ namespace ProjectMonHoc
             this.tabDoUong.Size = new System.Drawing.Size(781, 716);
             this.tabDoUong.TabIndex = 18;
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // thêmToolStripMenuItem
+            // 
+            this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.thêmToolStripMenuItem.Text = "Thêm";
+            this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
+            // 
+            // ctmTabBan
+            // 
+            this.ctmTabBan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem,
+            this.thêmToolStripMenuItem});
+            this.ctmTabBan.Name = "ctmCRUDBan";
+            this.ctmTabBan.Size = new System.Drawing.Size(114, 48);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.tabDoUong);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.label4);
@@ -464,6 +492,7 @@ namespace ProjectMonHoc
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
+            this.ctmTabBan.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,6 +533,9 @@ namespace ProjectMonHoc
         private System.Windows.Forms.TabControl tabDoUong;
         private System.Windows.Forms.ToolStripMenuItem chỉnhSửaDanhMụcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xemHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thêmToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ctmTabBan;
     }
 }
 

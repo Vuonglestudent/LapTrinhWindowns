@@ -69,7 +69,7 @@ namespace ProjectMonHoc.Screen
             btnXoa.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
-            //dgvNHANVIEN_CellClick(null, null);
+            dgvNHANVIEN_CellClick(null, null);
         }
         private void dgvNHANVIEN_CellClick(object sender, DataGridViewCellEventArgs e)
         {

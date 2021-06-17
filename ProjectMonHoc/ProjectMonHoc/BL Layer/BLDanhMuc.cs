@@ -58,13 +58,27 @@ namespace ProjectMonHoc.BL_Layer
             }
             return lstTabDanhMuc;
         }
-        public bool ThemDanhMuc(string TenDanhMuc)
+        public bool ThemDanhMuc(int IDDanhMuc, string TenDanhMuc)
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            DANHMUC dm = new DANHMUC();
-            dm.TenDanhMuc = TenDanhMuc;
-            ql.DANHMUCs.Add(dm);
-            ql.SaveChanges();
+            var dmQuery = (from item
+                           in ql.DANHMUCs
+                           where item.IDDanhMuc == IDDanhMuc
+                           select item).SingleOrDefault();
+            if (dmQuery == null)
+            {
+                DANHMUC dmuc = new DANHMUC();
+                dmuc.TenDanhMuc = TenDanhMuc;
+                ql.DANHMUCs.Add(dmuc);
+                ql.SaveChanges();
+            }
+            else if (dmQuery != null)
+            {
+                DANHMUC dm = new DANHMUC();
+                dm.TenDanhMuc = TenDanhMuc;
+                ql.SaveChanges();
+            }
+            
             return true;
         }
         public bool CapNhatDanhMuc(int IDDanhMuc, string TenDanhMuc)
@@ -85,10 +99,14 @@ namespace ProjectMonHoc.BL_Layer
         public bool XoaDanhMuc(int IDDanhMuc)
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var query = ql.DANHMUCs.Find(IDDanhMuc);
-            if ( query != null)
+            var dmQuery = (from item
+                           in ql.DANHMUCs
+                           where item.IDDanhMuc == IDDanhMuc
+                           select item).SingleOrDefault();
+            if ( dmQuery != null)
             {
-                ql.DANHMUCs.Remove(query);
+                ql.DANHMUCs.Attach(dmQuery);
+                ql.DANHMUCs.Remove(dmQuery);
                 ql.SaveChanges();
             }
             return true;
