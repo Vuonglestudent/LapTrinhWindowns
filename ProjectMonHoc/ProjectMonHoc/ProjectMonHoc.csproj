@@ -65,6 +65,12 @@
     <Compile Include="BL Layer\BLNhanVien.cs" />
     <Compile Include="BL Layer\BLTaiKhoan.cs" />
     <Compile Include="color.cs" />
+    <Compile Include="Screen\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\frmQuanLyDanhMuc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <Compile Include="Screen\frmXemHoaDon.Designer.cs">
       <DependentUpon>frmXemHoaDon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Screen\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmQuanLyDanhMuc.resx">
       <DependentUpon>frmQuanLyDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,10 +163,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\account.png" />
+    <Content Include="Images\background.jpg" />
     <Content Include="Images\BAR.png" />
     <Content Include="Images\Boss-3-512.png" />
+    <Content Include="Images\cancel.png" />
     <Content Include="Images\changePassword.png" />
     <Content Include="Images\default.jpg" />
+    <Content Include="Images\hiddenPass.png" />
     <Content Include="Images\lock.png" />
     <Content Include="Images\Login_background.png" />
     <Content Include="Images\MA001.jpg" />
@@ -204,6 +216,8 @@
     <Content Include="Images\NV009.jpg" />
     <Content Include="Images\NV010.jpg" />
     <Content Include="Images\NV011.jpg" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\showPass.png" />
     <None Include="Images\MA022.jpg" />
     <None Include="Images\MA023.jpg" />
     <None Include="Images\MA024.jpg" />

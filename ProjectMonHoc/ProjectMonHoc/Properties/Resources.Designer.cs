@@ -93,6 +93,16 @@ namespace ProjectMonHoc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BAR {
             get {
                 object obj = ResourceManager.GetObject("BAR", resourceCulture);
@@ -106,6 +116,16 @@ namespace ProjectMonHoc.Properties {
         internal static System.Drawing.Bitmap Boss_3_512 {
             get {
                 object obj = ResourceManager.GetObject("Boss-3-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiddenPass {
+            get {
+                object obj = ResourceManager.GetObject("hiddenPass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
