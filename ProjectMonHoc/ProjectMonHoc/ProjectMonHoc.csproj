@@ -108,6 +108,18 @@
     <Compile Include="Screen\frmQuanLyMon.Designer.cs">
       <DependentUpon>frmQuanLyMon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\frmSuaBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmSuaBan.Designer.cs">
+      <DependentUpon>frmSuaBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmThemBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmThemBan.Designer.cs">
+      <DependentUpon>frmThemBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\frmXemHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmQuanLyMon.resx">
       <DependentUpon>frmQuanLyMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmSuaBan.resx">
+      <DependentUpon>frmSuaBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmThemBan.resx">
+      <DependentUpon>frmThemBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmXemHoaDon.resx">
       <DependentUpon>frmXemHoaDon.cs</DependentUpon>

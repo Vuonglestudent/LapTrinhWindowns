@@ -37,3 +37,5 @@ D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectM
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmQuanLyDanhMuc.resources
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmQuanLyNhanVien.resources
 D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmXemHoaDon.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmThemBan.resources
+D:\GiuaKiWinform\LapTrinhWindowns\ProjectMonHoc\ProjectMonHoc\obj\Debug\ProjectMonHoc.Screen.frmSuaBan.resources

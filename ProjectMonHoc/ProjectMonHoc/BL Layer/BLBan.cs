@@ -70,6 +70,42 @@ namespace ProjectMonHoc.BL_Layer
             ql.SaveChanges();
         }
 
+        public bool ThemBan(int idBan, string TenBan, int SucChua)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var id = ql.BANs.OrderByDescending(x => x.IDBan).FirstOrDefault();
+            BAN ban = new BAN();
+            ban.TenBan = TenBan;
+            ban.SucChua = SucChua;
+            ql.BANs.Add(ban);
+            ql.SaveChanges();
+            return true;
+        }
+        public bool CapNhatBan(int idBan, string TenBan, int SucChua)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var ban = (from b in ql.BANs
+                     where b.IDBan == idBan
+                     select b).SingleOrDefault();
+            if (ban == null)
+            {
+                return false;
+            }
+            ban.TenBan = TenBan;
+            ban.SucChua = SucChua;
+            ql.SaveChanges();
+            return true;
+        }
+        public bool XoaBan(int idBan)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            BAN ban = new BAN();
+            ban.IDBan = idBan;
+            ql.BANs.Attach(ban);
+            ql.BANs.Remove(ban);
+            ql.SaveChanges();
+            return true;
+        }
         //public void ThemHoaDonBan(int IDBan, string IDHoaDon)
         //{
         //    QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();

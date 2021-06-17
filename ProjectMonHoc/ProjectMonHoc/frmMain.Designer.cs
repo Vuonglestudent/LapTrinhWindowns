@@ -58,6 +58,9 @@ namespace ProjectMonHoc
             this.tbxTienThua = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbxTienKhachDua = new System.Windows.Forms.TextBox();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmTabBan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnHuyBill = new System.Windows.Forms.Button();
             this.cbbGiamGia = new System.Windows.Forms.ComboBox();
@@ -81,6 +84,7 @@ namespace ProjectMonHoc
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
+            this.ctmTabBan.SuspendLayout();
             this.tabControlBan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.SuspendLayout();
@@ -188,6 +192,7 @@ namespace ProjectMonHoc
             this.columnThanhTien.ReadOnly = true;
             this.columnThanhTien.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.columnThanhTien.Width = 97;
+            this.tabBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabBan_MouseDown);
             // 
             // columnSoLuong
             // 
@@ -558,12 +563,34 @@ namespace ProjectMonHoc
             this.ptbAvatar.TabIndex = 34;
             this.ptbAvatar.TabStop = false;
             this.ptbAvatar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbAvatar_MouseClick);
+            //
+            // refreshToolStripMenuItem
+            //
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // thêmToolStripMenuItem
+            // 
+            this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.thêmToolStripMenuItem.Text = "Thêm";
+            this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
+            // 
+            // ctmTabBan
+            // 
+            this.ctmTabBan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem,
+            this.thêmToolStripMenuItem});
+            this.ctmTabBan.Name = "ctmCRUDBan";
+            this.ctmTabBan.Size = new System.Drawing.Size(114, 48);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.menuStripHeThong);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -581,6 +608,7 @@ namespace ProjectMonHoc
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
+            this.ctmTabBan.ResumeLayout(false);
             this.tabControlBan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
             this.ResumeLayout(false);
@@ -601,6 +629,9 @@ namespace ProjectMonHoc
         private System.Windows.Forms.ToolStripMenuItem quảnLýMónĂnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chỉnhSửaDanhMụcToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStripHeThong;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thêmToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ctmTabBan;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnThanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnGia;
