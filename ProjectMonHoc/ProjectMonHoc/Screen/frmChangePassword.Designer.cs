@@ -33,26 +33,26 @@ namespace ProjectMonHoc.Screen
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnConfrim = new System.Windows.Forms.Panel();
+            this.pbConfrim = new System.Windows.Forms.PictureBox();
+            this.txtConfrim = new System.Windows.Forms.TextBox();
+            this.pnNew = new System.Windows.Forms.Panel();
+            this.pbNew = new System.Windows.Forms.PictureBox();
+            this.txtNew = new System.Windows.Forms.TextBox();
             this.pnOld = new System.Windows.Forms.Panel();
             this.pbOld = new System.Windows.Forms.PictureBox();
             this.txtOld = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnNew = new System.Windows.Forms.Panel();
-            this.pbNew = new System.Windows.Forms.PictureBox();
-            this.txtNew = new System.Windows.Forms.TextBox();
-            this.pnConfrim = new System.Windows.Forms.Panel();
-            this.pbConfrim = new System.Windows.Forms.PictureBox();
-            this.txtConfrim = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.pnOld.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOld)).BeginInit();
-            this.pnNew.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNew)).BeginInit();
             this.pnConfrim.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbConfrim)).BeginInit();
+            this.pnNew.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNew)).BeginInit();
+            this.pnOld.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOld)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -83,6 +83,7 @@ namespace ProjectMonHoc.Screen
             this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
@@ -101,6 +102,7 @@ namespace ProjectMonHoc.Screen
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // groupBox1
             // 
@@ -119,6 +121,70 @@ namespace ProjectMonHoc.Screen
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đổi Mật Khẩu";
+            // 
+            // pnConfrim
+            // 
+            this.pnConfrim.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnConfrim.Controls.Add(this.pbConfrim);
+            this.pnConfrim.Controls.Add(this.txtConfrim);
+            this.pnConfrim.Location = new System.Drawing.Point(183, 106);
+            this.pnConfrim.Name = "pnConfrim";
+            this.pnConfrim.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.pnConfrim.Size = new System.Drawing.Size(250, 34);
+            this.pnConfrim.TabIndex = 6;
+            // 
+            // pbConfrim
+            // 
+            this.pbConfrim.BackgroundImage = global::ProjectMonHoc.Properties.Resources.hiddenPass;
+            this.pbConfrim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbConfrim.Location = new System.Drawing.Point(225, 6);
+            this.pbConfrim.Name = "pbConfrim";
+            this.pbConfrim.Size = new System.Drawing.Size(21, 22);
+            this.pbConfrim.TabIndex = 4;
+            this.pbConfrim.TabStop = false;
+            this.pbConfrim.Click += new System.EventHandler(this.pbConfrim_Click);
+            // 
+            // txtConfrim
+            // 
+            this.txtConfrim.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfrim.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfrim.Location = new System.Drawing.Point(11, 6);
+            this.txtConfrim.Name = "txtConfrim";
+            this.txtConfrim.Size = new System.Drawing.Size(208, 22);
+            this.txtConfrim.TabIndex = 2;
+            this.txtConfrim.UseSystemPasswordChar = true;
+            // 
+            // pnNew
+            // 
+            this.pnNew.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnNew.Controls.Add(this.pbNew);
+            this.pnNew.Controls.Add(this.txtNew);
+            this.pnNew.Location = new System.Drawing.Point(183, 66);
+            this.pnNew.Name = "pnNew";
+            this.pnNew.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.pnNew.Size = new System.Drawing.Size(250, 34);
+            this.pnNew.TabIndex = 6;
+            // 
+            // pbNew
+            // 
+            this.pbNew.BackgroundImage = global::ProjectMonHoc.Properties.Resources.hiddenPass;
+            this.pbNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbNew.Location = new System.Drawing.Point(225, 6);
+            this.pbNew.Name = "pbNew";
+            this.pbNew.Size = new System.Drawing.Size(21, 22);
+            this.pbNew.TabIndex = 4;
+            this.pbNew.TabStop = false;
+            this.pbNew.Click += new System.EventHandler(this.pbNew_Click);
+            // 
+            // txtNew
+            // 
+            this.txtNew.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNew.Location = new System.Drawing.Point(11, 6);
+            this.txtNew.Name = "txtNew";
+            this.txtNew.Size = new System.Drawing.Size(208, 22);
+            this.txtNew.TabIndex = 1;
+            this.txtNew.UseSystemPasswordChar = true;
             // 
             // pnOld
             // 
@@ -182,68 +248,6 @@ namespace ProjectMonHoc.Screen
             this.label1.TabIndex = 0;
             this.label1.Text = "Mật Khẩu Cũ";
             // 
-            // pnNew
-            // 
-            this.pnNew.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnNew.Controls.Add(this.pbNew);
-            this.pnNew.Controls.Add(this.txtNew);
-            this.pnNew.Location = new System.Drawing.Point(183, 66);
-            this.pnNew.Name = "pnNew";
-            this.pnNew.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.pnNew.Size = new System.Drawing.Size(250, 34);
-            this.pnNew.TabIndex = 6;
-            // 
-            // pbNew
-            // 
-            this.pbNew.BackgroundImage = global::ProjectMonHoc.Properties.Resources.hiddenPass;
-            this.pbNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbNew.Location = new System.Drawing.Point(225, 6);
-            this.pbNew.Name = "pbNew";
-            this.pbNew.Size = new System.Drawing.Size(21, 22);
-            this.pbNew.TabIndex = 4;
-            this.pbNew.TabStop = false;
-            // 
-            // txtNew
-            // 
-            this.txtNew.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNew.Location = new System.Drawing.Point(11, 6);
-            this.txtNew.Name = "txtNew";
-            this.txtNew.Size = new System.Drawing.Size(208, 22);
-            this.txtNew.TabIndex = 1;
-            this.txtNew.UseSystemPasswordChar = true;
-            // 
-            // pnConfrim
-            // 
-            this.pnConfrim.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnConfrim.Controls.Add(this.pbConfrim);
-            this.pnConfrim.Controls.Add(this.txtConfrim);
-            this.pnConfrim.Location = new System.Drawing.Point(183, 106);
-            this.pnConfrim.Name = "pnConfrim";
-            this.pnConfrim.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.pnConfrim.Size = new System.Drawing.Size(250, 34);
-            this.pnConfrim.TabIndex = 6;
-            // 
-            // pbConfrim
-            // 
-            this.pbConfrim.BackgroundImage = global::ProjectMonHoc.Properties.Resources.hiddenPass;
-            this.pbConfrim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbConfrim.Location = new System.Drawing.Point(225, 6);
-            this.pbConfrim.Name = "pbConfrim";
-            this.pbConfrim.Size = new System.Drawing.Size(21, 22);
-            this.pbConfrim.TabIndex = 4;
-            this.pbConfrim.TabStop = false;
-            // 
-            // txtConfrim
-            // 
-            this.txtConfrim.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtConfrim.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfrim.Location = new System.Drawing.Point(11, 6);
-            this.txtConfrim.Name = "txtConfrim";
-            this.txtConfrim.Size = new System.Drawing.Size(208, 22);
-            this.txtConfrim.TabIndex = 2;
-            this.txtConfrim.UseSystemPasswordChar = true;
-            // 
             // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,15 +260,15 @@ namespace ProjectMonHoc.Screen
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnOld.ResumeLayout(false);
-            this.pnOld.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOld)).EndInit();
-            this.pnNew.ResumeLayout(false);
-            this.pnNew.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNew)).EndInit();
             this.pnConfrim.ResumeLayout(false);
             this.pnConfrim.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbConfrim)).EndInit();
+            this.pnNew.ResumeLayout(false);
+            this.pnNew.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNew)).EndInit();
+            this.pnOld.ResumeLayout(false);
+            this.pnOld.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOld)).EndInit();
             this.ResumeLayout(false);
 
         }

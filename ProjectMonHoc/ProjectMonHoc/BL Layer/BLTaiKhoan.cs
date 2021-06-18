@@ -37,5 +37,21 @@ namespace ProjectMonHoc.BL_Layer
                 return tk.IDNhanVien;
             return "";
         }
+        
+        public bool DoiMatKhau(string oldPass, string newPass, string idNhanVien)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var query = ql.TAIKHOANs.Where(x => x.IDNhanVien == idNhanVien).SingleOrDefault();
+            if(query != null)
+            {
+                if (query.MatKhau == oldPass)
+                {
+                    query.MatKhau = newPass;
+                    ql.SaveChanges();
+                }
+                else return false;
+            }
+            return true;
+        }
     }
 }

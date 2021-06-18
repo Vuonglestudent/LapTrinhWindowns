@@ -717,14 +717,15 @@ namespace ProjectMonHoc
 
         private void btnXemHoSo_Click(object sender, EventArgs e)
         {
-            
+            frmProfile profile = new frmProfile(userCurrent);
+            profile.ShowDialog();
         }
 
         #endregion
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            frmChangePassword changePassword = new frmChangePassword();
+            frmChangePassword changePassword = new frmChangePassword(userCurrent);
             changePassword.ShowDialog();
         }
             

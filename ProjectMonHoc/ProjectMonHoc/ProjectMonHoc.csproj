@@ -71,6 +71,12 @@
     <Compile Include="Screen\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\frmProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmProfile.Designer.cs">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\frmQuanLyDanhMuc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="Screen\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmProfile.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmQuanLyDanhMuc.resx">
       <DependentUpon>frmQuanLyDanhMuc.cs</DependentUpon>

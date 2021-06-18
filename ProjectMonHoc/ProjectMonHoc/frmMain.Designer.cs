@@ -52,15 +52,13 @@ namespace ProjectMonHoc
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnXemHoSo = new System.Windows.Forms.Button();
             this.lbFullName = new System.Windows.Forms.Label();
+            this.ptbAvatar = new System.Windows.Forms.PictureBox();
             this.tabDoUong = new System.Windows.Forms.TabControl();
             this.btnAddBill = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxTienThua = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbxTienKhachDua = new System.Windows.Forms.TextBox();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctmTabBan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnHuyBill = new System.Windows.Forms.Button();
             this.cbbGiamGia = new System.Windows.Forms.ComboBox();
@@ -76,17 +74,19 @@ namespace ProjectMonHoc
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlBan = new System.Windows.Forms.TabControl();
             this.tabBan = new System.Windows.Forms.TabPage();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmTabBan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmrDropdownMenu = new System.Windows.Forms.Timer(this.components);
-            this.ptbAvatar = new System.Windows.Forms.PictureBox();
             this.menuStripHeThong.SuspendLayout();
             this.pnMain.SuspendLayout();
             this.pnDropDownMenuAvatar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
-            this.ctmTabBan.SuspendLayout();
             this.tabControlBan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
+            this.ctmTabBan.SuspendLayout();
             this.SuspendLayout();
             // 
             // tàiKhoảnToolStripMenuItem
@@ -102,7 +102,7 @@ namespace ProjectMonHoc
             // menuItemDangNhap
             // 
             this.menuItemDangNhap.Name = "menuItemDangNhap";
-            this.menuItemDangNhap.Size = new System.Drawing.Size(180, 24);
+            this.menuItemDangNhap.Size = new System.Drawing.Size(166, 24);
             this.menuItemDangNhap.Text = "Đăng Nhập";
             this.menuItemDangNhap.Click += new System.EventHandler(this.menuItemDangNhap_Click);
             // 
@@ -110,7 +110,7 @@ namespace ProjectMonHoc
             // 
             this.menuItemDangXuat.Enabled = false;
             this.menuItemDangXuat.Name = "menuItemDangXuat";
-            this.menuItemDangXuat.Size = new System.Drawing.Size(180, 24);
+            this.menuItemDangXuat.Size = new System.Drawing.Size(166, 24);
             this.menuItemDangXuat.Text = "Đăng Xuất";
             this.menuItemDangXuat.Click += new System.EventHandler(this.menuItemDangXuat_Click);
             // 
@@ -118,7 +118,7 @@ namespace ProjectMonHoc
             // 
             this.menuItemDoiMatKhau.Enabled = false;
             this.menuItemDoiMatKhau.Name = "menuItemDoiMatKhau";
-            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(180, 24);
+            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(166, 24);
             this.menuItemDoiMatKhau.Text = "Đổi Mật Khẩu";
             // 
             // menuItemAdmin
@@ -179,7 +179,7 @@ namespace ProjectMonHoc
             this.menuStripHeThong.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeThong.Name = "menuStripHeThong";
             this.menuStripHeThong.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStripHeThong.Size = new System.Drawing.Size(1584, 29);
+            this.menuStripHeThong.Size = new System.Drawing.Size(1582, 29);
             this.menuStripHeThong.TabIndex = 0;
             this.menuStripHeThong.Text = "menuStrip1";
             // 
@@ -192,7 +192,6 @@ namespace ProjectMonHoc
             this.columnThanhTien.ReadOnly = true;
             this.columnThanhTien.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.columnThanhTien.Width = 97;
-            this.tabBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabBan_MouseDown);
             // 
             // columnSoLuong
             // 
@@ -309,6 +308,15 @@ namespace ProjectMonHoc
             this.lbFullName.Size = new System.Drawing.Size(152, 37);
             this.lbFullName.TabIndex = 35;
             this.lbFullName.Text = "Hello";
+            // 
+            // ptbAvatar
+            // 
+            this.ptbAvatar.Location = new System.Drawing.Point(1509, 0);
+            this.ptbAvatar.Name = "ptbAvatar";
+            this.ptbAvatar.Size = new System.Drawing.Size(42, 42);
+            this.ptbAvatar.TabIndex = 34;
+            this.ptbAvatar.TabStop = false;
+            this.ptbAvatar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbAvatar_MouseClick);
             // 
             // tabDoUong
             // 
@@ -550,22 +558,10 @@ namespace ProjectMonHoc
             this.tabBan.TabIndex = 0;
             this.tabBan.Text = "Bàn";
             this.tabBan.UseVisualStyleBackColor = true;
+            this.tabBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabBan_MouseDown);
             // 
-            // tmrDropdownMenu
-            // 
-            this.tmrDropdownMenu.Tick += new System.EventHandler(this.tmrDropdownMenu_Tick);
-            // 
-            // ptbAvatar
-            // 
-            this.ptbAvatar.Location = new System.Drawing.Point(1509, 0);
-            this.ptbAvatar.Name = "ptbAvatar";
-            this.ptbAvatar.Size = new System.Drawing.Size(42, 42);
-            this.ptbAvatar.TabIndex = 34;
-            this.ptbAvatar.TabStop = false;
-            this.ptbAvatar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbAvatar_MouseClick);
-            //
             // refreshToolStripMenuItem
-            //
+            // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
@@ -586,11 +582,15 @@ namespace ProjectMonHoc
             this.ctmTabBan.Name = "ctmCRUDBan";
             this.ctmTabBan.Size = new System.Drawing.Size(114, 48);
             // 
+            // tmrDropdownMenu
+            // 
+            this.tmrDropdownMenu.Tick += new System.EventHandler(this.tmrDropdownMenu_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1582, 856);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.menuStripHeThong);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -605,12 +605,12 @@ namespace ProjectMonHoc
             this.pnMain.ResumeLayout(false);
             this.pnMain.PerformLayout();
             this.pnDropDownMenuAvatar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
-            this.ctmTabBan.ResumeLayout(false);
             this.tabControlBan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
+            this.ctmTabBan.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
