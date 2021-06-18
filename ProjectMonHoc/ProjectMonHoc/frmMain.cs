@@ -276,10 +276,10 @@ namespace ProjectMonHoc
 
             //Tạm comment
             
-            newButton.Click += (s, e) =>
-            {
-                btnBan_Click(s, e, newButton, newLabel, item);
-            };
+            //newButton.Click += (s, e) =>
+            //{
+            //    btnBan_Click(s, e, newButton, newLabel, item);
+            //};
             newButton.MouseDown += (s, e) =>
             {
                 btnBan_MouseDown(s, e, newButton, newLabel, item);
@@ -294,54 +294,98 @@ namespace ProjectMonHoc
         #region EventBanClick
         private void btnBan_Click(object sender, EventArgs e, Button btnBan, Label lbBan, BAN item)
         {
-            int IDBan = item.IDBan;  //Lấy IDBan của Bàn đang được click;
+            //int IDBan = item.IDBan;  //Lấy IDBan của Bàn đang được click;
 
-            if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái bàn
-            {
-                if (BanDangChon != null && !xemBillBan) // Set bàn đang được chọn và rest bàn cũ.
-                {
-                    ChangeStateBan();
-                }
-                xemBillBan = true;
-                this.ShowBill(IDBan);
-                BanDangChon = btnBan;
-            }
-            else
-            {
-                if (xemBillBan)
-                {
-                    xemBillBan = false;
-                }
-                else if (BanDangChon != null)
-                {
-                    ChangeStateBan();
-                }
-                BanDangChon = (Button)sender;
-                BanDangChon.BackColor = color.colorDangChon;
-                ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan,true)[0]).BackColor = color.colorDangChon;
-                dgvBill.DataSource = bill;
-                this.tbxTongTien.Text = this.TinhTongBill().ToString();
-            }
+            //if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái bàn
+            //{
+            //    if (BanDangChon != null && !xemBillBan) // Set bàn đang được chọn và rest bàn cũ.
+            //    {
+            //        ChangeStateBan();
+            //    }
+            //    xemBillBan = true;
+            //    this.ShowBill(IDBan);
+            //    BanDangChon = btnBan;
+            //}
+            //else
+            //{
+            //    if (xemBillBan)
+            //    {
+            //        xemBillBan = false;
+            //    }
+            //    else if (BanDangChon != null)
+            //    {
+            //        ChangeStateBan();
+            //    }
+            //    BanDangChon = (Button)sender;
+            //    BanDangChon.BackColor = color.colorDangChon;
+            //    ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan,true)[0]).BackColor = color.colorDangChon;
+            //    dgvBill.DataSource = bill;
+            //    this.tbxTongTien.Text = this.TinhTongBill().ToString();
+            //}
+
         }
 
         private void btnBan_MouseDown(object sender, MouseEventArgs e, Button btnBan, Label lbBan, BAN item)
-        {            
-            int IDBan = item.IDBan;
-            BanDangChon = (Button)sender;
+        {
             ContextMenuStrip cmsBtnBan = new ContextMenuStrip();
             var sua = new ToolStripMenuItem() { Text = "Sửa" };
             var xoa = new ToolStripMenuItem() { Text = "Xóa" };
             cmsBtnBan.Items.Add(sua);
             cmsBtnBan.Items.Add(xoa);
-            Point p = new Point();
-            p.X = btnBan.Location.X + 150;
-            p.Y = btnBan.Location.Y + 150;
+            int IDBan = item.IDBan;
+            
             switch (e.Button)
             {
+                case MouseButtons.Left:
+                    {
+                        if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái bàn
+                        {
+                            if (BanDangChon != null && !xemBillBan) // Set bàn đang được chọn và rest bàn cũ.
+                            {
+                                ChangeStateBan();
+                            }
+                            xemBillBan = true;
+                            this.ShowBill(IDBan);
+                            BanDangChon = btnBan;
+                        }
+                        else
+                        {
+                            if (xemBillBan)
+                            {
+                                xemBillBan = false;
+                            }
+                            else if (BanDangChon != null)
+                            {
+                                ChangeStateBan();
+                            }
+                            BanDangChon = (Button)sender;
+                            BanDangChon.BackColor = color.colorDangChon;
+                            ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan, true)[0]).BackColor = color.colorDangChon;
+                            dgvBill.DataSource = bill;
+                            this.tbxTongTien.Text = this.TinhTongBill().ToString();
+                        }
+                        break;
+                    }
+                
+                
+                
                 case MouseButtons.Right:
-                    cmsBtnBan.Show(p);
-                    break;
+                    {
+                        BanDangChon = (Button)sender;
+                        Point p = new Point();
+                        p.X = btnBan.Location.X + 150;
+                        p.Y = btnBan.Location.Y + 150;
+                        cmsBtnBan.Show(p);
+                        BanDangChon = null;
+                        break;
+                    }
+                    
             }
+
+            
+            
+            
+            
             sua.Click += (s, ev) =>
             {
                 Sua_Click(s, e, btnBan, item);
@@ -379,7 +423,30 @@ namespace ProjectMonHoc
             formsua.tenban = item.TenBan;
             formsua.ShowDialog();
         }
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadDataBan();
+        }
 
+        private void tabBan_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point p = new Point();
+            p.X = e.X + 30;
+            p.Y = e.Y + 105;
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    ctmTabBan.Show(p);
+                    break;
+            }
+        }
+
+        private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmThemBan formthemban = new frmThemBan();
+            formthemban.ShowDialog();
+            LoadDataBan();
+        }
         private void ChangeStateBan()
         {
             int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString()); //Lấy IDBan của Bàn được click trước đó;
@@ -728,30 +795,5 @@ namespace ProjectMonHoc
             frmChangePassword changePassword = new frmChangePassword(userCurrent);
             changePassword.ShowDialog();
         }
-            
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadDataBan();
-        }
-
-        private void tabBan_MouseDown(object sender, MouseEventArgs e)
-        {
-            Point p = new Point();
-            p.X = e.X + 30;
-            p.Y = e.Y + 105;
-            switch (e.Button)
-            {
-                case MouseButtons.Right:
-                    ctmTabBan.Show(p);
-                    break;
-            }
-        }
-
-        private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmThemBan formthemban = new frmThemBan();
-            formthemban.ShowDialog();
-            LoadDataBan();
-        }        
     }
 }
