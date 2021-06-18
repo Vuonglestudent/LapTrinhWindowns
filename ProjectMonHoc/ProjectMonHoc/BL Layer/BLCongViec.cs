@@ -34,5 +34,12 @@ namespace ProjectMonHoc.BL_Layer
             }
             return dt;
         }
+
+        public string LayCongViecById(int id)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            var queryCV = ql.CONGVIECs.Where(x => x.IDCongViec == id).Select(x => x.TenCongViec).SingleOrDefault();
+            return queryCV;
+        }
     }
 }

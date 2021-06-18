@@ -22,6 +22,9 @@ namespace ProjectMonHoc.Screen
             this.txtName.Controls.Add(new PictureBox { Height = 2, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });
         }
 
+
+        #region Paint
+
         public void DrawRoundRect(Graphics g, SolidBrush sb ,Pen p, float X, float Y, float width, float height, float radius)
         {
             GraphicsPath gp = new GraphicsPath();
@@ -38,6 +41,7 @@ namespace ProjectMonHoc.Screen
             if (sb != null) g.FillPath(sb, gp);
             gp.Dispose();
         }
+
         private void pnName_Paint(object sender, PaintEventArgs e)
         {
             Graphics v = e.Graphics;
@@ -50,6 +54,40 @@ namespace ProjectMonHoc.Screen
             Graphics v = e.Graphics;
             DrawRoundRect(v, null, Pens.Pink, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1, 10);
             base.OnPaint(e);
+        }
+
+        private void pnAdress_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics v = e.Graphics;
+            DrawRoundRect(v, null, Pens.Pink, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1, 10);
+            base.OnPaint(e);
+        }
+
+        private void pnEmail_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics v = e.Graphics;
+            DrawRoundRect(v, null, Pens.Pink, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1, 10);
+            base.OnPaint(e);
+        }
+
+        private void pnJob_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics v = e.Graphics;
+            DrawRoundRect(v, null, Pens.Pink, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1, 10);
+            base.OnPaint(e);
+        }
+        #endregion
+
+        private void frmProfile_Load(object sender, EventArgs e)
+        {
+            txtName.Text = userCurrent.Ho + " " + userCurrent.Ten;
+            txtAddress.Text = userCurrent.DiaChi;
+            txtEmail.Text = userCurrent.Email;
+            txtPhone.Text = userCurrent.SDT;
+            dtpNgaySinh.Value = userCurrent.NgaySinh;
+            pbAvatar1.BackgroundImage = Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
+            pbAvatar2.BackgroundImage = Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
+            txtJob.Text = BL_Layer.BLCongViec.Instance.LayCongViecById(userCurrent.IDCongViec);
         }
     }
 }

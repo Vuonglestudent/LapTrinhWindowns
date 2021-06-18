@@ -56,6 +56,11 @@ namespace ProjectMonHoc.BL_Layer
                 nv.IDNhanVien = query.IDNhanVien;
                 nv.Ho = query.Ho;
                 nv.Ten = query.Ten;
+                nv.DiaChi = query.DiaChi;
+                nv.NgaySinh = query.NgaySinh;
+                nv.Email = query.Email;
+                nv.SDT = query.SDT;
+                nv.IDCongViec = query.IDCongViec;
                 nv.HinhNV = query.HinhNV;
             }
             return nv;
