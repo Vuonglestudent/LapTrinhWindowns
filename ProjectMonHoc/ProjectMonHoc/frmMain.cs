@@ -371,12 +371,10 @@ namespace ProjectMonHoc
                 
                 case MouseButtons.Right:
                     {
-                        BanDangChon = (Button)sender;
                         Point p = new Point();
                         p.X = btnBan.Location.X + 150;
                         p.Y = btnBan.Location.Y + 150;
                         cmsBtnBan.Show(p);
-                        BanDangChon = null;
                         break;
                     }
                     
