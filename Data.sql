@@ -5,11 +5,11 @@ GO
 
 INSERT INTO CONGVIEC (TenCongViec, LuongCongViec)
 VALUES 
-(N'Quản Lý' , 2000000) ,
-(N'Nhân Viên Bán Hàng' , 800000) ,
-(N'Nhân Viên Phụ Vụ' , 1000000) ,
-(N'Bảo Vệ' , 1200000),
-(N'Nhân Viên Vệ Sinh' , 1000000)
+(N'Quản Lý' , 500) ,
+(N'Nhân Viên Bán Hàng' , 300) ,
+(N'Nhân Viên Phụ Vụ' , 250) ,
+(N'Bảo Vệ' , 200),
+(N'Nhân Viên Vệ Sinh' , 150)
 GO
 
 
@@ -72,176 +72,176 @@ GO
 --MONAN
 	--('Cafe')
 		INSERT INTO MONAN(IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Cafe Đen' , 12000, 'MA001.jpg', 0)
+	VALUES (1 , N'Cafe Đen' , 3, 'MA001.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Cafe Sữa' , 15000, 'MA002.jpg', 0)
+	VALUES (1 , N'Cafe Sữa' , 4, 'MA002.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Bạc Sỉu' , 17000, 'MA003.jpg', 0)
+	VALUES (1 , N'Bạc Sỉu' , 4, 'MA003.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Latte' , 20000, 'MA004.jpg', 0)
+	VALUES (1 , N'Latte' , 5, 'MA004.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Capochino' , 20000, 'MA005.jpg', 0)
+	VALUES (1 , N'Capochino' , 5, 'MA005.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (1 , N'Epreso' , 22000, 'MA006.jpg', 0)
+	VALUES (1 , N'Epreso' , 5, 'MA006.jpg', 0)
 	GO
 	--('Trà Sữa')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Đường Đen' , 30000, 'MA012.jpg', 0)
+	VALUES (2 , N'Trà Sữa Đường Đen' , 4, 'MA012.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Chocolate' , 29000, 'MA019.jpg', 0)
+	VALUES (2 , N'Trà Sữa Chocolate' , 3, 'MA019.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa OLong' , 27000, 'MA018.jpg', 0)
+	VALUES (2 , N'Trà Sữa OLong' , 4, 'MA018.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Matcha' , 30000, 'MA014.jpg', 0)
+	VALUES (2 , N'Trà Sữa Matcha' , 4, 'MA014.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Matcha Đậu Đỏ' , 35000, 'MA017.jpg', 0)
+	VALUES (2 , N'Trà Sữa Matcha Đậu Đỏ' , 4, 'MA017.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Thái đỏ' , 25000, 'MA021.jpg', 0)
+	VALUES (2 , N'Trà Sữa Thái đỏ' , 3, 'MA021.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (2 , N'Trà Sữa Dâu' , 25000, 'MA013.jpg', 0)
+	VALUES (2 , N'Trà Sữa Dâu' , 4, 'MA013.jpg', 0)
 	GO
 	--('Trà Trái Cây')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (3 , N'Trà Đào' , 30000, 'MA011.jpg', 0)
+	VALUES (3 , N'Trà Đào' , 4, 'MA011.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (3 , N'Trà Xanh' , 30000, 'MA007.jpg', 0)
+	VALUES (3 , N'Trà Xanh' , 4, 'MA007.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (3 , N'Trà Mật Ong' , 27000, 'MA008.jpg', 0)
+	VALUES (3 , N'Trà Mật Ong' , 5, 'MA008.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
 	VALUES (3 , N'Trà Hoa Cúc' , 27000, 'MA009.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (3 , N'Trà Gừng' , 33000, 'MA010.jpg', 0)
+	VALUES (3 , N'Trà Gừng' , 3, 'MA010.jpg', 0)
 	GO
 	--('Sinh Tố')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Dâu' , 33000, 'MA022.jpg', 0)
+	VALUES (4 , N'Sinh Tố Dâu' , 4, 'MA022.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Xoài' , 30000, 'MA023.jpg', 0)
+	VALUES (4 , N'Sinh Tố Xoài' , 4, 'MA023.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Măng Cầu' , 33000, 'MA024.jpg', 0)
+	VALUES (4 , N'Sinh Tố Măng Cầu' , 5, 'MA024.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Đu Đủ' , 28000, 'MA025.jpg', 0)
+	VALUES (4 , N'Sinh Tố Đu Đủ' , 3, 'MA025.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Sampo' , 28000, 'MA026.jpg', 0)
+	VALUES (4 , N'Sinh Tố Sampo' , 3, 'MA026.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Bơ' , 33000, 'MA027.jpg', 0)
+	VALUES (4 , N'Sinh Tố Bơ' , 4, 'MA027.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Dứa' , 28000, 'MA028.jpg', 0)
+	VALUES (4 , N'Sinh Tố Dứa' , 3, 'MA028.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Tổng Hợp' , 33000, 'MA029.jpg', 0)
+	VALUES (4 , N'Sinh Tố Tổng Hợp' , 5, 'MA029.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (4 , N'Sinh Tố Việt Quất' , 30000, 'MA015.jpg', 0)
+	VALUES (4 , N'Sinh Tố Việt Quất' , 5, 'MA015.jpg', 0)
 	GO
 	--('Soda')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Táo' , 28000, 'MA030.jpg', 0)
+	VALUES (5 , N'Soda Táo' , 5, 'MA030.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Bạc Hà' , 28000, 'MA031.jpg', 0)
+	VALUES (5 , N'Soda Bạc Hà' , 3, 'MA031.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Xoài' , 28000, 'MA032.jpg', 0)
+	VALUES (5 , N'Soda Xoài' , 4, 'MA032.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Việt Quất' , 28000, 'MA033.jpg', 0)
+	VALUES (5 , N'Soda Việt Quất' , 5, 'MA033.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Chanh' , 25000, 'MA034.jpg', 0)
+	VALUES (5 , N'Soda Chanh' , 3, 'MA034.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (5 , N'Soda Nhiệt Đới' , 30000, 'MA035.jpg', 0)
+	VALUES (5 , N'Soda Nhiệt Đới' , 3, 'MA035.jpg', 0)
 	GO
 	--('Topping')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (6 , N'Trân Châu Đen' , 5000, 'MA036.jpg', 0)
+	VALUES (6 , N'Trân Châu Đen' , 1, 'MA036.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (6 , N'Trân Châu Trắng' , 10000, 'MA037.jpg', 0)
+	VALUES (6 , N'Trân Châu Trắng' , 1, 'MA037.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (6 , N'Nha Đam' , 5000, 'MA038.jpg', 0)
+	VALUES (6 , N'Nha Đam' , 1, 'MA038.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (6 , N'Thạch Dừa' , 5000, 'MA039.jpg', 0)
+	VALUES (6 , N'Thạch Dừa' , 1, 'MA039.jpg', 0)
 	GO
 
 	--('Bún')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (7 , N'Bún Riêu' , 40, 'MA040.jpg', 0)
+	VALUES (7 , N'Bún Riêu' , 7, 'MA040.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (7 , N'Bún Chả Cá' , 45, 'MA041.jpg', 0)
+	VALUES (7 , N'Bún Chả Cá' , 8, 'MA041.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (7 , N'Bún Mắm Nêm' , 40, 'MA042.jpg', 0)
+	VALUES (7 , N'Bún Mắm Nêm' , 8, 'MA042.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (7 , N'Bún Thịt Nướng' , 40, 'MA043.jpg', 0)
+	VALUES (7 , N'Bún Thịt Nướng' , 9, 'MA043.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (7 , N'Phở bò' , 50, 'MA044.jpg', 0)
+	VALUES (7 , N'Phở bò' , 10, 'MA044.jpg', 0)
 	GO
 	--('Cơm')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (8 , N'Cơm Tấm' , 40, 'MA045.jpg', 0)
+	VALUES (8 , N'Cơm Tấm' , 10, 'MA045.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (8 , N'Cơm Gà' , 45, 'MA046.jpg', 0)
+	VALUES (8 , N'Cơm Gà' , 10, 'MA046.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (8 , N'Cơm Chiên Dương Châu' , 40, 'MA047.jpg', 0)
+	VALUES (8 , N'Cơm Chiên Dương Châu' , 9, 'MA047.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (8 , N'Cơm Hải Sản' , 45, 'MA048.jpg', 0)
+	VALUES (8 , N'Cơm Hải Sản' , 11, 'MA048.jpg', 0)
 	GO
 	--('Gà')
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (9 , N'Gà Rán' , 45, 'MA049.jpg', 0)
+	VALUES (9 , N'Gà Rán' , 8, 'MA049.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (9 , N'Gà Sốt Đậu' , 50, 'MA050.jpg', 0)
+	VALUES (9 , N'Gà Sốt Đậu' , 9, 'MA050.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (9 , N'Gà Phô Mai' , 65, 'MA051.jpg', 0)
+	VALUES (9 , N'Gà Phô Mai' , 9, 'MA051.jpg', 0)
 	GO
 		INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (9 , N'Gà Chiên Nước Mắm' , 40, 'MA052.jpg', 0)
+	VALUES (9 , N'Gà Chiên Nước Mắm' , 8, 'MA052.jpg', 0)
 	GO
 	--('Lẩu')
 	INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (10 , N'Lẩu Bò' , 80, 'MA053.jpg', 0)
+	VALUES (10 , N'Lẩu Bò' , 35, 'MA053.jpg', 0)
 	GO
 	INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (10 , N'Lẩu Thái' , 80, 'MA054.jpg', 0)
+	VALUES (10 , N'Lẩu Thái' , 40, 'MA054.jpg', 0)
 	GO
 	INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (10 , N'Lẩu Hải Sản' , 80, 'MA055.jpg', 0)
+	VALUES (10 , N'Lẩu Hải Sản' , 42, 'MA055.jpg', 0)
 	GO
 	INSERT INTO MONAN (IDDanhMuc , TenMon , GiaTien, HinhMA, TrangThai)
-	VALUES (10 , N'Lẩu Gà Lá Giang' , 80, 'MA056.jpg', 0)
+	VALUES (10 , N'Lẩu Gà Lá Giang' , 30, 'MA056.jpg', 0)
 	GO
 --THÊM BÀN
 
