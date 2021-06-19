@@ -33,6 +33,7 @@ namespace ProjectMonHoc
         List<DANHMUC> listDanhMuc = new List<DANHMUC>();
         List<TabPage> listTabDanhMuc = new List<TabPage>();
         Button BanDangChon = null;
+        int giamGia = 0;
 
         public string loginStatus = null;
         NHANVIEN userCurrent;
@@ -51,8 +52,9 @@ namespace ProjectMonHoc
             ptbAvatar.Region = rg;
             ptbAvatar.BackgroundImageLayout = ImageLayout.Stretch;
             pnDropDownMenuAvatar.Height = 0;
-
-
+            this.btnThanhToan.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/payIcon.png"), new Size(40, 40)));
+            this.btnAddBill.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/addIcon.png"), new Size(25, 25)));
+            this.btnHuyBill.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/cancelIcon.png"), new Size(40, 40)));
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -138,6 +140,7 @@ namespace ProjectMonHoc
             }
             else newtabPage = tab;
             newtabPage.Text = item.TenDanhMuc.ToString();
+            newtabPage.BackColor = Color.White;
             tabDoUong.Controls.Add(newtabPage);
         }
         #endregion
@@ -362,12 +365,12 @@ namespace ProjectMonHoc
                             BanDangChon.BackColor = color.colorDangChon;
                             ((Label)this.Controls.Find("lbTrangThaiBan" + IDBan, true)[0]).BackColor = color.colorDangChon;
                             dgvBill.DataSource = bill;
-                            this.tbxTongTien.Text = this.TinhTongBill().ToString();
+                            giamGia = 0;
+                            cbbGiamGia.SelectedIndex = giamGia;
+                            this.tbxTongTien.Text = this.TinhTongBill();
                         }
                         break;
                     }
-                
-                
                 
                 case MouseButtons.Right:
                     {
@@ -456,6 +459,8 @@ namespace ProjectMonHoc
         {
             dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
             dgvBill.Columns["IDHoaDon"].Visible = false;
+            HOADON hd = BLHoaDon.Instance.LayHoaDonID(dgvBill.Rows[0].Cells["IDHoaDon"].Value.ToString());
+            cbbGiamGia.Text = hd.KhuyenMai;
             tbxTongTien.Text = TinhTongBill().ToString();
         }
         #endregion
@@ -572,7 +577,6 @@ namespace ProjectMonHoc
         {
 
             this.menuItemDangXuat.Enabled = true;
-            this.menuItemDoiMatKhau.Enabled = true;
             this.menuItemDanhMuc.Enabled = true;
             this.menuItemDangNhap.Enabled = false;
             this.userCurrent = BLNhanVien.Instance.LayNhanVienByUserName(username);
@@ -587,7 +591,6 @@ namespace ProjectMonHoc
         private void menuItemDangXuat_Click(object sender, EventArgs e)
         {
             this.menuItemDangXuat.Enabled = false;
-            this.menuItemDoiMatKhau.Enabled = false;
             this.menuItemDanhMuc.Enabled = false;
             this.menuItemAdmin.Enabled = false;
             this.menuItemDangNhap.Enabled = true;
@@ -614,10 +617,15 @@ namespace ProjectMonHoc
 
         string TinhTongBill()
         {
-            int sum = 0;
+            double sum = 0;
             foreach (DataGridViewRow row in dgvBill.Rows)
                 sum = sum + int.Parse(row.Cells["ThanhTien"].Value.ToString());
-            return sum + "$";
+            if (giamGia != 0 && sum != 0)
+            {
+                double giam = sum * int.Parse(cbbGiamGia.Text.Split('%')[0])/100;
+                sum -= giam;
+            }    
+            return Math.Round(sum) + "$";
         }
 
         private void btnAddBill_Click(object sender, EventArgs e)
@@ -630,7 +638,7 @@ namespace ProjectMonHoc
                 int.Parse(BanDangChon.Tag.ToString()), 
                 time, 
                 int.Parse(tbxTongTien.Text.Split('$')[0]), 
-                cbbGiamGia.SelectedText
+                cbbGiamGia.Text
             );
             foreach (DataGridViewRow row in dgvBill.Rows)
             {
@@ -792,6 +800,12 @@ namespace ProjectMonHoc
         {
             frmChangePassword changePassword = new frmChangePassword(userCurrent);
             changePassword.ShowDialog();
+        }
+
+        private void cbbGiamGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            giamGia = cbbGiamGia.SelectedIndex;
+            tbxTongTien.Text = TinhTongBill();
         }
     }
 }

@@ -29,7 +29,10 @@ namespace ProjectMonHoc.Screen
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NhanVien = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -45,18 +48,19 @@ namespace ProjectMonHoc.Screen
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbDoanhThu = new System.Windows.Forms.Label();
-            this.ptbMoneyIcon = new System.Windows.Forms.PictureBox();
-            this.ptbBillIcon = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbTongSoBill = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnChiTiet = new System.Windows.Forms.Button();
             this.ptbCalendarIcon = new System.Windows.Forms.PictureBox();
+            this.ptbBillIcon = new System.Windows.Forms.PictureBox();
+            this.ptbMoneyIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMoneyIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbBillIcon)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbCalendarIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBillIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMoneyIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvHoaDon
@@ -67,6 +71,14 @@ namespace ProjectMonHoc.Screen
             this.dgvHoaDon.AllowUserToResizeRows = false;
             this.dgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHoaDon.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvHoaDon.ColumnHeadersHeight = 40;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -75,13 +87,31 @@ namespace ProjectMonHoc.Screen
             this.NgayLap,
             this.NgayThanhToan,
             this.TongTien});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvHoaDon.Location = new System.Drawing.Point(14, 63);
             this.dgvHoaDon.Margin = new System.Windows.Forms.Padding(5);
             this.dgvHoaDon.Name = "dgvHoaDon";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvHoaDon.RowHeadersVisible = false;
             this.dgvHoaDon.RowTemplate.Height = 40;
+            this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHoaDon.Size = new System.Drawing.Size(1300, 556);
             this.dgvHoaDon.TabIndex = 0;
+            this.dgvHoaDon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellDoubleClick);
             // 
             // ID
             // 
@@ -102,9 +132,9 @@ namespace ProjectMonHoc.Screen
             // NgayLap
             // 
             this.NgayLap.DataPropertyName = "NgayLap";
-            dataGridViewCellStyle3.Format = "g";
-            dataGridViewCellStyle3.NullValue = null;
-            this.NgayLap.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Format = "g";
+            dataGridViewCellStyle6.NullValue = null;
+            this.NgayLap.DefaultCellStyle = dataGridViewCellStyle6;
             this.NgayLap.HeaderText = "Thời gian tạo";
             this.NgayLap.Name = "NgayLap";
             this.NgayLap.ReadOnly = true;
@@ -126,6 +156,7 @@ namespace ProjectMonHoc.Screen
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 16F);
             this.label1.Location = new System.Drawing.Point(452, 21);
             this.label1.Name = "label1";
@@ -136,6 +167,7 @@ namespace ProjectMonHoc.Screen
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 16F);
             this.label2.Location = new System.Drawing.Point(652, 21);
             this.label2.Name = "label2";
@@ -166,6 +198,7 @@ namespace ProjectMonHoc.Screen
             // 
             // btnSwap
             // 
+            this.btnSwap.BackColor = System.Drawing.Color.Transparent;
             this.btnSwap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSwap.FlatAppearance.BorderSize = 0;
             this.btnSwap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -173,11 +206,12 @@ namespace ProjectMonHoc.Screen
             this.btnSwap.Name = "btnSwap";
             this.btnSwap.Size = new System.Drawing.Size(37, 33);
             this.btnSwap.TabIndex = 5;
-            this.btnSwap.UseVisualStyleBackColor = true;
+            this.btnSwap.UseVisualStyleBackColor = false;
             this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.Transparent;
             this.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -185,12 +219,13 @@ namespace ProjectMonHoc.Screen
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(37, 33);
             this.btnReset.TabIndex = 6;
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 16F);
             this.label3.Location = new System.Drawing.Point(939, 634);
             this.label3.Name = "label3";
@@ -217,24 +252,6 @@ namespace ProjectMonHoc.Screen
             this.lbDoanhThu.Text = "0";
             this.lbDoanhThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ptbMoneyIcon
-            // 
-            this.ptbMoneyIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptbMoneyIcon.Location = new System.Drawing.Point(884, 627);
-            this.ptbMoneyIcon.Name = "ptbMoneyIcon";
-            this.ptbMoneyIcon.Size = new System.Drawing.Size(45, 45);
-            this.ptbMoneyIcon.TabIndex = 9;
-            this.ptbMoneyIcon.TabStop = false;
-            // 
-            // ptbBillIcon
-            // 
-            this.ptbBillIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptbBillIcon.Location = new System.Drawing.Point(504, 627);
-            this.ptbBillIcon.Name = "ptbBillIcon";
-            this.ptbBillIcon.Size = new System.Drawing.Size(52, 45);
-            this.ptbBillIcon.TabIndex = 12;
-            this.ptbBillIcon.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -257,6 +274,7 @@ namespace ProjectMonHoc.Screen
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Calibri", 16F);
             this.label5.Location = new System.Drawing.Point(562, 634);
             this.label5.Name = "label5";
@@ -264,8 +282,24 @@ namespace ProjectMonHoc.Screen
             this.label5.TabIndex = 10;
             this.label5.Text = "Tổng số bill :";
             // 
+            // btnChiTiet
+            // 
+            this.btnChiTiet.BackColor = System.Drawing.Color.White;
+            this.btnChiTiet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChiTiet.Location = new System.Drawing.Point(1048, 18);
+            this.btnChiTiet.Name = "btnChiTiet";
+            this.btnChiTiet.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnChiTiet.Size = new System.Drawing.Size(123, 32);
+            this.btnChiTiet.TabIndex = 14;
+            this.btnChiTiet.Text = "Chi tiết";
+            this.btnChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChiTiet.UseVisualStyleBackColor = false;
+            this.btnChiTiet.Click += new System.EventHandler(this.btnChiTiet_Click);
+            // 
             // ptbCalendarIcon
             // 
+            this.ptbCalendarIcon.BackColor = System.Drawing.Color.Transparent;
             this.ptbCalendarIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ptbCalendarIcon.Location = new System.Drawing.Point(398, 11);
             this.ptbCalendarIcon.Name = "ptbCalendarIcon";
@@ -273,11 +307,33 @@ namespace ProjectMonHoc.Screen
             this.ptbCalendarIcon.TabIndex = 13;
             this.ptbCalendarIcon.TabStop = false;
             // 
+            // ptbBillIcon
+            // 
+            this.ptbBillIcon.BackColor = System.Drawing.Color.Transparent;
+            this.ptbBillIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptbBillIcon.Location = new System.Drawing.Point(504, 627);
+            this.ptbBillIcon.Name = "ptbBillIcon";
+            this.ptbBillIcon.Size = new System.Drawing.Size(52, 45);
+            this.ptbBillIcon.TabIndex = 12;
+            this.ptbBillIcon.TabStop = false;
+            // 
+            // ptbMoneyIcon
+            // 
+            this.ptbMoneyIcon.BackColor = System.Drawing.Color.Transparent;
+            this.ptbMoneyIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptbMoneyIcon.Location = new System.Drawing.Point(884, 627);
+            this.ptbMoneyIcon.Name = "ptbMoneyIcon";
+            this.ptbMoneyIcon.Size = new System.Drawing.Size(45, 45);
+            this.ptbMoneyIcon.TabIndex = 9;
+            this.ptbMoneyIcon.TabStop = false;
+            // 
             // frmXemHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1334, 677);
+            this.Controls.Add(this.btnChiTiet);
             this.Controls.Add(this.ptbCalendarIcon);
             this.Controls.Add(this.ptbBillIcon);
             this.Controls.Add(this.panel2);
@@ -299,10 +355,10 @@ namespace ProjectMonHoc.Screen
             this.Load += new System.EventHandler(this.frmXemHoaDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMoneyIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbBillIcon)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbCalendarIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBillIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMoneyIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +387,6 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.Label lbTongSoBill;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox ptbCalendarIcon;
+        private System.Windows.Forms.Button btnChiTiet;
     }
 }

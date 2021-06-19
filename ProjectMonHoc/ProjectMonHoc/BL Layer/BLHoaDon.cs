@@ -53,31 +53,12 @@ namespace ProjectMonHoc.BL_Layer
 
         }
 
-        public DataTable LayHoaDon() //Không sử dụng
+        public HOADON LayHoaDonID(string ID) //Không sử dụng
         {
             QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("IDHoaDon"),
-                new DataColumn("NhanVien"),
-                new DataColumn("NgayLap"),
-                new DataColumn("NgayThanhToan"),
-                new DataColumn("TongTien")
-            });
-            var hoadon = ql.HOADONs.Select(x => x);
-            foreach (HOADON hd in hoadon)
-            {
-                string ngaylap = hd.NgayLap.ToString("HH:mm   dd/MM/yyyy");
-                string ngaythanhtoan;
-                if (hd.NgayThanhToan != null)
-                {
-                    ngaythanhtoan = hd.NgayThanhToan.GetValueOrDefault().ToString("HH:mm   dd/MM/yyyy");
-                }
-                else ngaythanhtoan = "";
-                dt.Rows.Add(hd.IDHoaDon, hd.IDNhanVien, ngaylap, ngaythanhtoan, hd.TongTien);
-            }
-            return dt;
+            
+            var hoadon = (ql.HOADONs.Where(x=> x.IDHoaDon == ID).Select(x => x)).SingleOrDefault();
+            return hoadon;
         }    
 
         //Hàm lấy bảng các hóa đơn từ ngày batdau đến ngày ketthuc, kích hoạt khi thay đổi value dateTimePicker
@@ -142,6 +123,17 @@ namespace ProjectMonHoc.BL_Layer
             if (ql.HOADONs.Count() > 0)
                 return true;
             return false;
+        }
+
+        public DateTime layNgayLap(string ID)
+        {
+            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            DateTime result = ql.HOADONs.Where(x => x.IDHoaDon == ID).Select(x => x.NgayLap).FirstOrDefault();
+            if (result != default)
+            {
+                return result;
+            }
+            return DateTime.Now;
         }
     }
 }

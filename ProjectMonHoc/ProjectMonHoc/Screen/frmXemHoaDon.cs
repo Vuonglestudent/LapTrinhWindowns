@@ -25,6 +25,7 @@ namespace ProjectMonHoc.Screen
             ptbMoneyIcon.BackgroundImage = Image.FromFile(@"../../Icon/moneyIcon.png");
             ptbBillIcon.BackgroundImage = Image.FromFile(@"../../Icon/billIcon.png");
             ptbCalendarIcon.BackgroundImage = Image.FromFile(@"../../Icon/calendarIcon.png");
+            this.btnChiTiet.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/billIcon.png"), new Size(25, 25)));
         }
 
         private void frmXemHoaDon_Load(object sender, EventArgs e)
@@ -65,6 +66,32 @@ namespace ProjectMonHoc.Screen
         {
             dtpkBatDau.Value = BLHoaDon.Instance.TimeOfFirstBill();
             dtpkKetThuc.Value = BLHoaDon.Instance.TimeOfLastBill();
+        }
+
+        private void btnChiTiet_Click(object sender, EventArgs e)
+        {
+            List<string> IDbills = new List<string>();
+            if (dgvHoaDon.SelectedRows.Count > 1)
+            {
+                foreach (DataGridViewRow bill in dgvHoaDon.SelectedRows)
+                    IDbills.Add(bill.Cells["ID"].Value.ToString());
+            }
+            else
+            {
+                foreach (DataGridViewRow bill in dgvHoaDon.Rows)
+                    IDbills.Add(bill.Cells["ID"].Value.ToString());
+            }
+            frmChiTietHoaDon frmCTHD = new frmChiTietHoaDon(IDbills);
+            frmCTHD.ShowDialog();
+        }
+
+        private void dgvHoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                frmChiTietHoaDon frm = new frmChiTietHoaDon(dgvHoaDon.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                frm.ShowDialog();
+            }    
         }
     }
 }

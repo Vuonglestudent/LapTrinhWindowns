@@ -30,11 +30,10 @@ namespace ProjectMonHoc
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDangNhap = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDangXuat = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDoiMatKhau = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemThemUser = new System.Windows.Forms.ToolStripMenuItem();
             this.xemHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,8 +92,7 @@ namespace ProjectMonHoc
             // 
             this.tàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemDangNhap,
-            this.menuItemDangXuat,
-            this.menuItemDoiMatKhau});
+            this.menuItemDangXuat});
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
             this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(83, 23);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
@@ -102,7 +100,7 @@ namespace ProjectMonHoc
             // menuItemDangNhap
             // 
             this.menuItemDangNhap.Name = "menuItemDangNhap";
-            this.menuItemDangNhap.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangNhap.Size = new System.Drawing.Size(150, 24);
             this.menuItemDangNhap.Text = "Đăng Nhập";
             this.menuItemDangNhap.Click += new System.EventHandler(this.menuItemDangNhap_Click);
             // 
@@ -110,16 +108,9 @@ namespace ProjectMonHoc
             // 
             this.menuItemDangXuat.Enabled = false;
             this.menuItemDangXuat.Name = "menuItemDangXuat";
-            this.menuItemDangXuat.Size = new System.Drawing.Size(166, 24);
+            this.menuItemDangXuat.Size = new System.Drawing.Size(150, 24);
             this.menuItemDangXuat.Text = "Đăng Xuất";
             this.menuItemDangXuat.Click += new System.EventHandler(this.menuItemDangXuat_Click);
-            // 
-            // menuItemDoiMatKhau
-            // 
-            this.menuItemDoiMatKhau.Enabled = false;
-            this.menuItemDoiMatKhau.Name = "menuItemDoiMatKhau";
-            this.menuItemDoiMatKhau.Size = new System.Drawing.Size(166, 24);
-            this.menuItemDoiMatKhau.Text = "Đổi Mật Khẩu";
             // 
             // menuItemAdmin
             // 
@@ -225,8 +216,8 @@ namespace ProjectMonHoc
             // 
             // columnSTT
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columnSTT.DefaultCellStyle = dataGridViewCellStyle5;
             this.columnSTT.FillWeight = 35F;
             this.columnSTT.HeaderText = "   ";
             this.columnSTT.Name = "columnSTT";
@@ -330,11 +321,14 @@ namespace ProjectMonHoc
             // 
             this.btnAddBill.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnAddBill.Font = new System.Drawing.Font("Calibri", 14F);
+            this.btnAddBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddBill.Location = new System.Drawing.Point(1118, 491);
             this.btnAddBill.Name = "btnAddBill";
+            this.btnAddBill.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
             this.btnAddBill.Size = new System.Drawing.Size(123, 37);
             this.btnAddBill.TabIndex = 32;
             this.btnAddBill.Text = "Add Bill";
+            this.btnAddBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddBill.UseVisualStyleBackColor = false;
             this.btnAddBill.Click += new System.EventHandler(this.btnAddBill_Click);
             // 
@@ -388,11 +382,14 @@ namespace ProjectMonHoc
             // 
             this.btnThanhToan.BackColor = System.Drawing.Color.SpringGreen;
             this.btnThanhToan.Font = new System.Drawing.Font("Calibri", 16F);
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThanhToan.Location = new System.Drawing.Point(1144, 760);
             this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnThanhToan.Size = new System.Drawing.Size(180, 53);
             this.btnThanhToan.TabIndex = 27;
             this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
@@ -400,11 +397,14 @@ namespace ProjectMonHoc
             // 
             this.btnHuyBill.BackColor = System.Drawing.Color.Tomato;
             this.btnHuyBill.Font = new System.Drawing.Font("Calibri", 16F);
+            this.btnHuyBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuyBill.Location = new System.Drawing.Point(1351, 760);
             this.btnHuyBill.Name = "btnHuyBill";
+            this.btnHuyBill.Padding = new System.Windows.Forms.Padding(10, 0, 30, 0);
             this.btnHuyBill.Size = new System.Drawing.Size(180, 53);
             this.btnHuyBill.TabIndex = 26;
             this.btnHuyBill.Text = "Hủy bill";
+            this.btnHuyBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHuyBill.UseVisualStyleBackColor = false;
             this.btnHuyBill.Click += new System.EventHandler(this.btnHuyBill_Click);
             // 
@@ -429,6 +429,7 @@ namespace ProjectMonHoc
             this.cbbGiamGia.Size = new System.Drawing.Size(157, 34);
             this.cbbGiamGia.TabIndex = 25;
             this.cbbGiamGia.Text = "0%";
+            this.cbbGiamGia.SelectedIndexChanged += new System.EventHandler(this.cbbGiamGia_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -621,7 +622,6 @@ namespace ProjectMonHoc
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemDangNhap;
         private System.Windows.Forms.ToolStripMenuItem menuItemDangXuat;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDoiMatKhau;
         private System.Windows.Forms.ToolStripMenuItem menuItemAdmin;
         private System.Windows.Forms.ToolStripMenuItem menuItemThemUser;
         private System.Windows.Forms.ToolStripMenuItem xemHóaĐơnToolStripMenuItem;
