@@ -103,8 +103,8 @@ namespace ProjectMonHoc
         void LoadAvatar()
         {
             Image img;
-            img = userCurrent == null 
-                ? Image.FromFile(@"../../Images/default.jpg") 
+            img = userCurrent == null
+                ? Image.FromFile(@"../../Images/default.jpg")
                 : Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
             ptbAvatar.BackgroundImage = img;
             lbFullName.Text = userCurrent == null
@@ -119,7 +119,7 @@ namespace ProjectMonHoc
             CreateItemMenu("changePassword.png", this.btnChangePass, null);
         }
 
-        void CreateItemMenu(string icon, Button btnIcon, EventHandler eventClick) 
+        void CreateItemMenu(string icon, Button btnIcon, EventHandler eventClick)
         {
             Image img = Image.FromFile(@"../../Images/" + icon);
             btnIcon.Image = (Image)(new Bitmap(img, new Size(15, 15)));
@@ -136,8 +136,8 @@ namespace ProjectMonHoc
                 this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
                 foreach (DANHMUC item in listDanhMuc)
                 {
-                    AddTabDanhMuc(item);                    
-                }                
+                    AddTabDanhMuc(item);
+                }
             }
             catch
             {
@@ -196,7 +196,7 @@ namespace ProjectMonHoc
                 MessageBox.Show("Lỗi load món nước");
             }
         }
-        
+
         void AddButtonNuoc(MONAN item, Point local, Size size, TabPage tab)
         {
             Button newButton = new Button();
@@ -210,7 +210,8 @@ namespace ProjectMonHoc
             try
             {
                 img = Image.FromFile(@"../../Images/" + item.HinhMA);
-            } catch 
+            }
+            catch
             {
                 img = Image.FromFile(@"../../Images/default.jpg");
             }
@@ -308,11 +309,11 @@ namespace ProjectMonHoc
             {
                 btnBan_MouseDown(s, e, newButton, newLabel, item);
             };
-            
+
             //thay bằng :
             //newButton.Click += btnBan_Click;
         }
-        
+
         #endregion
 
         #region EventBanClick
@@ -357,7 +358,7 @@ namespace ProjectMonHoc
             cmsBtnBan.Items.Add(sua);
             cmsBtnBan.Items.Add(xoa);
             int IDBan = item.IDBan;
-            
+
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -371,6 +372,10 @@ namespace ProjectMonHoc
                             xemBillBan = true;
                             this.ShowBill(IDBan);
                             BanDangChon = btnBan;
+                            cbbGiamGia.Enabled = false;
+                            tbxTienKhachDua.Enabled = true;
+                            textBox1.Enabled = true;
+                            tbxTienKhachDua.Text = "0";
                         }
                         else
                         {
@@ -389,10 +394,14 @@ namespace ProjectMonHoc
                             giamGia = 0;
                             cbbGiamGia.SelectedIndex = giamGia;
                             this.tbxTongTien.Text = this.TinhTongBill();
+                            tbxTienKhachDua.Text = "0";
+                            tbxTienKhachDua.Enabled = false;
+                            cbbGiamGia.Enabled = true;
+                            textBox1.Enabled = false;
                         }
                         break;
                     }
-                
+
                 case MouseButtons.Right:
                     {
                         Point p = new Point();
@@ -401,13 +410,13 @@ namespace ProjectMonHoc
                         cmsBtnBan.Show(p);
                         break;
                     }
-                    
+
             }
 
-            
-            
-            
-            
+
+
+
+
             sua.Click += (s, ev) =>
             {
                 Sua_Click(s, e, btnBan, item);
@@ -472,7 +481,7 @@ namespace ProjectMonHoc
         private void ChangeStateBan()
         {
             int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString()); //Lấy IDBan của Bàn được click trước đó;
-            BanDangChon.BackColor = color.colorTrong; 
+            BanDangChon.BackColor = color.colorTrong;
             ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).BackColor = color.colorTrong;
             ((Label)this.Controls.Find("lbTrangThaiBan" + IDBanDangChon, true)[0]).Text = "Còn trống";
         }
@@ -524,7 +533,7 @@ namespace ProjectMonHoc
             if (checkNull)
             {
                 bill.Rows.Add(BLMonAn.Instance.LayTenMonNuoc(IDMonAn),
-                    BLMonAn.Instance.LayDonGia(IDMonAn),"1",BLMonAn.Instance.LayDonGia(IDMonAn));
+                    BLMonAn.Instance.LayDonGia(IDMonAn), "1", BLMonAn.Instance.LayDonGia(IDMonAn));
             }
             dgvBill.DataSource = bill;
             this.tbxTongTien.Text = this.TinhTongBill().ToString();
@@ -551,25 +560,28 @@ namespace ProjectMonHoc
         {
             try
             {
-                int tienThua = int.Parse(tbxTienThua.Text.Split('$')[0]);
-                if (tienThua >= 0)
+                if (tbxTienThua.Text != "")
                 {
-                    int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
-                    string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
-                    bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
-                    if (check)
-                    {
-                        BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
-                        BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
-                        ChangeStateBan();
-                        cleanTien();
+                    int tienThua = int.Parse(tbxTienThua.Text.Split('$')[0]);
+                    //if (tienThua >= 0)
+                    //{
+                        int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
+                        string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
+                        bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
+                        if (check)
+                        {
+                            BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
+                            BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
+                            ChangeStateBan();
+                            cleanTien();
+                        }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Số tiền thanh toán không đầy đủ!");
-                }
-            } 
+                    else
+                    {
+                        MessageBox.Show("Số tiền thanh toán không đầy đủ!");
+                    }
+                //}
+            }
             catch
             {
                 MessageBox.Show("Thanh toán không thành công");
@@ -578,11 +590,12 @@ namespace ProjectMonHoc
 
         void cleanTien()
         {
-            this.tbxTienThua.ResetText();
+            this.tbxTienKhachDua.Text = "0";
             this.tbxTongTien.ResetText();
-            this.tbxTienKhachDua.TextChanged -= tbxTienKhachDua_TextChanged;
-            this.tbxTienKhachDua.ResetText();
-            this.tbxTienKhachDua.TextChanged += tbxTienKhachDua_TextChanged;
+            this.tbxTienThua.ResetText();
+            //this.tbxTienKhachDua.TextChanged -= tbxTienKhachDua_TextChanged;
+            //this.tbxTienKhachDua.ResetText();
+            //this.tbxTienKhachDua.TextChanged += tbxTienKhachDua_TextChanged;
             this.cbbGiamGia.SelectedIndex = 0;
             this.dgvBill.DataSource = bill;
         }
@@ -604,6 +617,8 @@ namespace ProjectMonHoc
             this.userCurrent = BLNhanVien.Instance.LayNhanVienByUserName(username);
             LoadAvatar();
             this.pnMain.Enabled = true;
+            tbxTienKhachDua.Enabled = false;
+            textBox1.Enabled = false;
             if (type == 1)
             {
                 this.menuItemAdmin.Enabled = true;
@@ -644,40 +659,43 @@ namespace ProjectMonHoc
                 sum = sum + int.Parse(row.Cells["ThanhTien"].Value.ToString());
             if (giamGia != 0 && sum != 0)
             {
-                double giam = sum * int.Parse(cbbGiamGia.Text.Split('%')[0])/100;
+                double giam = sum * int.Parse(cbbGiamGia.Text.Split('%')[0]) / 100;
                 sum -= giam;
-            }    
+            }
             return Math.Round(sum) + "$";
         }
 
         private void btnAddBill_Click(object sender, EventArgs e)
         {
-            DateTime time = DateTime.Now;
-            string IDHoaDon = TaoIDHoaDon();
-            BLHoaDon.Instance.ThemHoaDon(
-                IDHoaDon, 
-                userCurrent.IDNhanVien, 
-                int.Parse(BanDangChon.Tag.ToString()), 
-                time, 
-                int.Parse(tbxTongTien.Text.Split('$')[0]), 
-                cbbGiamGia.Text
-            );
-            foreach (DataGridViewRow row in dgvBill.Rows)
+            if (dgvBill.Rows.Count > 0)
             {
-                string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["TenMon"].Value.ToString());
-                int SoLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
-                int GiaTien = int.Parse(row.Cells["ThanhTien"].Value.ToString());
-                BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
+                DateTime time = DateTime.Now;
+                string IDHoaDon = TaoIDHoaDon();
+                BLHoaDon.Instance.ThemHoaDon(
+                    IDHoaDon,
+                    userCurrent.IDNhanVien,
+                    int.Parse(BanDangChon.Tag.ToString()),
+                    time,
+                    int.Parse(tbxTongTien.Text.Split('$')[0]),
+                    cbbGiamGia.Text
+                );
+                foreach (DataGridViewRow row in dgvBill.Rows)
+                {
+                    string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["TenMon"].Value.ToString());
+                    int SoLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
+                    int GiaTien = int.Parse(row.Cells["ThanhTien"].Value.ToString());
+                    BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
+                }
+                BanDangChon.BackColor = color.colorCoKhach;
+                BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/tableIcon.png");
+                Label lbBanDangChon = (Label)this.Controls.Find("lbTrangThaiBan" + BanDangChon.Tag.ToString(), true)[0];
+                lbBanDangChon.BackColor = color.colorCoKhach;
+                lbBanDangChon.Text = "Đã có khách";
+                BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()));
+                //BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
+                BanDangChon = null;
+                bill.Rows.Clear();
             }
-            BanDangChon.BackColor = color.colorCoKhach;
-            BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/tableIcon.png");
-            Label lbBanDangChon = (Label)this.Controls.Find("lbTrangThaiBan" + BanDangChon.Tag.ToString(), true)[0];
-            lbBanDangChon.BackColor = color.colorCoKhach;
-            lbBanDangChon.Text = "Đã có khách";
-            BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()));
-            //BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
-            BanDangChon = null;
-            bill.Rows.Clear();
         }
 
         private string TaoIDHoaDon()
@@ -702,7 +720,7 @@ namespace ProjectMonHoc
                     letter = Convert.ToChar(shift + 65);
                     IDHoaDon += letter;
                 }
-                
+
             }
             return IDHoaDon;
         }
@@ -710,29 +728,12 @@ namespace ProjectMonHoc
         #endregion
 
         #region event frm
-        private void tbxTienKhachDua_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-            if (((e.KeyChar == '.') || (e.KeyChar == '0')) && (sender as TextBox).Text == "")
-            {
-                e.Handled = true;
-            }
-        }
 
         private void tbxTienKhachDua_TextChanged(object sender, EventArgs e)
         {
-            int tienKhachDua = tbxTienKhachDua.Text != "$" 
-                ? int.Parse(tbxTienKhachDua.Text.Split('$')[0].ToString()) 
-                : 0;
+            int tienKhachDua = tbxTienKhachDua.Text != "" ? int.Parse(tbxTienKhachDua.Text.ToString()) : 0;
+            //    ? int.Parse(tbxTienKhachDua.Text.Split('$')[0].ToString()) 
+            //    : 0;
             int tongTien = int.Parse(tbxTongTien.Text.Split('$')[0].ToString());
             if (tienKhachDua.ToString() != "" && tongTien.ToString() != "")
             {
@@ -740,12 +741,13 @@ namespace ProjectMonHoc
                 if (tienThua >= 0)
                 {
                     this.tbxTienThua.Text = tienThua.ToString() + "$";
-                } else
+                }
+                else
                 {
-                    this.tbxTienThua.ResetText();
+                    this.tbxTienThua.Text = "";
                 }
             }
-            tbxTienKhachDua.Text = tienKhachDua + "$";
+            //tbxTienKhachDua.Text = tienKhachDua.ToString();
         }
 
         private void quảnLýMónĂnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -779,7 +781,7 @@ namespace ProjectMonHoc
 
         #region eventAvatarMenu
         private void ptbAvatar_MouseClick(object sender, MouseEventArgs e)
-        {             
+        {
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -801,7 +803,7 @@ namespace ProjectMonHoc
 
         private void tmrDropdownMenu_Tick(object sender, EventArgs e)
         {
-            while (pnDropDownMenuAvatar.Height< 100)
+            while (pnDropDownMenuAvatar.Height < 100)
             {
                 if (pnDropDownMenuAvatar.Height < 100)
                 {
@@ -829,6 +831,23 @@ namespace ProjectMonHoc
         {
             giamGia = cbbGiamGia.SelectedIndex;
             tbxTongTien.Text = TinhTongBill();
+        }
+
+        private void tbxTienKhachDua_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (tbxTienKhachDua.Text == "0")
+            {
+                tbxTienKhachDua.Text = "";
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

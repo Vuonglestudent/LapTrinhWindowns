@@ -47,6 +47,10 @@ namespace ProjectMonHoc
             this.columnTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnMain = new System.Windows.Forms.Panel();
+            this.ptbTienThua = new System.Windows.Forms.PictureBox();
+            this.ptbTienDua = new System.Windows.Forms.PictureBox();
+            this.ptbTongTien = new System.Windows.Forms.PictureBox();
+            this.ptbDiscount = new System.Windows.Forms.PictureBox();
             this.pnDropDownMenuAvatar = new System.Windows.Forms.Panel();
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnXemHoSo = new System.Windows.Forms.Button();
@@ -73,16 +77,17 @@ namespace ProjectMonHoc
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlBan = new System.Windows.Forms.TabControl();
             this.tabBan = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmTabBan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmrDropdownMenu = new System.Windows.Forms.Timer(this.components);
-            this.ptbDiscount = new System.Windows.Forms.PictureBox();
-            this.ptbTongTien = new System.Windows.Forms.PictureBox();
-            this.ptbTienDua = new System.Windows.Forms.PictureBox();
-            this.ptbTienThua = new System.Windows.Forms.PictureBox();
             this.menuStripHeThong.SuspendLayout();
             this.pnMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTienThua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTienDua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTongTien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbDiscount)).BeginInit();
             this.pnDropDownMenuAvatar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.tabControl2.SuspendLayout();
@@ -90,10 +95,6 @@ namespace ProjectMonHoc
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.tabControlBan.SuspendLayout();
             this.ctmTabBan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbDiscount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTongTien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTienDua)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTienThua)).BeginInit();
             this.SuspendLayout();
             // 
             // tàiKhoảnToolStripMenuItem
@@ -110,7 +111,7 @@ namespace ProjectMonHoc
             this.menuItemDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuItemDangNhap.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menuItemDangNhap.Name = "menuItemDangNhap";
-            this.menuItemDangNhap.Size = new System.Drawing.Size(180, 28);
+            this.menuItemDangNhap.Size = new System.Drawing.Size(165, 28);
             this.menuItemDangNhap.Text = "Đăng Nhập";
             this.menuItemDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.menuItemDangNhap.Click += new System.EventHandler(this.menuItemDangNhap_Click);
@@ -121,7 +122,7 @@ namespace ProjectMonHoc
             this.menuItemDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuItemDangXuat.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menuItemDangXuat.Name = "menuItemDangXuat";
-            this.menuItemDangXuat.Size = new System.Drawing.Size(180, 28);
+            this.menuItemDangXuat.Size = new System.Drawing.Size(165, 28);
             this.menuItemDangXuat.Text = "Đăng Xuất";
             this.menuItemDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.menuItemDangXuat.Click += new System.EventHandler(this.menuItemDangXuat_Click);
@@ -267,10 +268,47 @@ namespace ProjectMonHoc
             this.pnMain.Controls.Add(this.tbxTongTien);
             this.pnMain.Controls.Add(this.tabControl2);
             this.pnMain.Controls.Add(this.tabControlBan);
+            this.pnMain.Controls.Add(this.textBox1);
             this.pnMain.Location = new System.Drawing.Point(12, 32);
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(1560, 817);
             this.pnMain.TabIndex = 1;
+            // 
+            // ptbTienThua
+            // 
+            this.ptbTienThua.Location = new System.Drawing.Point(1158, 691);
+            this.ptbTienThua.Name = "ptbTienThua";
+            this.ptbTienThua.Size = new System.Drawing.Size(38, 33);
+            this.ptbTienThua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTienThua.TabIndex = 40;
+            this.ptbTienThua.TabStop = false;
+            // 
+            // ptbTienDua
+            // 
+            this.ptbTienDua.Location = new System.Drawing.Point(1158, 640);
+            this.ptbTienDua.Name = "ptbTienDua";
+            this.ptbTienDua.Size = new System.Drawing.Size(38, 33);
+            this.ptbTienDua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTienDua.TabIndex = 39;
+            this.ptbTienDua.TabStop = false;
+            // 
+            // ptbTongTien
+            // 
+            this.ptbTongTien.Location = new System.Drawing.Point(1158, 591);
+            this.ptbTongTien.Name = "ptbTongTien";
+            this.ptbTongTien.Size = new System.Drawing.Size(38, 33);
+            this.ptbTongTien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTongTien.TabIndex = 38;
+            this.ptbTongTien.TabStop = false;
+            // 
+            // ptbDiscount
+            // 
+            this.ptbDiscount.Location = new System.Drawing.Point(1158, 544);
+            this.ptbDiscount.Name = "ptbDiscount";
+            this.ptbDiscount.Size = new System.Drawing.Size(38, 33);
+            this.ptbDiscount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbDiscount.TabIndex = 37;
+            this.ptbDiscount.TabStop = false;
             // 
             // pnDropDownMenuAvatar
             // 
@@ -397,9 +435,11 @@ namespace ProjectMonHoc
             this.tbxTienKhachDua.Location = new System.Drawing.Point(1361, 648);
             this.tbxTienKhachDua.Name = "tbxTienKhachDua";
             this.tbxTienKhachDua.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbxTienKhachDua.Size = new System.Drawing.Size(157, 27);
+            this.tbxTienKhachDua.Size = new System.Drawing.Size(146, 27);
             this.tbxTienKhachDua.TabIndex = 28;
+            this.tbxTienKhachDua.Text = "0";
             this.tbxTienKhachDua.TextChanged += new System.EventHandler(this.tbxTienKhachDua_TextChanged);
+            this.tbxTienKhachDua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxTienKhachDua_KeyPress_1);
             // 
             // btnThanhToan
             // 
@@ -434,7 +474,7 @@ namespace ProjectMonHoc
             // cbbGiamGia
             // 
             this.cbbGiamGia.BackColor = System.Drawing.Color.White;
-            this.cbbGiamGia.Enabled = false;
+            this.cbbGiamGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbGiamGia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbGiamGia.Font = new System.Drawing.Font("Calibri", 16F);
             this.cbbGiamGia.FormattingEnabled = true;
@@ -452,7 +492,6 @@ namespace ProjectMonHoc
             this.cbbGiamGia.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbbGiamGia.Size = new System.Drawing.Size(157, 34);
             this.cbbGiamGia.TabIndex = 25;
-            this.cbbGiamGia.Text = "0%";
             this.cbbGiamGia.SelectedIndexChanged += new System.EventHandler(this.cbbGiamGia_SelectedIndexChanged);
             // 
             // label2
@@ -487,6 +526,7 @@ namespace ProjectMonHoc
             this.tbxTongTien.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tbxTongTien.Size = new System.Drawing.Size(157, 27);
             this.tbxTongTien.TabIndex = 22;
+            this.tbxTongTien.Text = "0$";
             // 
             // tabControl2
             // 
@@ -585,6 +625,20 @@ namespace ProjectMonHoc
             this.tabBan.UseVisualStyleBackColor = true;
             this.tabBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabBan_MouseDown);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 16F);
+            this.textBox1.Location = new System.Drawing.Point(1485, 648);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBox1.Size = new System.Drawing.Size(33, 27);
+            this.textBox1.TabIndex = 41;
+            this.textBox1.Text = "$";
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
@@ -611,42 +665,6 @@ namespace ProjectMonHoc
             // 
             this.tmrDropdownMenu.Tick += new System.EventHandler(this.tmrDropdownMenu_Tick);
             // 
-            // ptbDiscount
-            // 
-            this.ptbDiscount.Location = new System.Drawing.Point(1158, 544);
-            this.ptbDiscount.Name = "ptbDiscount";
-            this.ptbDiscount.Size = new System.Drawing.Size(38, 33);
-            this.ptbDiscount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbDiscount.TabIndex = 37;
-            this.ptbDiscount.TabStop = false;
-            // 
-            // ptbTongTien
-            // 
-            this.ptbTongTien.Location = new System.Drawing.Point(1158, 591);
-            this.ptbTongTien.Name = "ptbTongTien";
-            this.ptbTongTien.Size = new System.Drawing.Size(38, 33);
-            this.ptbTongTien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbTongTien.TabIndex = 38;
-            this.ptbTongTien.TabStop = false;
-            // 
-            // ptbTienDua
-            // 
-            this.ptbTienDua.Location = new System.Drawing.Point(1158, 640);
-            this.ptbTienDua.Name = "ptbTienDua";
-            this.ptbTienDua.Size = new System.Drawing.Size(38, 33);
-            this.ptbTienDua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbTienDua.TabIndex = 39;
-            this.ptbTienDua.TabStop = false;
-            // 
-            // ptbTienThua
-            // 
-            this.ptbTienThua.Location = new System.Drawing.Point(1158, 691);
-            this.ptbTienThua.Name = "ptbTienThua";
-            this.ptbTienThua.Size = new System.Drawing.Size(38, 33);
-            this.ptbTienThua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbTienThua.TabIndex = 40;
-            this.ptbTienThua.TabStop = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -665,6 +683,10 @@ namespace ProjectMonHoc
             this.menuStripHeThong.PerformLayout();
             this.pnMain.ResumeLayout(false);
             this.pnMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTienThua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTienDua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTongTien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbDiscount)).EndInit();
             this.pnDropDownMenuAvatar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
             this.tabControl2.ResumeLayout(false);
@@ -672,10 +694,6 @@ namespace ProjectMonHoc
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.tabControlBan.ResumeLayout(false);
             this.ctmTabBan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbDiscount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTongTien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTienDua)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTienThua)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -733,6 +751,7 @@ namespace ProjectMonHoc
         private System.Windows.Forms.PictureBox ptbTienDua;
         private System.Windows.Forms.PictureBox ptbTongTien;
         private System.Windows.Forms.PictureBox ptbDiscount;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
