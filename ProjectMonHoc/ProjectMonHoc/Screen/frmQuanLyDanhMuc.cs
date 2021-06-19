@@ -17,6 +17,19 @@ namespace ProjectMonHoc.Screen
         public frmQuanLyDanhMuc()
         {
             InitializeComponent();
+            LoadIcon();
+        }
+
+        public void LoadIcon()
+        {
+            Size btnSize = new Size(30, 30);
+            ptbID.Image = Image.FromFile(@"../../Icon/idIcon.png");
+            ptbTen.Image = Image.FromFile(@"../../Icon/tenIcon.png");
+            btnHuy.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/cancelIcon.png"), btnSize));
+            btnThem.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/addIcon.png"), btnSize));
+            btnXoa.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/trashcanIcon.png"), btnSize));
+            btnSua.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/editDataIcon.png"), btnSize));
+            btnLuu.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/saveIcon.png"), btnSize));
         }
         void LoadDataDanhMuc()
         {

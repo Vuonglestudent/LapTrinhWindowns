@@ -47,11 +47,18 @@ namespace ProjectMonHoc.Screen
             this.btnXoaMon = new System.Windows.Forms.Button();
             this.btnSuaMon = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ptbTenMon = new System.Windows.Forms.PictureBox();
+            this.ptbGiaTien = new System.Windows.Forms.PictureBox();
+            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
+            this.lbTenMon = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDanhMucMon
@@ -142,9 +149,9 @@ namespace ProjectMonHoc.Screen
             this.label1.Location = new System.Drawing.Point(59, 65);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 26);
+            this.label1.Size = new System.Drawing.Size(96, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Tên món";
+            this.label1.Text = "Tên món :";
             // 
             // numGiaTien
             // 
@@ -153,7 +160,7 @@ namespace ProjectMonHoc.Screen
             this.numGiaTien.Location = new System.Drawing.Point(176, 136);
             this.numGiaTien.Margin = new System.Windows.Forms.Padding(5);
             this.numGiaTien.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});
@@ -169,20 +176,23 @@ namespace ProjectMonHoc.Screen
             this.label2.Location = new System.Drawing.Point(59, 138);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 26);
+            this.label2.Size = new System.Drawing.Size(89, 26);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Giá tiền";
+            this.label2.Text = "Giá tiền :";
             // 
             // btnSelectFile
             // 
             this.btnSelectFile.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSelectFile.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectFile.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSelectFile.Location = new System.Drawing.Point(261, 542);
             this.btnSelectFile.Margin = new System.Windows.Forms.Padding(5);
             this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnSelectFile.Size = new System.Drawing.Size(133, 42);
             this.btnSelectFile.TabIndex = 6;
-            this.btnSelectFile.Text = "Choose File";
+            this.btnSelectFile.Text = "Choose";
+            this.btnSelectFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelectFile.UseVisualStyleBackColor = false;
             this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
             // 
@@ -201,12 +211,15 @@ namespace ProjectMonHoc.Screen
             // 
             this.btnThemMon.BackColor = System.Drawing.Color.SpringGreen;
             this.btnThemMon.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemMon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemMon.Location = new System.Drawing.Point(51, 755);
             this.btnThemMon.Margin = new System.Windows.Forms.Padding(5);
             this.btnThemMon.Name = "btnThemMon";
+            this.btnThemMon.Padding = new System.Windows.Forms.Padding(10, 0, 17, 0);
             this.btnThemMon.Size = new System.Drawing.Size(133, 42);
             this.btnThemMon.TabIndex = 8;
             this.btnThemMon.Text = "Thêm";
+            this.btnThemMon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemMon.UseVisualStyleBackColor = false;
             this.btnThemMon.Click += new System.EventHandler(this.btnThemMon_Click);
             // 
@@ -222,6 +235,10 @@ namespace ProjectMonHoc.Screen
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbTenMon);
+            this.groupBox1.Controls.Add(this.ptbHinhAnh);
+            this.groupBox1.Controls.Add(this.ptbGiaTien);
+            this.groupBox1.Controls.Add(this.ptbTenMon);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.pbImage);
             this.groupBox1.Controls.Add(this.btnSelectFile);
@@ -241,12 +258,15 @@ namespace ProjectMonHoc.Screen
             // 
             this.btnXoaMon.BackColor = System.Drawing.Color.Tomato;
             this.btnXoaMon.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaMon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoaMon.Location = new System.Drawing.Point(234, 755);
             this.btnXoaMon.Margin = new System.Windows.Forms.Padding(5);
             this.btnXoaMon.Name = "btnXoaMon";
+            this.btnXoaMon.Padding = new System.Windows.Forms.Padding(10, 0, 17, 0);
             this.btnXoaMon.Size = new System.Drawing.Size(133, 42);
             this.btnXoaMon.TabIndex = 11;
             this.btnXoaMon.Text = "Xóa";
+            this.btnXoaMon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaMon.UseVisualStyleBackColor = false;
             this.btnXoaMon.Click += new System.EventHandler(this.btnXoaMon_Click);
             // 
@@ -254,12 +274,15 @@ namespace ProjectMonHoc.Screen
             // 
             this.btnSuaMon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSuaMon.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaMon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSuaMon.Location = new System.Drawing.Point(415, 755);
             this.btnSuaMon.Margin = new System.Windows.Forms.Padding(5);
             this.btnSuaMon.Name = "btnSuaMon";
+            this.btnSuaMon.Padding = new System.Windows.Forms.Padding(10, 0, 17, 0);
             this.btnSuaMon.Size = new System.Drawing.Size(133, 42);
             this.btnSuaMon.TabIndex = 12;
             this.btnSuaMon.Text = "Sửa";
+            this.btnSuaMon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaMon.UseVisualStyleBackColor = false;
             this.btnSuaMon.Click += new System.EventHandler(this.btnSuaMon_Click);
             // 
@@ -274,6 +297,39 @@ namespace ProjectMonHoc.Screen
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
+            // 
+            // ptbTenMon
+            // 
+            this.ptbTenMon.Location = new System.Drawing.Point(11, 55);
+            this.ptbTenMon.Name = "ptbTenMon";
+            this.ptbTenMon.Size = new System.Drawing.Size(40, 41);
+            this.ptbTenMon.TabIndex = 10;
+            this.ptbTenMon.TabStop = false;
+            // 
+            // ptbGiaTien
+            // 
+            this.ptbGiaTien.Location = new System.Drawing.Point(11, 128);
+            this.ptbGiaTien.Name = "ptbGiaTien";
+            this.ptbGiaTien.Size = new System.Drawing.Size(40, 41);
+            this.ptbGiaTien.TabIndex = 11;
+            this.ptbGiaTien.TabStop = false;
+            // 
+            // ptbHinhAnh
+            // 
+            this.ptbHinhAnh.Location = new System.Drawing.Point(11, 213);
+            this.ptbHinhAnh.Name = "ptbHinhAnh";
+            this.ptbHinhAnh.Size = new System.Drawing.Size(40, 41);
+            this.ptbHinhAnh.TabIndex = 12;
+            this.ptbHinhAnh.TabStop = false;
+            // 
+            // lbTenMon
+            // 
+            this.lbTenMon.Location = new System.Drawing.Point(171, 53);
+            this.lbTenMon.Name = "lbTenMon";
+            this.lbTenMon.Size = new System.Drawing.Size(303, 51);
+            this.lbTenMon.TabIndex = 13;
+            this.lbTenMon.Text = "Món Ăn";
+            this.lbTenMon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmQuanLyMon
             // 
@@ -296,6 +352,9 @@ namespace ProjectMonHoc.Screen
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +378,9 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.Button btnXoaMon;
         private System.Windows.Forms.Button btnSuaMon;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox ptbHinhAnh;
+        private System.Windows.Forms.PictureBox ptbGiaTien;
+        private System.Windows.Forms.PictureBox ptbTenMon;
+        private System.Windows.Forms.Label lbTenMon;
     }
 }

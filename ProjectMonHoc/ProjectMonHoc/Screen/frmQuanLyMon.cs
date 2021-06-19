@@ -25,6 +25,20 @@ namespace ProjectMonHoc.Screen
             cbDanhMucMon.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
             cbDanhMucMon.DisplayMember = "TenDanhMuc";
             cbDanhMucMon.ValueMember = "IDDanhMuc";
+            LoadIcon();
+        }
+
+        public void LoadIcon()
+        {
+            Size btnSize = new Size(30, 30);
+            this.ptbGiaTien.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/costIcon.png"),btnSize));
+            this.ptbHinhAnh.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/imageIcon.png"), btnSize));
+            this.ptbTenMon.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/foodIcon.png"), btnSize));
+            this.btnSuaMon.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/editDataIcon.png"), btnSize));
+            this.btnThemMon.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/addIcon.png"), btnSize));
+            this.btnXoaMon.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/trashcanIcon.png"), btnSize));
+            this.btnSelectFile.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/imageIcon.png"), btnSize));
+            this.pbImage.BackgroundImage = Image.FromFile(@"../../Icon/imageIcon.png");
         }
 
         void LoadData (int idDanhMuc)
@@ -75,13 +89,13 @@ namespace ProjectMonHoc.Screen
 
         private void btnThemMon_Click(object sender, EventArgs e)
         {
-            if (txtTenMon.Text != "" && numGiaTien.Value != 0 && imgFile != null)
+            if (lbTenMon.Text != "" && numGiaTien.Value != 0 && imgFile != null)
             {
                 int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
                 try
                 {
                     imgFile.Save(@"../../Images/" + pathImg);
-                    BLMonAn.Instance.ThemMonAn(txtTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                    BLMonAn.Instance.ThemMonAn(lbTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
                     LoadData(dm);
                 }
                 catch
@@ -115,7 +129,7 @@ namespace ProjectMonHoc.Screen
                 try
                 {
                     imgFile.Save(@"../../Images/" + pathImg);
-                    BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), txtTenMon.Text, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                    BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), pathImg);
                 }
                 catch
                 {
@@ -124,7 +138,7 @@ namespace ProjectMonHoc.Screen
             }
             else
             {
-                BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), txtTenMon.Text, int.Parse(numGiaTien.Value.ToString()), string.Empty);
+                BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), string.Empty);
             }
             int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
             LoadData(dm);
@@ -133,7 +147,7 @@ namespace ProjectMonHoc.Screen
         private void dgvQLMonAn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow m = dgvQLMonAn.CurrentRow;
-            txtTenMon.Text = m.Cells[0].Value.ToString();
+            lbTenMon.Text = m.Cells[0].Value.ToString();
             numGiaTien.Value = decimal.Parse(m.Cells[1].Value.ToString());
             pbImage.BackgroundImage = (Bitmap)m.Cells[2].Value;
             pbImage.BackgroundImageLayout = ImageLayout.Stretch;

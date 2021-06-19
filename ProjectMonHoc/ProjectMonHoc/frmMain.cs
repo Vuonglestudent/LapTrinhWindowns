@@ -52,9 +52,25 @@ namespace ProjectMonHoc
             ptbAvatar.Region = rg;
             ptbAvatar.BackgroundImageLayout = ImageLayout.Stretch;
             pnDropDownMenuAvatar.Height = 0;
+            LoadIcon();
+        }
+
+        public void LoadIcon()
+        {
             this.btnThanhToan.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/payIcon.png"), new Size(40, 40)));
             this.btnAddBill.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/addIcon.png"), new Size(25, 25)));
             this.btnHuyBill.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/cancelIcon.png"), new Size(40, 40)));
+            this.menuItemDangNhap.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/loginIcon.png"), new Size(25, 25)));
+            this.menuItemDangXuat.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/logoutIcon.png"), new Size(25, 25)));
+            this.menuItemThemUser.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/staffIcon.png"), new Size(25, 25)));
+            this.xemHóaĐơnToolStripMenuItem.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/billsIcon.png"), new Size(25, 25)));
+            this.chỉnhSửaDanhMụcToolStripMenuItem.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/editDataIcon.png"), new Size(25, 25)));
+            this.quảnLýMónĂnToolStripMenuItem.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/foodIcon.png"), new Size(25, 25)));
+            this.ptbDiscount.Image = Image.FromFile(@"../../Icon/discountIcon.png");
+            this.ptbTienDua.Image = Image.FromFile(@"../../Icon/givemoneyIcon.png");
+            this.ptbTienThua.Image = Image.FromFile(@"../../Icon/cashreturnIcon.png");
+            this.ptbTienThua.Image = Image.FromFile(@"../../Icon/cashreturnIcon.png");
+            this.ptbTongTien.Image = Image.FromFile(@"../../Icon/billIcon.png");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -259,7 +275,7 @@ namespace ProjectMonHoc
             newButton.UseVisualStyleBackColor = false;
             newLabel.AutoSize = true;
             newLabel.Enabled = false;
-            Point localLabel = new Point(local.X + 14, local.Y + 43);
+            Point localLabel = new Point(local.X + 14, local.Y + 90);//43); // sửa để thêm icon bàn
             newLabel.Location = localLabel;
             newLabel.Name = "lbTrangThaiBan" + item.IDBan;
             newLabel.Size = new Size(56, 23);
@@ -268,17 +284,22 @@ namespace ProjectMonHoc
                 newLabel.Text = "Đã có khách";
                 newLabel.BackColor = color.colorCoKhach;
                 newButton.BackColor = color.colorCoKhach;
+                //thêm icon bàn
+                newButton.BackgroundImage = Image.FromFile(@"../../Icon/tableIcon.png");
+                newButton.BackgroundImageLayout = ImageLayout.Stretch;
             }
             if (item.TrangThai == false)
             {
                 newLabel.Text = "Còn trống";
                 newLabel.BackColor = color.colorTrong;
                 newButton.BackColor = color.colorTrong;
-
+                //thêm icon bàn
+                newButton.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
+                newButton.BackgroundImageLayout = ImageLayout.Stretch;
             }
 
             //Tạm comment
-            
+
             //newButton.Click += (s, e) =>
             //{
             //    btnBan_Click(s, e, newButton, newLabel, item);
@@ -539,6 +560,7 @@ namespace ProjectMonHoc
                     if (check)
                     {
                         BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
+                        BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
                         ChangeStateBan();
                         cleanTien();
                     }
@@ -648,6 +670,7 @@ namespace ProjectMonHoc
                 BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
             }
             BanDangChon.BackColor = color.colorCoKhach;
+            BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/tableIcon.png");
             Label lbBanDangChon = (Label)this.Controls.Find("lbTrangThaiBan" + BanDangChon.Tag.ToString(), true)[0];
             lbBanDangChon.BackColor = color.colorCoKhach;
             lbBanDangChon.Text = "Đã có khách";

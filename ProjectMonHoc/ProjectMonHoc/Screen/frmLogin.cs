@@ -23,7 +23,7 @@ namespace ProjectMonHoc
             this.tbxTK.LostFocus += AddPHTextUserName;
             this.tbxMK.GotFocus += RemovePHTextPassword;
             this.tbxMK.LostFocus += AddPHTextPassword;
-
+            panel1.BackgroundImage = Image.FromFile(@"../../Images/Login_background.png");
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)

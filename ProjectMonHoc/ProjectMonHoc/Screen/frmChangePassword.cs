@@ -18,8 +18,8 @@ namespace ProjectMonHoc.Screen
         {
             InitializeComponent();
             userCurrent = user;
-            this.btnHuy.Image = (Image)(new Bitmap(Image.FromFile(@"../../Images/cancel.png"), new Size(25, 25)));
-            this.btnLuu.Image = (Image)(new Bitmap(Image.FromFile(@"../../Images/save.png"), new Size(25, 25)));
+            this.btnHuy.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/cancelIcon.png"), new Size(25, 25)));
+            this.btnLuu.Image = (Image)(new Bitmap(Image.FromFile(@"../../Icon/saveIcon.png"), new Size(25, 25)));
             this.pnOld.Controls.Add(new PictureBox { Height = 2, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });
             this.pnNew.Controls.Add(new PictureBox { Height = 2, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });
             this.pnConfrim.Controls.Add(new PictureBox { Height = 2, Dock = DockStyle.Bottom, Image = Image.FromFile(@"../../Images/BAR.png") });

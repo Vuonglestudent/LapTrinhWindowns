@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenDanhMuc = new System.Windows.Forms.TextBox();
@@ -40,15 +40,19 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.ptbID = new System.Windows.Forms.PictureBox();
+            this.ptbTen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTen)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 115);
+            this.label2.Location = new System.Drawing.Point(66, 118);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 26);
@@ -59,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 49);
+            this.label1.Location = new System.Drawing.Point(66, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 26);
@@ -68,7 +72,7 @@
             // 
             // txtTenDanhMuc
             // 
-            this.txtTenDanhMuc.Location = new System.Drawing.Point(194, 111);
+            this.txtTenDanhMuc.Location = new System.Drawing.Point(216, 114);
             this.txtTenDanhMuc.Margin = new System.Windows.Forms.Padding(6);
             this.txtTenDanhMuc.Name = "txtTenDanhMuc";
             this.txtTenDanhMuc.Size = new System.Drawing.Size(227, 33);
@@ -76,7 +80,7 @@
             // 
             // txtIDDanhMuc
             // 
-            this.txtIDDanhMuc.Location = new System.Drawing.Point(194, 45);
+            this.txtIDDanhMuc.Location = new System.Drawing.Point(216, 48);
             this.txtIDDanhMuc.Margin = new System.Windows.Forms.Padding(6);
             this.txtIDDanhMuc.Name = "txtIDDanhMuc";
             this.txtIDDanhMuc.Size = new System.Drawing.Size(91, 33);
@@ -85,60 +89,75 @@
             // btnLuu
             // 
             this.btnLuu.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Location = new System.Drawing.Point(95, 209);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(6);
             this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnLuu.Size = new System.Drawing.Size(133, 42);
             this.btnLuu.TabIndex = 15;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
             // 
             this.btnHuy.BackColor = System.Drawing.Color.White;
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuy.Location = new System.Drawing.Point(267, 209);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(6);
             this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnHuy.Size = new System.Drawing.Size(133, 42);
             this.btnHuy.TabIndex = 14;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.Tomato;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.Location = new System.Drawing.Point(499, 92);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(6);
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Padding = new System.Windows.Forms.Padding(10, 0, 27, 0);
             this.btnXoa.Size = new System.Drawing.Size(133, 42);
             this.btnXoa.TabIndex = 13;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(499, 158);
             this.btnSua.Margin = new System.Windows.Forms.Padding(6);
             this.btnSua.Name = "btnSua";
+            this.btnSua.Padding = new System.Windows.Forms.Padding(10, 0, 27, 0);
             this.btnSua.Size = new System.Drawing.Size(133, 42);
             this.btnSua.TabIndex = 12;
             this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(499, 26);
             this.btnThem.Margin = new System.Windows.Forms.Padding(6);
             this.btnThem.Name = "btnThem";
+            this.btnThem.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnThem.Size = new System.Drawing.Size(133, 42);
             this.btnThem.TabIndex = 11;
             this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -153,8 +172,8 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 35;
             this.dataGridView1.Size = new System.Drawing.Size(464, 347);
             this.dataGridView1.TabIndex = 10;
@@ -162,6 +181,8 @@
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.ptbTen);
+            this.gbInfo.Controls.Add(this.ptbID);
             this.gbInfo.Controls.Add(this.txtIDDanhMuc);
             this.gbInfo.Controls.Add(this.label1);
             this.gbInfo.Controls.Add(this.label2);
@@ -173,6 +194,24 @@
             this.gbInfo.TabIndex = 21;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "info";
+            // 
+            // ptbID
+            // 
+            this.ptbID.Location = new System.Drawing.Point(19, 47);
+            this.ptbID.Name = "ptbID";
+            this.ptbID.Size = new System.Drawing.Size(38, 38);
+            this.ptbID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbID.TabIndex = 20;
+            this.ptbID.TabStop = false;
+            // 
+            // ptbTen
+            // 
+            this.ptbTen.Location = new System.Drawing.Point(19, 110);
+            this.ptbTen.Name = "ptbTen";
+            this.ptbTen.Size = new System.Drawing.Size(38, 38);
+            this.ptbTen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTen.TabIndex = 21;
+            this.ptbTen.TabStop = false;
             // 
             // frmQuanLyDanhMuc
             // 
@@ -194,6 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,5 +252,7 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox gbInfo;
+        private System.Windows.Forms.PictureBox ptbTen;
+        private System.Windows.Forms.PictureBox ptbID;
     }
 }
