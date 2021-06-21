@@ -22,7 +22,7 @@ namespace ProjectMonHoc.Screen
         public frmQuanLyMon()
         {
             InitializeComponent();
-            cbDanhMucMon.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
+            //cbDanhMucMon.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
             cbDanhMucMon.DisplayMember = "TenDanhMuc";
             cbDanhMucMon.ValueMember = "IDDanhMuc";
             LoadIcon();
@@ -95,7 +95,7 @@ namespace ProjectMonHoc.Screen
                 try
                 {
                     imgFile.Save(@"../../Images/" + pathImg);
-                    BLMonAn.Instance.ThemMonAn(lbTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                    //BLMonAn.Instance.ThemMonAn(lbTenMon.Text, dm, int.Parse(numGiaTien.Value.ToString()), pathImg);
                     LoadData(dm);
                 }
                 catch
@@ -114,7 +114,7 @@ namespace ProjectMonHoc.Screen
                 DialogResult traloi = MessageBox.Show(question, "Confirm", MessageBoxButtons.YesNo);
                 if (traloi == DialogResult.Yes)
                 {
-                    BLMonAn.Instance.XoaMonAn_TenMon(tenMon);
+                    //BLMonAn.Instance.XoaMonAn_TenMon(tenMon);
                     int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
                     LoadData(dm);
                 }    
@@ -129,7 +129,7 @@ namespace ProjectMonHoc.Screen
                 try
                 {
                     imgFile.Save(@"../../Images/" + pathImg);
-                    BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), pathImg);
+                   // BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), pathImg);
                 }
                 catch
                 {
@@ -138,7 +138,7 @@ namespace ProjectMonHoc.Screen
             }
             else
             {
-                BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), string.Empty);
+                //BLMonAn.Instance.CapNhatMon_TenMon(m.Cells[0].Value.ToString(), lbTenMon.Text, int.Parse(numGiaTien.Value.ToString()), string.Empty);
             }
             int dm = int.Parse(cbDanhMucMon.SelectedValue.ToString());
             LoadData(dm);

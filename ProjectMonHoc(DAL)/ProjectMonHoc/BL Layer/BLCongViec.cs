@@ -16,30 +16,30 @@ namespace ProjectMonHoc.BL_Layer
             private set { instance = value; }
         }
 
-        public DataTable LayCongViecCB()
-        {
-            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var queryCV = ql.CONGVIECs.Select(x => x);
+        //public DataTable LayCongViecCB()
+        //{
+        //    QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+        //    var queryCV = ql.CONGVIECs.Select(x => x);
 
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("ID"),
-                new DataColumn("TenCongViec")
-            });
+        //    DataTable dt = new DataTable();
+        //    dt.Columns.AddRange(new DataColumn[]
+        //    {
+        //        new DataColumn("ID"),
+        //        new DataColumn("TenCongViec")
+        //    });
 
-            foreach(var i in queryCV)
-            {
-                dt.Rows.Add(i.IDCongViec, i.TenCongViec);
-            }
-            return dt;
-        }
+        //    foreach(var i in queryCV)
+        //    {
+        //        dt.Rows.Add(i.IDCongViec, i.TenCongViec);
+        //    }
+        //    return dt;
+        //}
 
-        public string LayCongViecById(int id)
-        {
-            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var queryCV = ql.CONGVIECs.Where(x => x.IDCongViec == id).Select(x => x.TenCongViec).SingleOrDefault();
-            return queryCV;
-        }
+        //public string LayCongViecById(int id)
+        //{
+        //    QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+        //    var queryCV = ql.CONGVIECs.Where(x => x.IDCongViec == id).Select(x => x.TenCongViec).SingleOrDefault();
+        //    return queryCV;
+        //}
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectMonHoc.BL_Layer;
+using ProjectMonHoc.DTO;
 using ProjectMonHoc.EntityModel;
 
 namespace ProjectMonHoc.Screen
@@ -35,7 +36,7 @@ namespace ProjectMonHoc.Screen
         public Bill(string IDbill)
         {
             InitializeComponent();
-            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
             HOADON hd = BLHoaDon.Instance.LayHoaDonID(IDbill);
             lbID.Text = IDbill;
             lbNgayLap.Text = hd.NgayLap.ToString();

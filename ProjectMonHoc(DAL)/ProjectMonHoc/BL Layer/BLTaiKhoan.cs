@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectMonHoc.DTO;
 using ProjectMonHoc.EntityModel;
 namespace ProjectMonHoc.BL_Layer
 {
@@ -17,11 +19,14 @@ namespace ProjectMonHoc.BL_Layer
 
         public byte checkLogin (string taikhoan, string matkhau)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            TAIKHOAN tk = null;
-            tk = (from TK in qlCF.TAIKHOANs
-                           where TK.TaiKhoan1 == taikhoan && TK.MatKhau == matkhau
-                           select TK).SingleOrDefault();
+            DBMain db = new DBMain();
+            //tk = (from TK in qlCF.TAIKHOANs
+            //               where TK.TaiKhoan1 == taikhoan && TK.MatKhau == matkhau
+            //               select TK).SingleOrDefault();
+            string query = "Select * From TAIKHOAN Where TaiKhoan = '"
+                + taikhoan + "' And MatKhau = '"
+                + matkhau + "'";
+            var tk = db.ExecuteQueryDataSet(query, CommandType.Text);
             if (tk == null)
                 return 0;
             if (tk != null) return 1;
@@ -29,28 +34,28 @@ namespace ProjectMonHoc.BL_Layer
         }
         public string LayIDNhanVien(string taikhoan)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            TAIKHOAN tk = (from TK in qlCF.TAIKHOANs
-                         where TK.TaiKhoan1 == taikhoan
-                         select TK).SingleOrDefault();
-            if (tk != null)   
-                return tk.IDNhanVien;
+            //QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
+            //TAIKHOAN tk = (from TK in qlCF.TAIKHOANs
+            //             where TK.TaiKhoan1 == taikhoan
+            //             select TK).SingleOrDefault();
+            //if (tk != null)   
+            //    return tk.IDNhanVien;
             return "";
         }
         
         public bool DoiMatKhau(string oldPass, string newPass, string idNhanVien)
         {
-            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-            var query = ql.TAIKHOANs.Where(x => x.IDNhanVien == idNhanVien).SingleOrDefault();
-            if(query != null)
-            {
-                if (query.MatKhau == oldPass)
-                {
-                    query.MatKhau = newPass;
-                    ql.SaveChanges();
-                }
-                else return false;
-            }
+            //QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //var query = ql.TAIKHOANs.Where(x => x.IDNhanVien == idNhanVien).SingleOrDefault();
+            //if(query != null)
+            //{
+            //    if (query.MatKhau == oldPass)
+            //    {
+            //        query.MatKhau = newPass;
+            //        ql.SaveChanges();
+            //    }
+            //    else return false;
+            //}
             return true;
         }
     }

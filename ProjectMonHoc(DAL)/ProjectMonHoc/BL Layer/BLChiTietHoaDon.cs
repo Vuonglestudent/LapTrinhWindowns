@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectMonHoc.DTO;
 using ProjectMonHoc.EntityModel;
 
 namespace ProjectMonHoc.BL_Layer
@@ -19,13 +20,17 @@ namespace ProjectMonHoc.BL_Layer
         }
         public DataTable LayChiTietHoaDon(string IDHoaDon)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-
-            var queryCTHoaDon = from cthd in qlCF.CHITIETHOADONs
+            /* (EntityModels)
+             * var queryCTHoaDon = from cthd in qlCF.CHITIETHOADONs
                                 join ma in qlCF.MONANs on cthd.IDMonAn equals ma.IDMonAn
                                 where cthd.IDHoaDon == IDHoaDon
-                                select new { cthd.IDHoaDon, ma.TenMon, ma.GiaTien, cthd.SoLuong, ThanhTien =  ma.GiaTien * cthd.SoLuong};
-
+                                select new { cthd.IDHoaDon, ma.TenMon, ma.GiaTien, cthd.SoLuong, ThanhTien = ma.GiaTien * cthd.SoLuong };
+            */
+            DBMain db = new DBMain();
+            string query = "Select  CHITIETHOADON.IDHoaDon, TenMon, GiaTien, SoLuong, (GiaTien * SoLuong) as ThanhTien " +
+                "From CHITIETHOADON join MONAN on CHITIETHOADON.IDMonAN = MONAN.IDMonAn " +
+                "Where CHITIETHOADON.IDHoaDon = '" + IDHoaDon + "'";
+            var kq = db.ExecuteQueryDataSet(query, CommandType.Text);
             DataTable dt = new DataTable();
 
             dt.Columns.AddRange(new DataColumn[]
@@ -37,23 +42,20 @@ namespace ProjectMonHoc.BL_Layer
                 new DataColumn("ThanhTien"),
             }); ;
 
-            foreach (var i in queryCTHoaDon)
+            foreach (DataRow i in kq.Rows)
             {
-                dt.Rows.Add(i.IDHoaDon, i.TenMon, i.GiaTien, i.SoLuong, i.ThanhTien);
+                dt.Rows.Add(i["IDHoaDon"].ToString(), i["TenMon"].ToString(), (int)i["GiaTien"], (int)i["SoLuong"], (int)i["ThanhTien"]);
             }
             return dt;
         }
-        public void ThemChiTietHoaDon(string IDHoaDon, string IDMonNuoc, int SoLuong, int GiaTien)
+        public void ThemChiTietHoaDon(string IDHoaDon, string IDMonNuoc, int SoLuong, int GiaTien, ref string err)
         {
-            QuanLyNhaHangProjectEntities qlCF = new QuanLyNhaHangProjectEntities();
-            CHITIETHOADON cthd = new CHITIETHOADON();
-            cthd.IDHoaDon = IDHoaDon;
-            cthd.IDMonAn = IDMonNuoc;
-            cthd.SoLuong = SoLuong;           
-            qlCF.CHITIETHOADONs.Add(cthd);
+            DBMain db = new DBMain();
+            string query = "Insert Into CHITIETHOADON (IDHoaDon, IDMonAn, SoLuong) " +
+                "Values ('" + IDHoaDon + "','" + IDMonNuoc + "'," + SoLuong + ")";
             try
             {
-                qlCF.SaveChanges();
+                db.MyExecuteNonQuery(query, CommandType.Text, ref err);
             }
             catch
             {

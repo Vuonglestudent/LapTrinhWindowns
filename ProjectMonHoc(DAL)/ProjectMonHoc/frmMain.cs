@@ -15,6 +15,7 @@ using ProjectMonHoc.Screen;
 using System.IO;
 using System.Reflection;
 using System.Drawing.Drawing2D;
+using ProjectMonHoc.DTO;
 
 namespace ProjectMonHoc
 {
@@ -34,6 +35,7 @@ namespace ProjectMonHoc
         List<TabPage> listTabDanhMuc = new List<TabPage>();
         Button BanDangChon = null;
         int giamGia = 0;
+        string err;
 
         public string loginStatus = null;
         NHANVIEN userCurrent;
@@ -133,6 +135,7 @@ namespace ProjectMonHoc
             try
             {
                 tabDoUong.Controls.Clear();
+                //Convert DAL
                 this.listDanhMuc = BLDanhMuc.Instance.LayTenDanhMuc();
                 foreach (DANHMUC item in listDanhMuc)
                 {
@@ -164,11 +167,13 @@ namespace ProjectMonHoc
         #region LoadMonAn
         void LoadMon()
         {
+            //Convert DAL
             int number = BLDanhMuc.Instance.SoLuongDanhMuc();
             try
             {
                 for (int i = 0; i < number; i++)
                 {
+                    //Convert DAL
                     List<MONAN> listMon = BLMonAn.Instance.LayDanhMucMonAn(i + 1);
                     //lstCafe = BLMonAn.Instance.LayDanhMucMonAn(i + 1);// Hàm LayDanhMucNuocUong() có tham số là index
                     Size size = new Size(157, 138);                     // của tab cần lấy danh mục bắt đầu từ 1                            
@@ -236,6 +241,7 @@ namespace ProjectMonHoc
             tabBan.Controls.Clear();
             try
             {
+                //Convert DAL
                 this.lstBan = BLBan.Instance.LayBan();
                 Point pointBan = new Point(18, 35);
                 Size sizeBan = new Size(132, 125);
@@ -363,6 +369,7 @@ namespace ProjectMonHoc
             {
                 case MouseButtons.Left:
                     {
+                        //Convert DAL
                         if (BLBan.Instance.TrangThai(IDBan)) //Hàm kiểm tra trạng thái bàn
                         {
                             if (BanDangChon != null && !xemBillBan) // Set bàn đang được chọn và rest bàn cũ.
@@ -435,7 +442,8 @@ namespace ProjectMonHoc
             {
                 try
                 {
-                    BLBan.Instance.XoaBan(item.IDBan);
+                    //Convert DAL
+                    BLBan.Instance.XoaBan(item.IDBan, ref err);
                     MessageBox.Show("Xóa thành công");
                     LoadDataBan();
                 }
@@ -487,8 +495,10 @@ namespace ProjectMonHoc
         }
         private void ShowBill(int IDBan)
         {
+            //Convert DAL
             dgvBill.DataSource = BLBan.Instance.LayChiTietHoaDonBan(IDBan);
             dgvBill.Columns["IDHoaDon"].Visible = false;
+            //Convert DAL
             HOADON hd = BLHoaDon.Instance.LayHoaDonID(dgvBill.Rows[0].Cells["IDHoaDon"].Value.ToString());
             cbbGiamGia.Text = hd.KhuyenMai;
             tbxTongTien.Text = TinhTongBill().ToString();
@@ -521,6 +531,7 @@ namespace ProjectMonHoc
             bool checkNull = true; //Ban đầu giả sử món nước chưa từng được add vào bill tạm thì check = true
 
             for (int i = 0; i < bill.Rows.Count; i++)
+                //Convert DAL
                 if (BLMonAn.Instance.LayIDMonNuoc(bill.Rows[i]["TenMon"].ToString()) == IDMonAn)
                 {
                     checkNull = false; //Đã có trong bill tạm
@@ -532,6 +543,7 @@ namespace ProjectMonHoc
                 }
             if (checkNull)
             {
+                //Convert DAL
                 bill.Rows.Add(BLMonAn.Instance.LayTenMonNuoc(IDMonAn),
                     BLMonAn.Instance.LayDonGia(IDMonAn), "1", BLMonAn.Instance.LayDonGia(IDMonAn));
             }
@@ -567,10 +579,12 @@ namespace ProjectMonHoc
                     //{
                         int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
                         string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
-                        bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
+                        
+                        bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon, ref err);
                         if (check)
                         {
-                            BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
+                        //Convert DAL
+                            BLBan.Instance.ThayDoiTrangThai(IDBanDangChon, ref err);
                             BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
                             ChangeStateBan();
                             cleanTien();
@@ -614,6 +628,7 @@ namespace ProjectMonHoc
             this.menuItemDangXuat.Enabled = true;
             this.menuItemDanhMuc.Enabled = true;
             this.menuItemDangNhap.Enabled = false;
+            //Convert DAL
             this.userCurrent = BLNhanVien.Instance.LayNhanVienByUserName(username);
             LoadAvatar();
             this.pnMain.Enabled = true;
@@ -671,27 +686,31 @@ namespace ProjectMonHoc
             {
                 DateTime time = DateTime.Now;
                 string IDHoaDon = TaoIDHoaDon();
+                //Convert DAL
                 BLHoaDon.Instance.ThemHoaDon(
                     IDHoaDon,
                     userCurrent.IDNhanVien,
                     int.Parse(BanDangChon.Tag.ToString()),
                     time,
                     int.Parse(tbxTongTien.Text.Split('$')[0]),
-                    cbbGiamGia.Text
+                    cbbGiamGia.Text,
+                    ref err
                 );
                 foreach (DataGridViewRow row in dgvBill.Rows)
                 {
                     string IDMonNuoc = BLMonAn.Instance.LayIDMonNuoc(row.Cells["TenMon"].Value.ToString());
                     int SoLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
                     int GiaTien = int.Parse(row.Cells["ThanhTien"].Value.ToString());
-                    BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien);
+                    //Convert DAL
+                    BLChiTietHoaDon.Instance.ThemChiTietHoaDon(IDHoaDon, IDMonNuoc, SoLuong, GiaTien, ref err);
                 }
                 BanDangChon.BackColor = color.colorCoKhach;
                 BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/tableIcon.png");
                 Label lbBanDangChon = (Label)this.Controls.Find("lbTrangThaiBan" + BanDangChon.Tag.ToString(), true)[0];
                 lbBanDangChon.BackColor = color.colorCoKhach;
                 lbBanDangChon.Text = "Đã có khách";
-                BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()));
+                //Convert DAL
+                BLBan.Instance.ThayDoiTrangThai(int.Parse(BanDangChon.Tag.ToString()), ref err);
                 //BLBan.Instance.ThemHoaDonBan(int.Parse(BanDangChon.Tag.ToString()),IDHoaDon);
                 BanDangChon = null;
                 bill.Rows.Clear();

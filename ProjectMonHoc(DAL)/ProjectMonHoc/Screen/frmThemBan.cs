@@ -45,7 +45,7 @@ namespace ProjectMonHoc.Screen
             {
                 try
                 {
-                    BLBan.Instance.ThemBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.SelectedItem.ToString()));
+                    //BLBan.Instance.ThemBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.SelectedItem.ToString()));
                     LoadData();
                     MessageBox.Show("Thêm thành công!");
                 }
