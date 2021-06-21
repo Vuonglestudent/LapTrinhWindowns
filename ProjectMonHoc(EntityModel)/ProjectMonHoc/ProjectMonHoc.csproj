@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8EBE24B-FFDF-4561-A50A-5ACA6D34FEC6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProjectMonHoc</RootNamespace>
+    <AssemblyName>ProjectMonHoc</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL Layer\BLBan.cs" />
+    <Compile Include="BL Layer\BLChiTietHoaDon.cs" />
+    <Compile Include="BL Layer\BLCongViec.cs" />
+    <Compile Include="BL Layer\BLDanhMuc.cs" />
+    <Compile Include="BL Layer\BLHoaDon.cs" />
+    <Compile Include="BL Layer\BLMonAn.cs" />
+    <Compile Include="BL Layer\BLNhanVien.cs" />
+    <Compile Include="BL Layer\BLTaiKhoan.cs" />
+    <Compile Include="color.cs" />
+    <Compile Include="EntityModel\BAN.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\CHITIETHOADON.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\CONGVIEC.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\DANHMUC.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\HOADON.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\MONAN.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\NHANVIEN.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyNhaHangProjectEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\TAIKHOAN.cs">
+      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\Bill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screen\Bill.Designer.cs">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmChiTietHoaDon.Designer.cs">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmProfile.Designer.cs">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyDanhMuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyDanhMuc.Designer.cs">
+      <DependentUpon>frmQuanLyDanhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyNhanVien.Designer.cs">
+      <DependentUpon>frmQuanLyNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmQuanLyMon.Designer.cs">
+      <DependentUpon>frmQuanLyMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmSuaBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmSuaBan.Designer.cs">
+      <DependentUpon>frmSuaBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmThemBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmThemBan.Designer.cs">
+      <DependentUpon>frmThemBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmXemHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmXemHoaDon.Designer.cs">
+      <DependentUpon>frmXemHoaDon.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Screen\Bill.resx">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmChiTietHoaDon.resx">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmProfile.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmQuanLyDanhMuc.resx">
+      <DependentUpon>frmQuanLyDanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmQuanLyNhanVien.resx">
+      <DependentUpon>frmQuanLyNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmQuanLyMon.resx">
+      <DependentUpon>frmQuanLyMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmSuaBan.resx">
+      <DependentUpon>frmSuaBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmThemBan.resx">
+      <DependentUpon>frmThemBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmXemHoaDon.resx">
+      <DependentUpon>frmXemHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="EntityModel\QuanLyNhaHangProjectEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyNhaHangProjectEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityModel\QuanLyNhaHangProjectEntity.edmx.diagram">
+      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityModel\QuanLyNhaHangProjectEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
+      <LastGenOutput>QuanLyNhaHangProjectEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityModel\QuanLyNhaHangProjectEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
+      <LastGenOutput>QuanLyNhaHangProjectEntity.cs</LastGenOutput>
+    </Content>
+    <Content Include="Images\account.png" />
+    <Content Include="Images\address.png" />
+    <Content Include="Images\background.jpg" />
+    <Content Include="Images\BAR.png" />
+    <Content Include="Images\Boss-3-512.png" />
+    <Content Include="Images\cancel.png" />
+    <Content Include="Images\changePassword.png" />
+    <Content Include="Images\default.jpg" />
+    <Content Include="Images\email.png" />
+    <Content Include="Images\hiddenPass.png" />
+    <Content Include="Images\job.png" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\Login_background.png" />
+    <Content Include="Images\MA001.jpg" />
+    <Content Include="Images\MA007.jpg" />
+    <Content Include="Images\MA008.jpg" />
+    <Content Include="Images\MA009.jpg" />
+    <Content Include="Images\MA010.jpg" />
+    <Content Include="Images\MA011.jpg" />
+    <Content Include="Images\MA012.jpg" />
+    <Content Include="Images\MA013.jpg" />
+    <Content Include="Images\MA014.jpg" />
+    <Content Include="Images\MA015.jpg" />
+    <Content Include="Images\MA016.jpg" />
+    <Content Include="Images\MA017.jpg" />
+    <Content Include="Images\MA018.jpg" />
+    <Content Include="Images\MA019.jpg" />
+    <Content Include="Images\MA020.jpg" />
+    <Content Include="Images\MA021.jpg" />
+    <Content Include="Images\MA040.jpg" />
+    <Content Include="Images\MA041.jpg" />
+    <Content Include="Images\MA042.jpg" />
+    <Content Include="Images\MA043.jpg" />
+    <Content Include="Images\MA044.jpg" />
+    <Content Include="Images\MA045.jpg" />
+    <Content Include="Images\MA046.jpg" />
+    <Content Include="Images\MA047.jpg" />
+    <Content Include="Images\MA048.jpg" />
+    <Content Include="Images\MA049.jpg" />
+    <Content Include="Images\MA050.jpg" />
+    <Content Include="Images\MA051.jpg" />
+    <Content Include="Images\MA052.jpg" />
+    <Content Include="Images\MA053.jpg" />
+    <Content Include="Images\MA054.jpg" />
+    <Content Include="Images\MA055.jpg" />
+    <Content Include="Images\MA056.jpg" />
+    <Content Include="Images\NV001.jpg" />
+    <Content Include="Images\NV002.jpg" />
+    <Content Include="Images\NV003.jpg" />
+    <Content Include="Images\NV004.jpg" />
+    <Content Include="Images\NV005.jpg" />
+    <Content Include="Images\NV006.jpg" />
+    <Content Include="Images\NV007.jpg" />
+    <Content Include="Images\NV008.jpg" />
+    <Content Include="Images\NV009.jpg" />
+    <Content Include="Images\NV010.jpg" />
+    <Content Include="Images\NV011.jpg" />
+    <Content Include="Images\phone.png" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\showPass.png" />
+    <None Include="Images\MA022.jpg" />
+    <None Include="Images\MA023.jpg" />
+    <None Include="Images\MA024.jpg" />
+    <None Include="Images\MA025.jpg" />
+    <None Include="Images\MA026.jpg" />
+    <None Include="Images\MA027.jpg" />
+    <None Include="Images\MA028.jpg" />
+    <None Include="Images\MA029.jpg" />
+    <None Include="Images\MA030.jpg" />
+    <None Include="Images\MA031.jpg" />
+    <None Include="Images\MA032.jpg" />
+    <None Include="Images\MA033.jpg" />
+    <None Include="Images\MA034.jpg" />
+    <None Include="Images\MA035.jpg" />
+    <None Include="Images\MA036.jpg" />
+    <None Include="Images\MA037.jpg" />
+    <None Include="Images\MA038.jpg" />
+    <None Include="Images\MA039.jpg" />
+    <None Include="Images\MA006.jpg" />
+    <None Include="Images\MA005.jpg" />
+    <None Include="Images\MA004.jpg" />
+    <None Include="Images\MA003.jpg" />
+    <None Include="Images\MA002.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
