@@ -40,7 +40,7 @@ namespace ProjectMonHoc.Screen
 
         private void CapNhatBangHoaDon(object sender, EventArgs e)
         {
-            //dgvHoaDon.DataSource = BLHoaDon.Instance.LayHoaDon(dtpkBatDau.Value, dtpkKetThuc.Value);
+            dgvHoaDon.DataSource = BLHoaDon.Instance.LayHoaDon(dtpkBatDau.Value, dtpkKetThuc.Value);
             CapNhatTongKet();
         }
 
@@ -64,8 +64,8 @@ namespace ProjectMonHoc.Screen
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            //dtpkBatDau.Value = BLHoaDon.Instance.TimeOfFirstBill();
-            //dtpkKetThuc.Value = BLHoaDon.Instance.TimeOfLastBill();
+            dtpkBatDau.Value = BLHoaDon.Instance.TimeOfFirstBill();
+            dtpkKetThuc.Value = BLHoaDon.Instance.TimeOfLastBill();
         }
 
         private void btnChiTiet_Click(object sender, EventArgs e)

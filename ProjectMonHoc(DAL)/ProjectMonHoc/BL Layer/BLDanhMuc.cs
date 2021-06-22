@@ -36,26 +36,46 @@ namespace ProjectMonHoc.BL_Layer
             return count;
         }
 
-        //public DataTable LayDanhMucMon()
-        //{
-        //    QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-        //    var dmm = ql.DANHMUCs.Where(x => x.TrangThai == false).Select(x => x);
+        public DataTable LayDanhMucMon()
+        {
+            //Entity
+            //    QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //    var dmm = ql.DANHMUCs.Where(x => x.TrangThai == false).Select(x => x);
 
-        //    DataTable dt = new DataTable();
+            //    DataTable dt = new DataTable();
 
-        //    dt.Columns.AddRange(new DataColumn[]
-        //    {
-        //        new DataColumn("IDDanhMuc"),
-        //        new DataColumn("TenDanhMuc")
-        //    });
+            //    dt.Columns.AddRange(new DataColumn[]
+            //    {
+            //        new DataColumn("IDDanhMuc"),
+            //        new DataColumn("TenDanhMuc")
+            //    });
 
-        //    foreach (var i in dmm)
-        //    {
-        //        dt.Rows.Add(i.IDDanhMuc, i.TenDanhMuc);
-        //    }
+            //    foreach (var i in dmm)
+            //    {
+            //        dt.Rows.Add(i.IDDanhMuc, i.TenDanhMuc);
+            //    }
 
-        //    return dt;
-        //}
+            //    return dt;
+
+            DBMain db = new DBMain();
+            DataTable dt = new DataTable();
+
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                    new DataColumn("IDDanhMuc"),
+                    new DataColumn("TenDanhMuc")
+            });
+
+            string query = "Select * From DANHMUC Where TrangThai = 0;";
+            DataTable ex = db.ExecuteQueryDataSet(query, CommandType.Text);
+
+            foreach (DataRow dm in ex.Rows)
+            {
+                dt.Rows.Add(dm["IDDanhMuc"], dm["TenDanhMuc"]);
+            }
+
+            return dt;
+        }
         public List<DANHMUC> LayTenDanhMuc()
         {
             /* (EntityModels)

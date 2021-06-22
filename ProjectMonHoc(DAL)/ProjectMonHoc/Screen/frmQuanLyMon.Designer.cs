@@ -31,7 +31,7 @@ namespace ProjectMonHoc.Screen
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbDanhMucMon = new System.Windows.Forms.ComboBox();
-            this.dgvQLMonAn = new System.Windows.Forms.DataGridView();
+            this.lbTenMon = new System.Windows.Forms.DataGridView();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
@@ -44,21 +44,20 @@ namespace ProjectMonHoc.Screen
             this.btnThemMon = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
+            this.ptbGiaTien = new System.Windows.Forms.PictureBox();
+            this.ptbTenMon = new System.Windows.Forms.PictureBox();
             this.btnXoaMon = new System.Windows.Forms.Button();
             this.btnSuaMon = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ptbTenMon = new System.Windows.Forms.PictureBox();
-            this.ptbGiaTien = new System.Windows.Forms.PictureBox();
-            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
-            this.lbTenMon = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLMonAn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTenMon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbDanhMucMon
@@ -72,18 +71,18 @@ namespace ProjectMonHoc.Screen
             this.cbDanhMucMon.Size = new System.Drawing.Size(240, 34);
             this.cbDanhMucMon.TabIndex = 0;
             // 
-            // dgvQLMonAn
+            // lbTenMon
             // 
-            this.dgvQLMonAn.AllowUserToAddRows = false;
-            this.dgvQLMonAn.AllowUserToDeleteRows = false;
-            this.dgvQLMonAn.AllowUserToResizeColumns = false;
-            this.dgvQLMonAn.AllowUserToResizeRows = false;
-            this.dgvQLMonAn.BackgroundColor = System.Drawing.Color.White;
-            this.dgvQLMonAn.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvQLMonAn.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvQLMonAn.ColumnHeadersHeight = 45;
-            this.dgvQLMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvQLMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lbTenMon.AllowUserToAddRows = false;
+            this.lbTenMon.AllowUserToDeleteRows = false;
+            this.lbTenMon.AllowUserToResizeColumns = false;
+            this.lbTenMon.AllowUserToResizeRows = false;
+            this.lbTenMon.BackgroundColor = System.Drawing.Color.White;
+            this.lbTenMon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbTenMon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.lbTenMon.ColumnHeadersHeight = 45;
+            this.lbTenMon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.lbTenMon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenMon,
             this.GiaMon,
             this.Hinh});
@@ -94,16 +93,16 @@ namespace ProjectMonHoc.Screen
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvQLMonAn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvQLMonAn.GridColor = System.Drawing.Color.White;
-            this.dgvQLMonAn.Location = new System.Drawing.Point(26, 99);
-            this.dgvQLMonAn.Margin = new System.Windows.Forms.Padding(5);
-            this.dgvQLMonAn.Name = "dgvQLMonAn";
-            this.dgvQLMonAn.RowHeadersVisible = false;
-            this.dgvQLMonAn.RowTemplate.Height = 303;
-            this.dgvQLMonAn.Size = new System.Drawing.Size(906, 644);
-            this.dgvQLMonAn.TabIndex = 1;
-            this.dgvQLMonAn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQLMonAn_CellClick);
+            this.lbTenMon.DefaultCellStyle = dataGridViewCellStyle1;
+            this.lbTenMon.GridColor = System.Drawing.Color.White;
+            this.lbTenMon.Location = new System.Drawing.Point(26, 99);
+            this.lbTenMon.Margin = new System.Windows.Forms.Padding(5);
+            this.lbTenMon.Name = "lbTenMon";
+            this.lbTenMon.RowHeadersVisible = false;
+            this.lbTenMon.RowTemplate.Height = 303;
+            this.lbTenMon.Size = new System.Drawing.Size(906, 644);
+            this.lbTenMon.TabIndex = 1;
+            this.lbTenMon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQLMonAn_CellClick);
             // 
             // TenMon
             // 
@@ -235,7 +234,6 @@ namespace ProjectMonHoc.Screen
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lbTenMon);
             this.groupBox1.Controls.Add(this.ptbHinhAnh);
             this.groupBox1.Controls.Add(this.ptbGiaTien);
             this.groupBox1.Controls.Add(this.ptbTenMon);
@@ -253,6 +251,30 @@ namespace ProjectMonHoc.Screen
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
+            // 
+            // ptbHinhAnh
+            // 
+            this.ptbHinhAnh.Location = new System.Drawing.Point(11, 213);
+            this.ptbHinhAnh.Name = "ptbHinhAnh";
+            this.ptbHinhAnh.Size = new System.Drawing.Size(40, 41);
+            this.ptbHinhAnh.TabIndex = 12;
+            this.ptbHinhAnh.TabStop = false;
+            // 
+            // ptbGiaTien
+            // 
+            this.ptbGiaTien.Location = new System.Drawing.Point(11, 128);
+            this.ptbGiaTien.Name = "ptbGiaTien";
+            this.ptbGiaTien.Size = new System.Drawing.Size(40, 41);
+            this.ptbGiaTien.TabIndex = 11;
+            this.ptbGiaTien.TabStop = false;
+            // 
+            // ptbTenMon
+            // 
+            this.ptbTenMon.Location = new System.Drawing.Point(11, 55);
+            this.ptbTenMon.Name = "ptbTenMon";
+            this.ptbTenMon.Size = new System.Drawing.Size(40, 41);
+            this.ptbTenMon.TabIndex = 10;
+            this.ptbTenMon.TabStop = false;
             // 
             // btnXoaMon
             // 
@@ -288,7 +310,7 @@ namespace ProjectMonHoc.Screen
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvQLMonAn);
+            this.groupBox2.Controls.Add(this.lbTenMon);
             this.groupBox2.Controls.Add(this.cbDanhMucMon);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(617, 30);
@@ -297,39 +319,6 @@ namespace ProjectMonHoc.Screen
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
-            // 
-            // ptbTenMon
-            // 
-            this.ptbTenMon.Location = new System.Drawing.Point(11, 55);
-            this.ptbTenMon.Name = "ptbTenMon";
-            this.ptbTenMon.Size = new System.Drawing.Size(40, 41);
-            this.ptbTenMon.TabIndex = 10;
-            this.ptbTenMon.TabStop = false;
-            // 
-            // ptbGiaTien
-            // 
-            this.ptbGiaTien.Location = new System.Drawing.Point(11, 128);
-            this.ptbGiaTien.Name = "ptbGiaTien";
-            this.ptbGiaTien.Size = new System.Drawing.Size(40, 41);
-            this.ptbGiaTien.TabIndex = 11;
-            this.ptbGiaTien.TabStop = false;
-            // 
-            // ptbHinhAnh
-            // 
-            this.ptbHinhAnh.Location = new System.Drawing.Point(11, 213);
-            this.ptbHinhAnh.Name = "ptbHinhAnh";
-            this.ptbHinhAnh.Size = new System.Drawing.Size(40, 41);
-            this.ptbHinhAnh.TabIndex = 12;
-            this.ptbHinhAnh.TabStop = false;
-            // 
-            // lbTenMon
-            // 
-            this.lbTenMon.Location = new System.Drawing.Point(171, 53);
-            this.lbTenMon.Name = "lbTenMon";
-            this.lbTenMon.Size = new System.Drawing.Size(303, 51);
-            this.lbTenMon.TabIndex = 13;
-            this.lbTenMon.Text = "Món Ăn";
-            this.lbTenMon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmQuanLyMon
             // 
@@ -346,15 +335,15 @@ namespace ProjectMonHoc.Screen
             this.Name = "frmQuanLyMon";
             this.Text = "frmQuanLyMon";
             this.Load += new System.EventHandler(this.frmQuanLyMon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLMonAn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTenMon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGiaTien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -362,7 +351,6 @@ namespace ProjectMonHoc.Screen
         #endregion
 
         private System.Windows.Forms.ComboBox cbDanhMucMon;
-        private System.Windows.Forms.DataGridView dgvQLMonAn;
         private System.Windows.Forms.TextBox txtTenMon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numGiaTien;
@@ -370,6 +358,7 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Button btnThemMon;
+        private System.Windows.Forms.DataGridView lbTenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaMon;
         private System.Windows.Forms.DataGridViewImageColumn Hinh;
@@ -381,6 +370,5 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.PictureBox ptbHinhAnh;
         private System.Windows.Forms.PictureBox ptbGiaTien;
         private System.Windows.Forms.PictureBox ptbTenMon;
-        private System.Windows.Forms.Label lbTenMon;
     }
 }

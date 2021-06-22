@@ -40,7 +40,10 @@ namespace ProjectMonHoc.BL_Layer
             //             select TK).SingleOrDefault();
             //if (tk != null)   
             //    return tk.IDNhanVien;
-            return "";
+
+            DBMain db = new DBMain();
+            string query = "Select IDNhanVien From TAIKHOAN Where TaiKhoan = '" + taikhoan + "'";
+            return db.ExecuteQueryDataSet(query,CommandType.Text).Rows[0][0].ToString();
         }
         
         public bool DoiMatKhau(string oldPass, string newPass, string idNhanVien)
@@ -56,7 +59,17 @@ namespace ProjectMonHoc.BL_Layer
             //    }
             //    else return false;
             //}
-            return true;
+
+            DBMain db = new DBMain();
+            string f = "";
+            string query = "Select * from TAIKHOAN Where IDNhanVien = '" + idNhanVien + "' And MatKhau = '" + oldPass + "'";
+            if (db.ExecuteQueryDataSet(query,CommandType.Text).Rows.Count >=1)
+            {
+                query = "Update TAIKHOAN Set MatKhau = '" + newPass + "' Where IDNhanVien = '" + idNhanVien + "' And MatKhau = '" + oldPass + "'";
+                return db.MyExecuteNonQuery(query, CommandType.Text, ref f);
+            }    
+            else
+                return false;
         }
     }
 }
