@@ -26,7 +26,7 @@ namespace ProjectMonHoc.BL_Layer
                 "Values ('" + IDNhanVien + "','" + NgayLap + "'," + tongTien + ",'" + khuyenMai + "'," + IDBan + ",'" + IDHoaDon + "')";
             try
             {
-                db.MyExecuteNonQuery(query, CommandType.Text,ref err);
+                db.MyExecuteNonQuery(query, CommandType.Text, ref err);
             }
             catch
             {
@@ -60,7 +60,7 @@ namespace ProjectMonHoc.BL_Layer
                 "Where IDHoaDon = '" + ID + "'";
             var kq = db.ExecuteQueryDataSet(query, CommandType.Text);
             HOADON hd = new HOADON();
-            if(query != null)
+            if (query != null)
             {
                 hd.IDHoaDon = kq.Rows[0]["IDHoaDon"].ToString();
                 hd.IDBan = (int)kq.Rows[0]["IDBan"];
@@ -77,57 +77,93 @@ namespace ProjectMonHoc.BL_Layer
         }
 
         //        //Hàm lấy bảng các hóa đơn từ ngày batdau đến ngày ketthuc, kích hoạt khi thay đổi value dateTimePicker
-        //        public DataTable LayHoaDon(DateTime batdau, DateTime ketthuc)
-        //        {
-        //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-        //            DataTable dt = new DataTable();
-        //            dt.Columns.AddRange(new DataColumn[]
-        //            {
-        //                new DataColumn("IDHoaDon"),
-        //                new DataColumn("NhanVien"),
-        //                new DataColumn("NgayLap"),
-        //                new DataColumn("NgayThanhToan"),
-        //                new DataColumn("TongTien")
-        //            });
-        //            DateTime kt = ketthuc.AddDays(1);
-        //            var hoadon = ql.HOADONs.OrderBy(x=>x.NgayLap).Where(x=>(x.NgayLap < kt.Date && x.NgayLap >= batdau.Date)).Select(x=>x);
-        //            foreach (HOADON hd in hoadon)
-        //            {
-        //                string ngaylap = hd.NgayLap.ToString("HH:mm   dd/MM/yyyy");
-        //                string ngaythanhtoan;
-        //                if (hd.NgayThanhToan != null)
-        //                {
-        //                    ngaythanhtoan = hd.NgayThanhToan.GetValueOrDefault().ToString("HH:mm   dd/MM/yyyy");
-        //                }
-        //                else ngaythanhtoan = "";
-        //                dt.Rows.Add(hd.IDHoaDon, hd.IDNhanVien, ngaylap, ngaythanhtoan, hd.TongTien);
-        //            }
-        //            return dt;
-        //        }
+        public DataTable LayHoaDon(DateTime batdau, DateTime ketthuc)
+        {
+            //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //            DataTable dt = new DataTable();
+            //            dt.Columns.AddRange(new DataColumn[]
+            //            {
+            //                new DataColumn("IDHoaDon"),
+            //                new DataColumn("NhanVien"),
+            //                new DataColumn("NgayLap"),
+            //                new DataColumn("NgayThanhToan"),
+            //                new DataColumn("TongTien")
+            //            });
+            //            DateTime kt = ketthuc.AddDays(1);
+            //            var hoadon = ql.HOADONs.OrderBy(x=>x.NgayLap).Where(x=>(x.NgayLap < kt.Date && x.NgayLap >= batdau.Date)).Select(x=>x);
+            //            foreach (HOADON hd in hoadon)
+            //            {
+            //                string ngaylap = hd.NgayLap.ToString("HH:mm   dd/MM/yyyy");
+            //                string ngaythanhtoan;
+            //                if (hd.NgayThanhToan != null)
+            //                {
+            //                    ngaythanhtoan = hd.NgayThanhToan.GetValueOrDefault().ToString("HH:mm   dd/MM/yyyy");
+            //                }
+            //                else ngaythanhtoan = "";
+            //                dt.Rows.Add(hd.IDHoaDon, hd.IDNhanVien, ngaylap, ngaythanhtoan, hd.TongTien);
+            //            }
+            //            return dt;
+
+            DBMain db = new DBMain();
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                            new DataColumn("IDHoaDon"),
+                            new DataColumn("NhanVien"),
+                            new DataColumn("NgayLap"),
+                            new DataColumn("NgayThanhToan"),
+                            new DataColumn("TongTien")
+            });
+            DateTime kt = ketthuc.AddDays(1);
+            DateTime bd = batdau;
+            string query = "Select * from HOADON Where NgayLap < '" + kt.ToString("yyyy-MM-dd HH:MM:ss") + "' And NgayLap >= '"
+                + bd.ToString("yyyy-MM-dd HH:MM:ss") + "' Order By NgayLap";
+            var rs = db.ExecuteQueryDataSet(query, CommandType.Text);
+            foreach (DataRow r in rs.Rows)
+            {
+                string ngaylap = ((DateTime)r["NgayLap"]).ToString("HH:mm   dd/MM/yyyy");
+                string ngaythanhtoan;
+                if (r["NgayThanhToan"] != null)
+                {
+                    ngaythanhtoan = ((DateTime)r["NgayThanhToan"]).ToString("HH:mm   dd/MM/yyyy");
+                }
+                else ngaythanhtoan = "";
+                dt.Rows.Add(r["IDHoaDon"], r["IDNhanVien"], ngaylap, ngaythanhtoan, r["TongTien"]);
+            }
+            return dt;
+        }
 
         //        //Hàm lấy thời gian lập của bill sớm nhất
-        //        public DateTime TimeOfFirstBill()
-        //        {
-        //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-        //            DateTime result = ql.HOADONs.OrderBy(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
-        //            if (result != default)
-        //            {
-        //                return result;
-        //            }
-        //            return DateTime.Now;
-        //        }
+        public DateTime TimeOfFirstBill()
+        {
+            //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //            DateTime result = ql.HOADONs.OrderBy(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            //            if (result != default)
+            //            {
+            //                return result;
+            //            }
+            //            return DateTime.Now;
+
+            DBMain db = new DBMain();
+            string query = "Select top(1) NgayLap From HOADON Order By NgayLap";
+            return (DateTime)db.ExecuteQueryDataSet(query, CommandType.Text).Rows[0][0];
+        }
 
         //        //Hàm lấy thời gian lập của bill gần nhất
-        //        public DateTime TimeOfLastBill()
-        //        {
-        //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-        //            DateTime result = ql.HOADONs.OrderByDescending(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
-        //            if (result != default)
-        //            {
-        //                return result;
-        //            }
-        //            return DateTime.Now;
-        //        }
+        public DateTime TimeOfLastBill()
+        {
+            //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //            DateTime result = ql.HOADONs.OrderByDescending(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
+            //            if (result != default)
+            //            {
+            //                return result;
+            //            }
+            //            return DateTime.Now;
+
+            DBMain db = new DBMain();
+            string query = "Select top(1) NgayLap From HOADON Order By NgayLap Desc";
+            return (DateTime)db.ExecuteQueryDataSet(query, CommandType.Text).Rows[0][0];
+        }
 
         //        //2 hàm trên hỗ trợ việc đưa thời gian vào 2 datetimepicker khi mới mở form
 
@@ -140,15 +176,20 @@ namespace ProjectMonHoc.BL_Layer
         //            return false;
         //        }
 
-        //        public DateTime layNgayLap(string ID)
-        //        {
-        //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
-        //            DateTime result = ql.HOADONs.Where(x => x.IDHoaDon == ID).Select(x => x.NgayLap).FirstOrDefault();
-        //            if (result != default)
-        //            {
-        //                return result;
-        //            }
-        //            return DateTime.Now;
-        //        }
+        public DateTime layNgayLap(string ID)
+        {
+            //            QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();
+            //            DateTime result = ql.HOADONs.Where(x => x.IDHoaDon == ID).Select(x => x.NgayLap).FirstOrDefault();
+            //            if (result != default)
+            //            {
+            //                return result;
+            //            }
+            //            return DateTime.Now;
+
+            DBMain db = new DBMain();
+            string query = "Select NgayLap From HOADON Where IDHoaDon = '" + ID + "'";
+            string rs = db.ExecuteQueryDataSet(query, CommandType.Text).Rows[0]["NgayLap"].ToString();
+            return DateTime.Now;
+        }
     }
 }
