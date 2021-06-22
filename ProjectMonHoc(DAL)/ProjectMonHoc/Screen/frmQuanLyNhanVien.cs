@@ -70,7 +70,7 @@ namespace ProjectMonHoc.Screen
             btnXoa.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
-            //dgvNHANVIEN_CellClick(null, null);
+            dgvNHANVIEN_CellClick(null, null);
         }
         private void dgvNHANVIEN_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -128,9 +128,12 @@ namespace ProjectMonHoc.Screen
             btnHuy.Enabled = btnLuu.Enabled = true;
             btnSua.Enabled = btnThem.Enabled = false;
             gbInfo.Enabled = true;
-            txtIDNhanVien.Enabled = true;
+            txtIDNhanVien.Enabled = false;
             txtHo.Text = txtTen.Text = txtEmailNV.Text = txtDiaChi.Text = txtDienThoai.Text = "";
             pbImageUser.BackgroundImage = null;
+            string temp = dgvNHANVIEN.Rows[dgvNHANVIEN.Rows.Count - 1].Cells[0].Value.ToString();
+            int id = int.Parse(temp.Split('V')[1]);
+            txtIDNhanVien.Text = id >= 100 ? "NV" + (id + 1) : "NV0" + (id + 1);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
