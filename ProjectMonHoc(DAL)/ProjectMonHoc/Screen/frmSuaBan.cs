@@ -13,6 +13,7 @@ namespace ProjectMonHoc.Screen
 {
     public partial class frmSuaBan : Form
     {
+        string err;
         public frmSuaBan()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace ProjectMonHoc.Screen
                 try
                 {
                     //BLBan.Instance.CapNhatBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.SelectedItem.ToString()));
+                    BLBan.Instance.CapNhatBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.Text), ref err);
                     MessageBox.Show("Sửa thành công!");
                 }
                 catch

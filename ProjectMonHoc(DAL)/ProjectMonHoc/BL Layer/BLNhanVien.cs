@@ -45,6 +45,50 @@ namespace ProjectMonHoc.BL_Layer
         //    }
         //    return lstNV;
         //}
+        public List<NHANVIEN> LayNhanVien()
+        {
+            List<NHANVIEN> lstNhanVien = new List<NHANVIEN>();
+            DBMain db = new DBMain();
+            string query = "select * from NHANVIEN";
+            var kq = db.ExecuteQueryDataSet(query, CommandType.Text);
+            foreach (DataRow item in kq.Rows)
+            {
+                NHANVIEN nv = new NHANVIEN();
+                nv.IDNhanVien = item["IDNhanVien"].ToString();
+                nv.Ho = item["Ho"].ToString();
+                nv.Ten = item["Ten"].ToString();
+                nv.NgaySinh = (DateTime)item["NgaySinh"];
+                nv.SDT = item["SDT"].ToString();
+                nv.DiaChi = item["DiaChi"].ToString();
+                nv.Email = item["Email"].ToString();
+                nv.HinhNV = item["HinhNV"].ToString();
+                nv.IDCongViec = (int)item["IDCongViec"];
+                lstNhanVien.Add(nv);
+            }
+
+            return lstNhanVien;
+        }
+        public bool ThemNhanVien(string IDNhanVien, string Ho, int IDCongViec, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "insert into NHANVIEN values (N'" + IDNhanVien + "', N'" + Ho + "', N'" + Ten + "', '" + NgaySinh + "', '" +
+                                                            DienThoai + "', N'" + DiaChi + "', N'" + Email + "', N'" + HinhNV + "', '" + IDCongViec + "', '0')";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
+        public bool CapNhatNhanVien(string IDNhanVien, string Ho, int IDCongViec, string Ten, string Email, DateTime NgaySinh, string DiaChi, string DienThoai, string HinhNV, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "update NHANVIEN set Ho = N'" + Ho + "', Ten = N'" + Ten + "', NgaySinh = '" + NgaySinh + "', SDT = '" +
+                                                            DienThoai + "', DiaChi = N'" + DiaChi + "', Email = N'" + Email + "', HinhNV = N'" + HinhNV + "', IDCongViec = '" + IDCongViec + "', TrangThai = '0' " +
+                                                            "where IDNhanVien = '" + IDNhanVien + "'";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
+        public bool XoaNhanVien(string IDNhanVien, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "Delete from NHANVIEN where IDNhanVien = '" + IDNhanVien + "'";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
         public NHANVIEN LayNhanVienByUserName(string username)
         {
             /*

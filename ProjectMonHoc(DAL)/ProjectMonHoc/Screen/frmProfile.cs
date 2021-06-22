@@ -88,7 +88,7 @@ namespace ProjectMonHoc.Screen
             dtpNgaySinh.Value = userCurrent.NgaySinh;
             pbAvatar1.BackgroundImage = Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
             pbAvatar2.BackgroundImage = Image.FromFile(@"../../Images/" + userCurrent.HinhNV);
-            //txtJob.Text = BL_Layer.BLCongViec.Instance.LayCongViecById(userCurrent.IDCongViec);
+            txtJob.Text = BL_Layer.BLCongViec.Instance.LayCongViecById(userCurrent.IDCongViec);
         }
     }
 }

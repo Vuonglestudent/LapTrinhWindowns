@@ -129,7 +129,19 @@ namespace ProjectMonHoc.BL_Layer
         //    ql.SaveChanges();
         //    return true;
         //}
-
+        public bool ThemBan(int idBan, string TenBan, int SucChua, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "Insert into BAN values ('" + TenBan + "', '0', '" + SucChua + "', '0')";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
+        public bool CapNhatBan(int idBan, string TenBan, int SucChua, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "Update BAN set TenBan = '" + TenBan + "', SucChua = '" + SucChua + "' " +
+                "where IDBan = '" + idBan + "'";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
         public bool XoaBan(int idBan, ref string err)
         {
             DBMain db = new DBMain();

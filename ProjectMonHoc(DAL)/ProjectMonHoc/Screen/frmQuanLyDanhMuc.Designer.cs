@@ -40,12 +40,14 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.ptbID = new System.Windows.Forms.PictureBox();
             this.ptbTen = new System.Windows.Forms.PictureBox();
+            this.ptbID = new System.Windows.Forms.PictureBox();
+            this.IDDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbTen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -168,6 +170,9 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDDanhMuc,
+            this.TenDanhMuc});
             this.dataGridView1.Location = new System.Drawing.Point(85, 276);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
@@ -195,6 +200,15 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "info";
             // 
+            // ptbTen
+            // 
+            this.ptbTen.Location = new System.Drawing.Point(19, 110);
+            this.ptbTen.Name = "ptbTen";
+            this.ptbTen.Size = new System.Drawing.Size(38, 38);
+            this.ptbTen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTen.TabIndex = 21;
+            this.ptbTen.TabStop = false;
+            // 
             // ptbID
             // 
             this.ptbID.Location = new System.Drawing.Point(19, 47);
@@ -204,14 +218,17 @@
             this.ptbID.TabIndex = 20;
             this.ptbID.TabStop = false;
             // 
-            // ptbTen
+            // IDDanhMuc
             // 
-            this.ptbTen.Location = new System.Drawing.Point(19, 110);
-            this.ptbTen.Name = "ptbTen";
-            this.ptbTen.Size = new System.Drawing.Size(38, 38);
-            this.ptbTen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbTen.TabIndex = 21;
-            this.ptbTen.TabStop = false;
+            this.IDDanhMuc.DataPropertyName = "IDDanhMuc";
+            this.IDDanhMuc.HeaderText = "ID Danh Mục";
+            this.IDDanhMuc.Name = "IDDanhMuc";
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Tên Danh Mục";
+            this.TenDanhMuc.Name = "TenDanhMuc";
             // 
             // frmQuanLyDanhMuc
             // 
@@ -233,8 +250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbTen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbID)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,5 +271,7 @@
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.PictureBox ptbTen;
         private System.Windows.Forms.PictureBox ptbID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDDanhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDanhMuc;
     }
 }

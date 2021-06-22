@@ -10,7 +10,7 @@ namespace ProjectMonHoc.EntityModel
 {
     class DBMain
     {
-        string ConnStr = @"Data Source=DESKTOP-P8SSJG9\SQLEXPRESS;Initial Catalog=QuanLyNhaHangProject;Integrated Security=True";
+        string ConnStr = @"Data Source=(local);Initial Catalog=QuanLyNhaHangProject;Integrated Security=True";
         SqlConnection conn = null;
         SqlCommand comm = null;
         SqlDataAdapter da = null;
