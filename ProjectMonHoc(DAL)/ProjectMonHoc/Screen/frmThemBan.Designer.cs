@@ -188,7 +188,7 @@ namespace ProjectMonHoc.Screen
             this.Controls.Add(this.txtIDBan);
             this.Controls.Add(this.label1);
             this.Name = "frmThemBan";
-            this.Text = "frmThemBan";
+            this.Text = "Thêm bàn";
             this.Load += new System.EventHandler(this.frmThemBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).EndInit();
             this.ResumeLayout(false);

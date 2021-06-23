@@ -35,7 +35,7 @@ namespace ProjectMonHoc.BL_Layer
             }
             return count;
         }
-
+        
         public DataTable LayDanhMucMon()
         {
             //Entity
@@ -54,8 +54,6 @@ namespace ProjectMonHoc.BL_Layer
             //    {
             //        dt.Rows.Add(i.IDDanhMuc, i.TenDanhMuc);
             //    }
-
-            //    return dt;
 
             DBMain db = new DBMain();
             DataTable dt = new DataTable();
@@ -98,7 +96,24 @@ namespace ProjectMonHoc.BL_Layer
             }
             return lstTabDanhMuc;
         }
-
+        public bool ThemDanhMuc(int id, string tendm, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "insert into DANHMUC values (N'" + tendm + "', '0')";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
+        public bool CapNhatDanhMuc(int id, string tendm, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "update DANHMUC set TenDanhMuc = N'" + tendm + "' where IDDanhMuc = '" + id + "'";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
+        public bool XoaDanhMuc(int id, ref string err)
+        {
+            DBMain db = new DBMain();
+            string query = "delete from DANHMUC where IDDanhMuc = '" + id + "'";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
         //public bool ThemDanhMuc(int IDDanhMuc, string TenDanhMuc)
         //{
         //    QuanLyNhaHangProjectEntities ql = new QuanLyNhaHangProjectEntities();

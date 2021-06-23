@@ -14,6 +14,7 @@ namespace ProjectMonHoc.Screen
     public partial class frmQuanLyDanhMuc : Form
     {
         bool Them;
+        string err;
         public frmQuanLyDanhMuc()
         {
             InitializeComponent();
@@ -34,6 +35,15 @@ namespace ProjectMonHoc.Screen
         void LoadDataDanhMuc()
         {
             //dataGridView1.DataSource = BLDanhMuc.Instance.LayDanhMucMon();
+            dataGridView1.Rows.Clear();
+            var data = BLDanhMuc.Instance.LayTenDanhMuc();
+            for (int i = 0; i < data.Count; i++)
+            {
+                dataGridView1.Rows.Add(
+                    data[i].IDDanhMuc,
+                    data[i].TenDanhMuc);
+            }
+
             dataGridView1_CellClick(null, null);
             gbInfo.Enabled = false;
             txtIDDanhMuc.Enabled = false;
@@ -75,7 +85,7 @@ namespace ProjectMonHoc.Screen
             {
                 try
                 {
-                    //BLDanhMuc.Instance.ThemDanhMuc(int.Parse(txtIDDanhMuc.Text),txtTenDanhMuc.Text);
+                    BLDanhMuc.Instance.ThemDanhMuc(int.Parse(txtIDDanhMuc.Text),txtTenDanhMuc.Text, ref err);
                     LoadDataDanhMuc();
                     MessageBox.Show("Đã thêm xong");
                 }
@@ -88,7 +98,7 @@ namespace ProjectMonHoc.Screen
             {
                 try
                 {
-                    //BLDanhMuc.Instance.CapNhatDanhMuc(int.Parse(txtIDDanhMuc.Text), txtTenDanhMuc.Text);
+                    BLDanhMuc.Instance.CapNhatDanhMuc(int.Parse(txtIDDanhMuc.Text), txtTenDanhMuc.Text, ref err);
                     LoadDataDanhMuc();
                     MessageBox.Show("Đã sửa xong");
                 }
@@ -125,7 +135,7 @@ namespace ProjectMonHoc.Screen
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (traloi == DialogResult.Yes)
                 {
-                    //BLDanhMuc.Instance.XoaDanhMuc(IDDanhMuc);
+                    BLDanhMuc.Instance.XoaDanhMuc(IDDanhMuc, ref err);
                     LoadDataDanhMuc();
                     MessageBox.Show("Đã xóa xong!");
                 }

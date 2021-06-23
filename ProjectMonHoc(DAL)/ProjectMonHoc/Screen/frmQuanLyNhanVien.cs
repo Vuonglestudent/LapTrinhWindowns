@@ -15,6 +15,7 @@ namespace ProjectMonHoc.Screen
     public partial class frmQuanLyNhanVien : Form
     {
         bool Them;
+        string err;
         Image imgFile;
         string pathImg;
         public frmQuanLyNhanVien()
@@ -25,20 +26,20 @@ namespace ProjectMonHoc.Screen
         void LoadData() 
         {
             dgvNHANVIEN.Rows.Clear();
-            //var data  = BLNhanVien.Instance.LayNhanVien();
-            //for (int i = 0; i < data.Count; i++)
-            //{
-            //    dgvNHANVIEN.Rows.Add(
-            //        data[i].IDNhanVien,
-            //        data[i].Ho + " " + data[i].Ten,
-            //        data[i].IDCongViec,
-            //        data[i].NgaySinh.ToString("dd/MM/yyyy"),
-            //        data[i].Email,
-            //        data[i].DiaChi,
-            //        data[i].SDT,
-            //        Image.FromFile(@"../../Images/" + data[i].HinhNV));
-            //    dgvNHANVIEN.Rows[i].Height = 150;
-            //}
+            var data = BLNhanVien.Instance.LayNhanVien();
+            for (int i = 0; i < data.Count; i++)
+            {
+                dgvNHANVIEN.Rows.Add(
+                    data[i].IDNhanVien,
+                    data[i].Ho + " " + data[i].Ten,
+                    data[i].IDCongViec,
+                    data[i].NgaySinh.ToString("dd/MM/yyyy"),
+                    data[i].Email,
+                    data[i].DiaChi,
+                    data[i].SDT,
+                    Image.FromFile(@"../../Images/" + data[i].HinhNV));
+                dgvNHANVIEN.Rows[i].Height = 150;
+            }
             ((DataGridViewImageColumn)dgvNHANVIEN.Columns[7]).ImageLayout = DataGridViewImageCellLayout.Stretch;
             for (int i = 0; i < dgvNHANVIEN.Rows.Count; i++)
             {
@@ -82,7 +83,7 @@ namespace ProjectMonHoc.Screen
             {
                 this.txtTen.Text = this.txtTen.Text == "" ? hoTen[i].ToString() : this.txtTen.Text + " " + hoTen[i].ToString();
             }
-            this.cbIDCongViec.SelectedItem = dgvNHANVIEN.Rows[r].Cells[2].Value.ToString();
+            this.cbIDCongViec.Text = dgvNHANVIEN.Rows[r].Cells[2].Value.ToString();
             this.dtpNgaySinh.Value = DateTime.ParseExact(dgvNHANVIEN.Rows[r].Cells[3].Value.ToString(), "dd/MM/yyyy", null);
             this.txtEmailNV.Text = dgvNHANVIEN.Rows[r].Cells[4].Value.ToString();
             this.txtDiaChi.Text = dgvNHANVIEN.Rows[r].Cells[5].Value.ToString();
@@ -127,9 +128,12 @@ namespace ProjectMonHoc.Screen
             btnHuy.Enabled = btnLuu.Enabled = true;
             btnSua.Enabled = btnThem.Enabled = false;
             gbInfo.Enabled = true;
-            txtIDNhanVien.Enabled = true;
+            txtIDNhanVien.Enabled = false;
             txtHo.Text = txtTen.Text = txtEmailNV.Text = txtDiaChi.Text = txtDienThoai.Text = "";
             pbImageUser.BackgroundImage = null;
+            string temp = dgvNHANVIEN.Rows[dgvNHANVIEN.Rows.Count - 1].Cells[0].Value.ToString();
+            int id = int.Parse(temp.Split('V')[1]);
+            txtIDNhanVien.Text = id >= 100 ? "NV" + (id + 1) : "NV0" + (id + 1);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -159,9 +163,12 @@ namespace ProjectMonHoc.Screen
                 {
                     try
                     {
+                        string s = txtIDNhanVien.Text + txtHo.Text + (cbIDCongViec.SelectedIndex + 1) + txtTen.Text +
+                                                              txtEmailNV.Text + dtpNgaySinh.Value + txtDiaChi.Text + txtDienThoai.Text + pathImg;
+                        MessageBox.Show(s);
                         imgFile.Save(@"../../Images/" + pathImg);
-                       //BLNhanVien.Instance.ThemNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
-                       //                                      txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg);
+                        BLNhanVien.Instance.ThemNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
+                                                              txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg, ref err);
                         LoadData();
                         MessageBox.Show("Thêm thành công");
                     }
@@ -176,14 +183,14 @@ namespace ProjectMonHoc.Screen
                     {
                         if (imgFile == (Bitmap)dgvNHANVIEN.CurrentRow.Cells[7].Value)
                         {
-                            //BLNhanVien.Instance.CapNhatNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
-                            //                                 txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg);
+                            BLNhanVien.Instance.CapNhatNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
+                                                             txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg, ref err);
                         }
                         else
                         {
                             imgFile.Save(@"../../Images/" + pathImg);
-                            //BLNhanVien.Instance.CapNhatNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
-                            //                                 txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg);
+                            BLNhanVien.Instance.CapNhatNhanVien(txtIDNhanVien.Text, txtHo.Text, cbIDCongViec.SelectedIndex + 1, txtTen.Text,
+                                                             txtEmailNV.Text, dtpNgaySinh.Value, txtDiaChi.Text, txtDienThoai.Text, pathImg, ref err);
                         }
                     
                         LoadData();
@@ -211,7 +218,7 @@ namespace ProjectMonHoc.Screen
                 DialogResult traloi = MessageBox.Show(question, "Confirm", MessageBoxButtons.YesNo);
                 if (traloi == DialogResult.Yes)
                 {
-                   // BLNhanVien.Instance.XoaNhanVien(dgvNHANVIEN.CurrentRow.Cells[0].Value.ToString());
+                    BLNhanVien.Instance.XoaNhanVien(dgvNHANVIEN.CurrentRow.Cells[0].Value.ToString(), ref err);
                     LoadData();
                     MessageBox.Show("Đã xóa xong");
                 }

@@ -13,6 +13,7 @@ namespace ProjectMonHoc.Screen
 {
     public partial class frmThemBan : Form
     {
+        string err;
         public frmThemBan()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace ProjectMonHoc.Screen
                 try
                 {
                     //BLBan.Instance.ThemBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.SelectedItem.ToString()));
+                    BLBan.Instance.ThemBan(int.Parse(txtIDBan.Text), txtTenBan.Text, int.Parse(cbSucChua.Text), ref err);
                     LoadData();
                     MessageBox.Show("Thêm thành công!");
                 }

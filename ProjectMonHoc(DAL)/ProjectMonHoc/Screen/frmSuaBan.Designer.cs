@@ -137,7 +137,7 @@ namespace ProjectMonHoc.Screen
             this.Controls.Add(this.txtIDBan);
             this.Controls.Add(this.label1);
             this.Name = "frmSuaBan";
-            this.Text = "frmSuaBan";
+            this.Text = "Sửa bàn";
             this.Load += new System.EventHandler(this.frmSuaBan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
