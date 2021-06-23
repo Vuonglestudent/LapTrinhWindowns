@@ -43,5 +43,16 @@ namespace ProjectMonHoc.Properties {
                 return ((string)(this["QuanLyCafeConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-P8SSJG9\\SQLEXPRESS;Initial Catalog=QuanLyNhaHangProject;Integ" +
+            "rated Security=True")]
+        public string QuanLyNhaHangProjectConnectionString {
+            get {
+                return ((string)(this["QuanLyNhaHangProjectConnectionString"]));
+            }
+        }
     }
 }
