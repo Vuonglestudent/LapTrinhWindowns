@@ -97,9 +97,9 @@ namespace ProjectMonHoc.BL_Layer
             DateTime result = ql.HOADONs.OrderBy(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
             if (result != default)
             {
-                return result;
+                return result.Date;
             }
-            return DateTime.Now;
+            return DateTime.Now.Date;
         }
         
         //Hàm lấy thời gian lập của bill gần nhất
@@ -109,9 +109,9 @@ namespace ProjectMonHoc.BL_Layer
             DateTime result = ql.HOADONs.OrderByDescending(x => x.NgayLap).Select(x=>x.NgayLap).FirstOrDefault();
             if (result != default)
             {
-                return result;
+                return result.AddDays(1).Date;
             }
-            return DateTime.Now;
+            return DateTime.Now.Date;
         }
 
         //2 hàm trên hỗ trợ việc đưa thời gian vào 2 datetimepicker khi mới mở form
@@ -135,5 +135,6 @@ namespace ProjectMonHoc.BL_Layer
             }
             return DateTime.Now;
         }
+
     }
 }

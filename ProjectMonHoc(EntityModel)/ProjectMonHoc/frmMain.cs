@@ -453,6 +453,8 @@ namespace ProjectMonHoc
             formsua.succhua = item.SucChua;
             formsua.tenban = item.TenBan;
             formsua.ShowDialog();
+            LoadDataBan();
+
         }
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -563,24 +565,35 @@ namespace ProjectMonHoc
                 if (tbxTienThua.Text != "")
                 {
                     int tienThua = int.Parse(tbxTienThua.Text.Split('$')[0]);
-                    //if (tienThua >= 0)
-                    //{
-                        int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
-                        string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
-                        bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
-                        if (check)
+                    int IDBanDangChon = int.Parse(BanDangChon.Tag.ToString());
+                    string idHoaDon = dgvBill.Rows[0].Cells[0].Value.ToString();
+                    bool check = BLHoaDon.Instance.ThanhToanHoaDon(idHoaDon);
+                    if (check)
+                    {
+                        try
                         {
                             BLBan.Instance.ThayDoiTrangThai(IDBanDangChon);
                             BanDangChon.BackgroundImage = Image.FromFile(@"../../Icon/emptytableIcon.png");
                             ChangeStateBan();
                             cleanTien();
+                            frmChiTietHoaDon frm = new frmChiTietHoaDon(idHoaDon);
+                            frm.ShowDialog();
                         }
-                    }
-                    else
+                        catch
+                        {
+                            MessageBox.Show("Thât bại thay đổi trạng thái bàn!");
+                        }
+
+                    } else
                     {
-                        MessageBox.Show("Số tiền thanh toán không đầy đủ!");
+                        MessageBox.Show("Thanh toán thất bại!");
+
                     }
-                //}
+                }
+                else
+                {
+                    MessageBox.Show("Số tiền thanh toán không đầy đủ!");
+                }
             }
             catch
             {

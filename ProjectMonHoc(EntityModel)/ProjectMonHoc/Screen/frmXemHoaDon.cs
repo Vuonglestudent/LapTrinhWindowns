@@ -81,7 +81,9 @@ namespace ProjectMonHoc.Screen
                 foreach (DataGridViewRow bill in dgvHoaDon.Rows)
                     IDbills.Add(bill.Cells["ID"].Value.ToString());
             }
-            frmChiTietHoaDon frmCTHD = new frmChiTietHoaDon(IDbills);
+            //frmChiTietHoaDon frmCTHD = new frmChiTietHoaDon(IDbills);
+            //frmCTHD.ShowDialog();
+            frmReport frmCTHD = new frmReport(dtpkBatDau.Value, dtpkKetThuc.Value);
             frmCTHD.ShowDialog();
         }
 

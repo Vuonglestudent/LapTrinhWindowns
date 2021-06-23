@@ -39,6 +39,27 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -65,44 +86,13 @@
     <Compile Include="BL Layer\BLNhanVien.cs" />
     <Compile Include="BL Layer\BLTaiKhoan.cs" />
     <Compile Include="color.cs" />
-    <Compile Include="EntityModel\BAN.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+    <Compile Include="EntityModel\QLNH.cs">
+      <DependentUpon>QLNH.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\CHITIETHOADON.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\CONGVIEC.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\DANHMUC.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\HOADON.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\MONAN.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\NHANVIEN.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.Context.cs">
+    <Compile Include="EntityModel\QLNH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangProjectEntity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\QuanLyNhaHangProjectEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\TAIKHOAN.cs">
-      <DependentUpon>QuanLyNhaHangProjectEntity.tt</DependentUpon>
+      <DependentUpon>QLNH.xsd</DependentUpon>
     </Compile>
     <Compile Include="Screen\Bill.cs">
       <SubType>UserControl</SubType>
@@ -165,6 +155,12 @@
     <Compile Include="Screen\frmQuanLyMon.Designer.cs">
       <DependentUpon>frmQuanLyMon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\frmSuaBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +179,7 @@
     <Compile Include="Screen\frmXemHoaDon.Designer.cs">
       <DependentUpon>frmXemHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Screen\Bill.resx">
       <DependentUpon>Bill.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +212,9 @@
     <EmbeddedResource Include="Screen\frmQuanLyMon.resx">
       <DependentUpon>frmQuanLyMon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmSuaBan.resx">
       <DependentUpon>frmSuaBan.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,12 +224,19 @@
     <EmbeddedResource Include="Screen\frmXemHoaDon.resx">
       <DependentUpon>frmXemHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="EntityModel\QuanLyNhaHangProjectEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyNhaHangProjectEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EntityModel\QuanLyNhaHangProjectEntity.edmx.diagram">
-      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
+    <EmbeddedResource Include="Screen\ReportCTHD.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="EntityModel\QLNH.xsc">
+      <DependentUpon>QLNH.xsd</DependentUpon>
+    </None>
+    <None Include="EntityModel\QLNH.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLNH.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EntityModel\QLNH.xss">
+      <DependentUpon>QLNH.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -253,16 +260,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EntityModel\QuanLyNhaHangProjectEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
-      <LastGenOutput>QuanLyNhaHangProjectEntity.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityModel\QuanLyNhaHangProjectEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyNhaHangProjectEntity.edmx</DependentUpon>
-      <LastGenOutput>QuanLyNhaHangProjectEntity.cs</LastGenOutput>
-    </Content>
     <Content Include="Images\account.png" />
     <Content Include="Images\address.png" />
     <Content Include="Images\background.jpg" />
@@ -323,6 +320,19 @@
     <Content Include="Images\phone.png" />
     <Content Include="Images\save.png" />
     <Content Include="Images\showPass.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Images\MA022.jpg" />
     <None Include="Images\MA023.jpg" />
     <None Include="Images\MA024.jpg" />
