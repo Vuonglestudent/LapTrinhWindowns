@@ -18,6 +18,7 @@ namespace ProjectMonHoc.Screen
         string err;
         Image imgFile;
         string pathImg;
+        List<string> listImg = new List<string>();
         public frmQuanLyNhanVien()
         {
             InitializeComponent();
@@ -37,8 +38,12 @@ namespace ProjectMonHoc.Screen
                     data[i].Email,
                     data[i].DiaChi,
                     data[i].SDT,
-                    Image.FromFile(@"../../Images/" + data[i].HinhNV));
+                    File.Exists(@"../../Images/" + data[i].HinhNV)
+                    ? Image.FromFile(@"../../Images/" + data[i].HinhNV)
+                    : Image.FromFile(@"../../Images/default.jpg"));
                 dgvNHANVIEN.Rows[i].Height = 150;
+                string path = data[i].HinhNV.ToString();
+                listImg.Add(path);
             }
             ((DataGridViewImageColumn)dgvNHANVIEN.Columns[7]).ImageLayout = DataGridViewImageCellLayout.Stretch;
             for (int i = 0; i < dgvNHANVIEN.Rows.Count; i++)
@@ -90,7 +95,7 @@ namespace ProjectMonHoc.Screen
             this.txtDienThoai.Text = dgvNHANVIEN.Rows[r].Cells[6].Value.ToString();
             this.pbImageUser.BackgroundImage = (Bitmap)(dgvNHANVIEN.Rows[r].Cells[7].Value);
             pbImageUser.BackgroundImageLayout = ImageLayout.Stretch;
-            pathImg = dgvNHANVIEN.Rows[r].Cells[0].Value.ToString() + ".jpg";
+            pathImg = listImg[r];
             imgFile = (Bitmap)(dgvNHANVIEN.Rows[r].Cells[7].Value);
         }
         private void btnReload_Click(object sender, EventArgs e)

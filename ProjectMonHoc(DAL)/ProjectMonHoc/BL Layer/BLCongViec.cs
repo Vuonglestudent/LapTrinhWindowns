@@ -15,11 +15,11 @@ namespace ProjectMonHoc.BL_Layer
             get { if (instance == null) instance = new BLCongViec(); return instance; }
             private set { instance = value; }
         }
-        public DataTable LayCongViecById(int id)
+        public string LayCongViecById(int id)
         {
             DBMain db = new DBMain();
             string query = "select TenCongViec from CONGVIEC where IDCongViec = '" + id + "'";
-            return db.ExecuteQueryDataSet(query, CommandType.Text);
+            return db.ExecuteQueryDataSet(query, CommandType.Text).Rows[0]["TenCongViec"].ToString();
         }
         //public DataTable LayCongViecCB()
         //{

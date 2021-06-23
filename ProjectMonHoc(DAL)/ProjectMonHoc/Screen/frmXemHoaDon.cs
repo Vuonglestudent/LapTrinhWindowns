@@ -30,7 +30,7 @@ namespace ProjectMonHoc.Screen
 
         private void frmXemHoaDon_Load(object sender, EventArgs e)
         {
-            //(dgvHoaDon.Columns["NhanVien"] as DataGridViewComboBoxColumn).DataSource = BLNhanVien.Instance.LayNhanVien();
+            (dgvHoaDon.Columns["NhanVien"] as DataGridViewComboBoxColumn).DataSource = BLNhanVien.Instance.LayNhanVien();
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).DisplayMember = "Ten";
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).ValueMember = "IDNhanVien";
             (dgvHoaDon.Columns["Nhanvien"] as DataGridViewComboBoxColumn).DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
@@ -81,7 +81,7 @@ namespace ProjectMonHoc.Screen
                 foreach (DataGridViewRow bill in dgvHoaDon.Rows)
                     IDbills.Add(bill.Cells["ID"].Value.ToString());
             }
-            frmChiTietHoaDon frmCTHD = new frmChiTietHoaDon(IDbills);
+            frmReport frmCTHD = new frmReport(dtpkBatDau.Value, dtpkKetThuc.Value);
             frmCTHD.ShowDialog();
         }
 
