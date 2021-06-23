@@ -35,7 +35,7 @@ namespace ProjectMonHoc.Screen
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtTenMon = new System.Windows.Forms.TextBox();
+            this.lbTenMon = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numGiaTien = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,21 +44,20 @@ namespace ProjectMonHoc.Screen
             this.btnThemMon = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
+            this.ptbGiaTien = new System.Windows.Forms.PictureBox();
+            this.ptbTenMon = new System.Windows.Forms.PictureBox();
             this.btnXoaMon = new System.Windows.Forms.Button();
             this.btnSuaMon = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ptbTenMon = new System.Windows.Forms.PictureBox();
-            this.ptbGiaTien = new System.Windows.Forms.PictureBox();
-            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
-            this.lbTenMon = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbDanhMucMon
@@ -131,16 +130,16 @@ namespace ProjectMonHoc.Screen
             this.Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Hinh.Width = 200;
             // 
-            // txtTenMon
+            // lbTenMon
             // 
-            this.txtTenMon.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTenMon.Font = new System.Drawing.Font("Calibri", 16F);
-            this.txtTenMon.Location = new System.Drawing.Point(176, 62);
-            this.txtTenMon.Margin = new System.Windows.Forms.Padding(5);
-            this.txtTenMon.Name = "txtTenMon";
-            this.txtTenMon.Size = new System.Drawing.Size(296, 27);
-            this.txtTenMon.TabIndex = 2;
-            this.txtTenMon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbTenMon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbTenMon.Font = new System.Drawing.Font("Calibri", 16F);
+            this.lbTenMon.Location = new System.Drawing.Point(176, 62);
+            this.lbTenMon.Margin = new System.Windows.Forms.Padding(5);
+            this.lbTenMon.Name = "lbTenMon";
+            this.lbTenMon.Size = new System.Drawing.Size(296, 27);
+            this.lbTenMon.TabIndex = 2;
+            this.lbTenMon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -235,7 +234,6 @@ namespace ProjectMonHoc.Screen
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lbTenMon);
             this.groupBox1.Controls.Add(this.ptbHinhAnh);
             this.groupBox1.Controls.Add(this.ptbGiaTien);
             this.groupBox1.Controls.Add(this.ptbTenMon);
@@ -245,7 +243,7 @@ namespace ProjectMonHoc.Screen
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.numGiaTien);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtTenMon);
+            this.groupBox1.Controls.Add(this.lbTenMon);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(29, 30);
             this.groupBox1.Name = "groupBox1";
@@ -253,6 +251,30 @@ namespace ProjectMonHoc.Screen
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
+            // 
+            // ptbHinhAnh
+            // 
+            this.ptbHinhAnh.Location = new System.Drawing.Point(11, 213);
+            this.ptbHinhAnh.Name = "ptbHinhAnh";
+            this.ptbHinhAnh.Size = new System.Drawing.Size(40, 41);
+            this.ptbHinhAnh.TabIndex = 12;
+            this.ptbHinhAnh.TabStop = false;
+            // 
+            // ptbGiaTien
+            // 
+            this.ptbGiaTien.Location = new System.Drawing.Point(11, 128);
+            this.ptbGiaTien.Name = "ptbGiaTien";
+            this.ptbGiaTien.Size = new System.Drawing.Size(40, 41);
+            this.ptbGiaTien.TabIndex = 11;
+            this.ptbGiaTien.TabStop = false;
+            // 
+            // ptbTenMon
+            // 
+            this.ptbTenMon.Location = new System.Drawing.Point(11, 55);
+            this.ptbTenMon.Name = "ptbTenMon";
+            this.ptbTenMon.Size = new System.Drawing.Size(40, 41);
+            this.ptbTenMon.TabIndex = 10;
+            this.ptbTenMon.TabStop = false;
             // 
             // btnXoaMon
             // 
@@ -298,39 +320,6 @@ namespace ProjectMonHoc.Screen
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
             // 
-            // ptbTenMon
-            // 
-            this.ptbTenMon.Location = new System.Drawing.Point(11, 55);
-            this.ptbTenMon.Name = "ptbTenMon";
-            this.ptbTenMon.Size = new System.Drawing.Size(40, 41);
-            this.ptbTenMon.TabIndex = 10;
-            this.ptbTenMon.TabStop = false;
-            // 
-            // ptbGiaTien
-            // 
-            this.ptbGiaTien.Location = new System.Drawing.Point(11, 128);
-            this.ptbGiaTien.Name = "ptbGiaTien";
-            this.ptbGiaTien.Size = new System.Drawing.Size(40, 41);
-            this.ptbGiaTien.TabIndex = 11;
-            this.ptbGiaTien.TabStop = false;
-            // 
-            // ptbHinhAnh
-            // 
-            this.ptbHinhAnh.Location = new System.Drawing.Point(11, 213);
-            this.ptbHinhAnh.Name = "ptbHinhAnh";
-            this.ptbHinhAnh.Size = new System.Drawing.Size(40, 41);
-            this.ptbHinhAnh.TabIndex = 12;
-            this.ptbHinhAnh.TabStop = false;
-            // 
-            // lbTenMon
-            // 
-            this.lbTenMon.Location = new System.Drawing.Point(171, 53);
-            this.lbTenMon.Name = "lbTenMon";
-            this.lbTenMon.Size = new System.Drawing.Size(303, 51);
-            this.lbTenMon.TabIndex = 13;
-            this.lbTenMon.Text = "Món Ăn";
-            this.lbTenMon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmQuanLyMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -351,10 +340,10 @@ namespace ProjectMonHoc.Screen
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbGiaTien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTenMon)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -363,7 +352,6 @@ namespace ProjectMonHoc.Screen
 
         private System.Windows.Forms.ComboBox cbDanhMucMon;
         private System.Windows.Forms.DataGridView dgvQLMonAn;
-        private System.Windows.Forms.TextBox txtTenMon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numGiaTien;
         private System.Windows.Forms.Label label2;
@@ -381,6 +369,6 @@ namespace ProjectMonHoc.Screen
         private System.Windows.Forms.PictureBox ptbHinhAnh;
         private System.Windows.Forms.PictureBox ptbGiaTien;
         private System.Windows.Forms.PictureBox ptbTenMon;
-        private System.Windows.Forms.Label lbTenMon;
+        private System.Windows.Forms.TextBox lbTenMon;
     }
 }
